@@ -1,35 +1,42 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Card from '../lib/Card';
+import ListGroup from '../lib/ListGroup';
+import Button from '../lib/Button';
+
 const Trip = ({ trip }) => {
     return (
-        <div className="trip">
-            <div className="card-deck">
-                <div className="card">
-                    <img src="https://place-hold.it/300" className="card-img-top" />
-                    <div className="card-body">
-                        <h5 className="card-title">{trip.travel_style} : {trip.title}</h5>
-                        <p className="card-text">Destination: {trip.destination}</p>
-                        <p className="card-text"><small className="text-muted">Cost: ${trip.cost}</small></p>
-                    </div>
-                    <ul className="list-group list-group-flush">
-                        <li className="list-group-item">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <h6>Services</h6>
-                                </div>
-                                <div className="offset-md-2 col-md-4">
-                                    <button className="btn btn-primary">Add</button>
-                                </div>
+        <div className="trip-component">
+            <Card>
+                <Card.Header>
+                    {trip.travel_style} : {trip.title}
+                </Card.Header>
+                <Card.Image src="https://place-hold.it/300"></Card.Image>
+                <Card.Body>
+                    <Card.Title> {trip.title}</Card.Title>
+                    <Card.Text> Destination: {trip.destination} </Card.Text>
+                    <Card.Text>
+                        <small className="text-muted">
+                            Cost: ${trip.cost}
+                        </small>
+                    </Card.Text>
+                </Card.Body>
+                <ListGroup flush>
+                    <ListGroup.Item>
+                        <div className="row">
+                            <div className="col-md-4">
+                                <h6>Services</h6>
                             </div>
-
-                        </li>
-                        <li className="list-group-item">
-                            Display service here
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                            <div className="offset-md-6 col-md-2">
+                                <Button variant="primary">Add</Button>
+                            </div>
+                        </div>
+                    </ListGroup.Item>
+                    <ListGroup.Item>Selection 1</ListGroup.Item>
+                    <ListGroup.Item>Selection 2</ListGroup.Item>
+                </ListGroup>
+            </Card>
         </div>
     );
 };
