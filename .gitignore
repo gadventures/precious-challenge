@@ -1,3 +1,7 @@
 *.pyc
 node_modules/
 .idea/*
+#Python environment folder
+ve/
+#Output folder
+static/bundles/
