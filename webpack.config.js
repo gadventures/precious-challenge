@@ -1,5 +1,8 @@
-var BundleTracker = require('webpack-bundle-tracker')
-var path = require('path')
+const BundleTracker = require('webpack-bundle-tracker')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const path = require('path')
 
 module.exports = {
     entry: "./static/js/index.js",
@@ -26,6 +29,11 @@ module.exports = {
       historyApiFallback: true
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new BundleTracker({filename: './webpack-stats.json'}),
+        new HtmlWebpackPlugin({ 
+            template: './templates/index.html',
+            filename: './index.html'
+        })
     ]
 };

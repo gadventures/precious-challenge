@@ -5,3 +5,4 @@ node_modules/
 ve/
 #Output folder
 static/bundles/
+webpack-stats.json
