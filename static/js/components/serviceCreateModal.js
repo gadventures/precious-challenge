@@ -2,6 +2,7 @@ import React from 'react';
 import Button from "../lib/Button"
 import Modal from "../lib/Modal"
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 class ServiceCreateModal extends React.Component {
     constructor(props) {
@@ -33,6 +34,7 @@ class ServiceCreateModal extends React.Component {
         this.props.onClose();
     }
 
+    // createService makes a call to /api/services which creates a service record and returns it in JSON format
     async createService({ name, location, type, cost }) {
         const servicesUrl = `${process.env.API_URL}/services`;
 
@@ -65,15 +67,21 @@ class ServiceCreateModal extends React.Component {
                             <label htmlFor="cost">Cost</label>
                             <input name="cost" value={this.state.cost} onChange={this.handleChange} type="decimal" className="form-control" id="cost" placeholder="Cost"></input>
                         </div>
-                        <Button variant="primary" type="submit" onClick={this.handleSubmit}>Submit</Button>
-                        <Button variant="secondary" onClick={this.props.onClose}>Cancel</Button>
+                        <div className="form-group">
+                            <Button variant="primary" type="submit" className="mr-2" onClick={this.handleSubmit}>Submit</Button>
+                            <Button variant="secondary" onClick={this.props.onClose}>Cancel</Button>
+                        </div>
                     </form>
                 </Modal.Body>
             </Modal>
         )
     }
+}
 
-
+ServiceCreateModal.propTypes = {
+    show: PropTypes.bool,
+    onClose: PropTypes.func,
+    onSubmit: PropTypes.func,
 }
 
 export default ServiceCreateModal;

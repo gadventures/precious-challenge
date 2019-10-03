@@ -64,7 +64,7 @@ export default class App extends Component {
                         </div>
                     </Tab.Pane>
                     <Tab.Pane label="Adventure Services">
-                        <div className="row">
+                        <div className="row mt-3 ml-2">
                             <Button variant="primary" onClick={this.openServiceCreateModal}>Create Service</Button>
                         </div>
                         <hr />

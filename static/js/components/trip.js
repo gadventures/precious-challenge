@@ -39,12 +39,12 @@ class Trip extends React.Component {
                 >
                 </ServiceAddModal>
 
-                <div className="trip-component">
+                <div className="trip-component m-4">
                     <Card>
                         <Card.Header>
                             {trip.travel_style} : {trip.title}
                         </Card.Header>
-                        <Card.Image src="https://place-hold.it/300"></Card.Image>
+                        <Card.Image src="https://place-hold.it/200"></Card.Image>
                         <Card.Body>
                             <Card.Title> {trip.title}</Card.Title>
                             <Card.Text> Destination: {trip.destination} </Card.Text>
