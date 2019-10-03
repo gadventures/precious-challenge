@@ -1,6 +1,7 @@
 const BundleTracker = require('webpack-bundle-tracker')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 const path = require('path')
 
@@ -30,6 +31,7 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
+        new Dotenv(),
         new BundleTracker({filename: './webpack-stats.json'}),
         new HtmlWebpackPlugin({ 
             template: './templates/index.html',

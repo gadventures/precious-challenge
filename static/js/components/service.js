@@ -1,7 +1,23 @@
 import React from 'react';
+import Card from '../lib/Card';
 
-const Service = ({ service, children, ...other }) => {
+const Service = ({ service }) => {
     return (
-        <div className="container">Hello from services</div>
+        <Card>
+            <Card.Header>
+                {service.type} : {service.name}
+            </Card.Header>
+            <Card.Body>
+                <Card.Title> {service.name}</Card.Title>
+                <Card.Text> Location: {service.location} </Card.Text>
+                <Card.Text>
+                    <small className="text-muted">
+                        Cost: ${service.cost}
+                    </small>
+                </Card.Text>
+            </Card.Body>
+        </Card>
     )
 }
+
+export default Service;

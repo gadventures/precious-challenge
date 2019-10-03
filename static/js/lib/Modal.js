@@ -46,7 +46,7 @@ Modal.Footer = ({ onClose, onSubmit }) => {
     return (
         <div className="modal-footer">
             <Button variant="secondary" onClick={onClose}>Close</Button>
-            <Button variant="primary" onClick={onSubmit}>Submit</Button>
+            <Button variant="primary" type="submit" onClick={onSubmit}>Submit</Button>
         </div>
     )
 }
