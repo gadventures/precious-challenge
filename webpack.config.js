@@ -14,7 +14,11 @@ module.exports = {
              test: /.jsx?$/,
              loader: 'babel-loader',
              exclude: /node_modules/,
-           }
+           },
+           {
+            test:/\.scss$/,
+            use:['style-loader','css-loader']
+        }
         ]
     },
     devtool: 'source-map',
