@@ -8,11 +8,6 @@ class Trip extends PureComponent {
     super(props)
   }
 
-  addTrip () {
-    this.props.selectTrip(this.props.trip.id)
-    this.props.addToBasket(this.props.trip)
-  }
-
   render () {
     const {
       id,
@@ -42,7 +37,7 @@ class Trip extends PureComponent {
               </div>
             </div>
             <img src='https://image.flaticon.com/icons/svg/201/201623.svg' width='100' className='ml-lg-5 order-1 order-lg-2'></img>
-            <button className='btn btn-success' onClick={() => this.addTrip()}> Add </button>
+            <button className='btn btn-success' onClick={() => this.props.selectTrip(this.props.trip)}> Add </button>
           </div>
         </li>
         {showHotels &&

@@ -44000,10 +44000,16 @@ function (_Component) {
     }
   }, {
     key: "selectTrip",
-    value: function selectTrip(id) {
+    value: function selectTrip(trip) {
+      var _this3 = this;
+
+      // adding callback here as I want to make sure the basket is cleared when selecting new trip,
+      // otherwise it doesn't update in time synce setState is asynchronous
       this.setState({
-        selected: id,
+        selected: trip.id,
         basket: []
+      }, function () {
+        _this3.addToBasket(trip);
       });
     }
   }, {
@@ -44052,7 +44058,7 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container-fluid py-3 px-5"
@@ -44076,9 +44082,9 @@ function (_Component) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_trip__WEBPACK_IMPORTED_MODULE_1__["default"], {
           key: i,
           trip: trip,
-          addToBasket: _this3.addToBasket,
-          selectTrip: _this3.selectTrip,
-          selected: _this3.state.selected
+          addToBasket: _this4.addToBasket,
+          selectTrip: _this4.selectTrip,
+          selected: _this4.state.selected
         });
       }))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-lg-4"
@@ -44448,12 +44454,6 @@ function (_PureComponent) {
   }
 
   _createClass(Trip, [{
-    key: "addTrip",
-    value: function addTrip() {
-      this.props.selectTrip(this.props.trip.id);
-      this.props.addToBasket(this.props.trip);
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this = this;
@@ -44496,7 +44496,7 @@ function (_PureComponent) {
       }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("button", {
         className: "btn btn-success",
         onClick: function onClick() {
-          return _this.addTrip();
+          return _this.props.selectTrip(_this.props.trip);
         }
       }, " Add "))), showHotels && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
         className: "list-group"

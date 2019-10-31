@@ -38,8 +38,15 @@ export default class App extends Component {
       })
   }
 
-  selectTrip(id) {
-    this.setState({ selected: id, basket: [] })
+  selectTrip(trip) {
+    // adding callback here as I want to make sure the basket is cleared when selecting new trip,
+    // otherwise it doesn't update in time synce setState is asynchronous
+    this.setState({
+      selected: trip.id,
+      basket: []
+    }, () => {
+      this.addToBasket(trip)
+    })
   }
 
   addToBasket(item) {
