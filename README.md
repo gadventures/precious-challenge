@@ -67,11 +67,12 @@ rebuild whenever the file is modified.
 
 	webpack --watch
 
-### Creating a git branch
+### Creating a a fork / branch
 
-Before you dive into the code, create a separate branch to do your work. 
-The reason for this is so that you can issue a pull request, which will allow us
-to review your code. To create a new branch:
+Before you dive into this task, please *Fork* this project onto your own GitHub account. You'll
+eventually create a pull request upstream back to this project from your personal fork.
+
+Additionaly, we recommend creating a separate branch to do your work. To create a new branch:
 
 	git checkout -b your_branch_name
 
@@ -106,8 +107,7 @@ And then identifying the code behind them, and working from there.
 
 ## When you're finished
 
-Once you're ready to submit, you can create a pull request on the github project
-page. After that, you're done!
+Once you're ready to submit, please submit a pull request from your fork against this GitHub project. We'll be notified of the pull request and get back to you shortly there-after.
 
 ## Stuck?
 
