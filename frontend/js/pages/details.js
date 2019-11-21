@@ -38,22 +38,22 @@ class Details extends Component {
         </NavLink>
         <ul className="list-group align-items-center" >
           <li className="list-group-item" >
-            Destination: {trip.destination}
+            <strong>Destination:</strong> {trip.destination}
           </li>
           <li className="list-group-item">
-            Duration: {trip.duration_days}
+          <strong>Duration:</strong> {trip.duration_days}
           </li>
           <li className="list-group-item">
-            Cost: ${trip.cost}
+            <strong>Cost:</strong> ${trip.cost}
           </li>
           <li className="list-group-item">
-            Hotel: {trip.hotel}
+            <strong>Hotel:</strong> {trip.hotel}
           </li>
           <li className="list-group-item">
-            Accomodation: {trip.accomodation}
+            <strong>Accomodation:</strong>{trip.accomodation}
           </li>
           <li className="list-group-item">
-            Transportation: {trip.transportation}
+            <strong>Transportation:</strong> {trip.transportation}
           </li>
         </ul>
       </div>

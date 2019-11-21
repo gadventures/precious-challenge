@@ -1,0 +1,47 @@
+
+.trip-entry {
+
+    display: block;
+    -webkit-transition: .3s all ease;
+    -o-transition: .3s all ease;
+    transition: .3s all ease;
+    margin-bottom: 30px;
+    position: relative;
+
+}
+
+.trip-entry::before {
+    font-family: FontAwesome;
+    content: "\f055";
+    color: rgb(97, 219, 251);
+    font-weight: 600;
+    font-size: 24px;
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    text-align: center;
+    -webkit-transition: all .8s;
+    transition: all .8s;
+    z-index: -1;
+}
+
+.trip-entry:hover {
+    top: -1px;
+}
+
+.trip-entry:hover::before {
+    top: 45%;
+    text-align: center;
+    z-index: 10;
+}
+
+.trip-entry:hover img {
+    opacity: .7;
+    text-align: center;
+    -webkit-transition: all .4s;
+    transition: all .4s;
+
+}

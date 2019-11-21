@@ -8,7 +8,7 @@ const Trip = ({ trips }) => {
         trips.map((trip, i) => (
             <div key={i} className=".col-md-4">
                 <div className="container" style={{ maxWidth: '600px' }}>
-                    <NavLink to={"/trip/" + trip.id + '/'}>
+                    <NavLink className="trip-entry" to={"/trip/" + trip.id + '/'}>
                         {/* Show the trip's featured image in case there is one */}
                         {trip.imageUrl &&
                             <img src={trip.imageUrl} style={{ width: '100%' }} alt="pic placeholder" />}
@@ -18,28 +18,28 @@ const Trip = ({ trips }) => {
                     </NavLink>
                     <ul className="list-group align-items-center" >
                         <li className="list-group-item" >
-                            Destination: {trip.destination}
+                            <strong>Destination:</strong> {trip.destination}
                         </li>
                         <li className="list-group-item">
-                            Duration: {trip.duration_days}
+                            <strong>Duration:</strong> {trip.duration_days}
                         </li>
                         <li className="list-group-item">
-                            Cost: ${trip.cost}
+                            <strong>Cost:</strong> ${trip.cost}
                         </li>
                         {/* Add the Services fields.
                 Hide the service in case it does not have value
                 The value can be set from the admin panel */}
                         {trip.hotel &&
                             <li className="list-group-item">
-                                Hotel: {trip.hotel}
+                                <strong>Hotel:</strong> {trip.hotel}
                             </li>}
                         {trip.accomodation &&
                             <li className="list-group-item">
-                                Accomodation: {trip.accomodation}
+                                <strong>Accomodation:</strong> {trip.accomodation}
                             </li>}
                         {trip.transportation &&
                             <li className="list-group-item">
-                                Transportation: {trip.transportation}
+                                <strong>Transportation:</strong> {trip.transportation}
                             </li>}
                     </ul>
                 </div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Trip from "./trip"
 import $ from 'jquery';
-import Pages from '.';
+import Pages from '../pages';
 export default class App extends Component {
 
     constructor() {
