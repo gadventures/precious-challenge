@@ -1,3 +1,5 @@
 *.pyc
 node_modules/
+/ve/
 .idea/*
+precious_challenge/ve/

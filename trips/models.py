@@ -1,5 +1,5 @@
 from django.db import models
-
+# Expand the Trip model
 class Trip(models.Model):
     title = models.CharField(
         max_length=300,
@@ -16,3 +16,26 @@ class Trip(models.Model):
     )
     cost = models.IntegerField(help_text="Total cost of the trip")
     duration_days = models.IntegerField(help_text="How many days this trip runs")
+    # Add services inside the Trip model
+    # Default values are empty and they are not displayed on the frontend
+    # The services are not obligatory to fill in
+    hotel = models.CharField(
+        max_length=300,
+        help_text="Add Hotel",
+        blank=True,
+        default =""
+    )
+
+    accomodation = models.CharField(
+        max_length=300,
+        help_text="Add other types of accomodation",
+        blank=True,
+        default =""
+    )
+    
+    transportation = models.CharField(
+        max_length=300,
+        help_text="Add transportation method",
+        blank=True,
+        default =""
+    )

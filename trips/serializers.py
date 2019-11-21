@@ -11,4 +11,7 @@ class TripSerializer(serializers.ModelSerializer):
             "id",
             "title",
             "travel_style",
+            "hotel",
+            "accomodation",
+            "transportation",
         )

@@ -17,6 +17,10 @@ const Trip = ({trip}) => {
                 <li className="list-group-item">
                     Cost: ${trip.cost}
                 </li>
+                {/* Check to see if webpack is reacting to changes and the frontend gets the new services from the db*/}
+                <li className="list-group-item">
+                    Hotel: {trip.hotel}
+                </li>
             </ul>
          </div>
     )
