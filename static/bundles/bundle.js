@@ -41503,7 +41503,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -46631,10 +46631,34 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./static/js/components/app.js":
-/*!*************************************!*\
-  !*** ./static/js/components/app.js ***!
-  \*************************************/
+/***/ "./static/js/index.js":
+/*!****************************!*\
+  !*** ./static/js/index.js ***!
+  \****************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _pages_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/app */ "./static/js/pages/app.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+ //Enable routing with BrowserRouter
+
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_app__WEBPACK_IMPORTED_MODULE_2__["default"], null)), document.getElementById('container'));
+
+/***/ }),
+
+/***/ "./static/js/pages/app.js":
+/*!********************************!*\
+  !*** ./static/js/pages/app.js ***!
+  \********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46643,9 +46667,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _trip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./trip */ "./static/js/components/trip.js");
+/* harmony import */ var _trip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./trip */ "./static/js/pages/trip.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! . */ "./static/js/pages/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46663,6 +46688,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -46695,31 +46721,25 @@ function (_Component) {
   }, {
     key: "render",
     value: function render() {
-      var _this2 = this;
-
+      //Render the App component and pass the trips as props to the Pages component
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "text-center"
-      }, " Adventure Trips   "), this.state.trips.map(function (trip, i) {
-        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-          key: i,
-          className: ".col-md-4"
-        }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_trip__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          trip: _this2.state.trips[i]
-        }));
+      }, " Adventure Trips "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["default"], {
+        trips: this.state.trips
       }));
     } // getTrips makes a call to /api/ which returns the trip data in JSON format
 
   }, {
     key: "getTrips",
     value: function getTrips() {
-      var _this3 = this;
+      var _this2 = this;
 
       jquery__WEBPACK_IMPORTED_MODULE_2___default.a.getJSON({
         url: "/api/"
       }).then(function (trips) {
-        return _this3.setState({
+        return _this2.setState({
           trips: trips
         });
       })["catch"](function (error) {
@@ -46735,10 +46755,173 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./static/js/components/trip.js":
-/*!**************************************!*\
-  !*** ./static/js/components/trip.js ***!
-  \**************************************/
+/***/ "./static/js/pages/details.js":
+/*!************************************!*\
+  !*** ./static/js/pages/details.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var Details =
+/*#__PURE__*/
+function (_Component) {
+  _inherits(Details, _Component);
+
+  function Details(props) {
+    var _this;
+
+    _classCallCheck(this, Details);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Details).call(this, props));
+    _this.state = {
+      trip: null
+    };
+    return _this;
+  }
+
+  _createClass(Details, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var _this$props = this.props,
+          trips = _this$props.trips,
+          match = _this$props.match;
+      console.log(trips);
+      this.setState({
+        trip: trips.length ? trips.find(function (t) {
+          return t.id == match.params.id;
+        }) : null
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var trip = this.state.trip;
+
+      if (!trip) {
+        return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+          className: "spinner"
+        }, "Loading ...");
+      }
+
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container",
+        style: {
+          maxWidth: '600px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+        to: "/trip/" + trip.id
+      }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+        src: trip.imageUrl,
+        style: {
+          width: '100%'
+        },
+        alt: "pic placeholder"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "text-center"
+      }, trip.travel_style, " : ", trip.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+        className: "list-group align-items-center"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, "Destination: ", trip.destination), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, "Duration: ", trip.duration_days), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, "Cost: $", trip.cost), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, "Hotel: ", trip.hotel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, "Accomodation: ", trip.accomodation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+        className: "list-group-item"
+      }, "Transportation: ", trip.transportation)));
+    }
+  }]);
+
+  return Details;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
+
+/* harmony default export */ __webpack_exports__["default"] = (Details);
+
+/***/ }),
+
+/***/ "./static/js/pages/index.js":
+/*!**********************************!*\
+  !*** ./static/js/pages/index.js ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _trip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./trip */ "./static/js/pages/trip.js");
+/* harmony import */ var _details__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./details */ "./static/js/pages/details.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+var Pages = function Pages(props) {
+  var trips = props.trips;
+  /* I am adding routing so the user can easily switch between different views*/
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/",
+    render: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_trip__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        trips: trips
+      });
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/trip/:id",
+    render: function render(props) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_details__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
+        trips: trips
+      }, props));
+    }
+  }));
+}; // WithRouter enables the Routing. Without it the Details component will not be rendered
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Pages));
+
+/***/ }),
+
+/***/ "./static/js/pages/trip.js":
+/*!*********************************!*\
+  !*** ./static/js/pages/trip.js ***!
+  \*********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46754,66 +46937,48 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Trip = function Trip(_ref) {
-  var trip = _ref.trip;
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "container",
-    style: {
-      maxWidth: '600px'
-    }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-    to: "/trip/" + trip.id + '/'
-  }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-    src: trip.imageUrl,
-    style: {
-      width: '100%'
-    },
-    alt: "pic placeholder"
-  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
-    className: "text-center"
-  }, trip.travel_style, " : ", trip.title)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-    className: "list-group align-items-center"
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Destination: ", trip.destination), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Duration: ", trip.duration_days), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Cost: $", trip.cost), trip.hotel && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Hotel: ", trip.hotel), trip.accomodation && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Accomodation: ", trip.accomodation), trip.transportation && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-    className: "list-group-item"
-  }, "Transportation: ", trip.transportation)));
+  var trips = _ref.trips;
+  return trips.map(function (trip, i) {
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      key: i,
+      className: ".col-md-4"
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+      className: "container",
+      style: {
+        maxWidth: '600px'
+      }
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
+      to: "/trip/" + trip.id + '/'
+    }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+      src: trip.imageUrl,
+      style: {
+        width: '100%'
+      },
+      alt: "pic placeholder"
+    }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+      className: "text-center"
+    }, trip.travel_style, " : ", trip.title)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
+      className: "list-group align-items-center"
+    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "list-group-item"
+    }, "Destination: ", trip.destination), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "list-group-item"
+    }, "Duration: ", trip.duration_days), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "list-group-item"
+    }, "Cost: $", trip.cost), trip.hotel && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "list-group-item"
+    }, "Hotel: ", trip.hotel), trip.accomodation && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "list-group-item"
+    }, "Accomodation: ", trip.accomodation), trip.transportation && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+      className: "list-group-item"
+    }, "Transportation: ", trip.transportation))));
+  });
 };
 
 Trip.propTypes = {
   trip: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object.isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (Trip);
-
-/***/ }),
-
-/***/ "./static/js/index.js":
-/*!****************************!*\
-  !*** ./static/js/index.js ***!
-  \****************************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/app */ "./static/js/components/app.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-
-
-
-
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_app__WEBPACK_IMPORTED_MODULE_2__["default"], null)), document.getElementById('container'));
 
 /***/ })
 
