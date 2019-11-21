@@ -21,6 +21,12 @@ const Trip = ({trip}) => {
                 <li className="list-group-item">
                     Hotel: {trip.hotel}
                 </li>
+                <li className="list-group-item">
+                    Accomodation: {trip.accomodation}
+                </li>
+                <li className="list-group-item">
+                    Transportation: {trip.transportation}
+                </li>
             </ul>
          </div>
     )

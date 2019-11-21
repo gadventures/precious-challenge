@@ -43555,7 +43555,11 @@ var Trip = function Trip(_ref) {
     className: "list-group-item"
   }, "Cost: $", trip.cost), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
     className: "list-group-item"
-  }, "Hotel: ", trip.hotel)));
+  }, "Hotel: ", trip.hotel), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    className: "list-group-item"
+  }, "Accomodation: ", trip.accomodation), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
+    className: "list-group-item"
+  }, "Transportation: ", trip.transportation)));
 };
 
 Trip.propTypes = {
