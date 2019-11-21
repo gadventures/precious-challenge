@@ -1,14 +1,17 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
+import { NavLink } from 'react-router-dom';
 const Trip = ({ trip }) => {
     return (
         <div className="container" style={{ maxWidth: '600px' }}>
-            {trip.imageUrl &&
-                <img src={trip.imageUrl} style={{ width: '100%', padding:'20px 0 10px' }} alt="pic placeholder" />}
-            <h4 className="text-center">
-                {trip.travel_style} : {trip.title}
-            </h4>
+            <NavLink to={"/trip/" + trip.id + '/'}>
+                {/* Show the trip's featured image in case there is one */}
+                {trip.imageUrl &&
+                    <img src={trip.imageUrl} style={{ width: '100%' }} alt="pic placeholder" />}
+                <h4 className="text-center">
+                    {trip.travel_style} : {trip.title}
+                </h4>
+            </NavLink>
             <ul className="list-group align-items-center" >
                 <li className="list-group-item" >
                     Destination: {trip.destination}

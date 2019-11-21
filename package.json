@@ -28,5 +28,7 @@
     "webpack-bundle-tracker": "^0.4.3",
     "webpack-cli": "^3.3.9"
   },
-  "dependencies": {}
+  "dependencies": {
+    "react-router-dom": "^5.1.2"
+  }
 }
