@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Trip = ({trip}) => {
+const Trip = ({ trip }) => {
     return (
-        <div className="container" style={{maxWidth:'600px'}}>
+        <div className="container" style={{ maxWidth: '600px' }}>
             <h4 className="text-center">
                 {trip.travel_style} : {trip.title}
             </h4>
@@ -17,18 +17,24 @@ const Trip = ({trip}) => {
                 <li className="list-group-item">
                     Cost: ${trip.cost}
                 </li>
-                {/* Check to see if webpack is reacting to changes and the frontend gets the new services from the db*/}
-                <li className="list-group-item">
-                    Hotel: {trip.hotel}
-                </li>
-                <li className="list-group-item">
-                    Accomodation: {trip.accomodation}
-                </li>
-                <li className="list-group-item">
-                    Transportation: {trip.transportation}
-                </li>
+                {/* Add the Services fields.
+                Hide the service in case it does not have value.
+                The value can be set from the admin panel: 
+                http://localhost:8000/admin user: nasko pass: 1234 */}
+                {trip.hotel &&
+                    <li className="list-group-item">
+                        Hotel: {trip.hotel}
+                    </li>}
+                {trip.accomodation &&
+                    <li className="list-group-item">
+                        Accomodation: {trip.accomodation}
+                    </li>}
+                {trip.transportation &&
+                    <li className="list-group-item">
+                        Transportation: {trip.transportation}
+                    </li>}
             </ul>
-         </div>
+        </div>
     )
 };
 
