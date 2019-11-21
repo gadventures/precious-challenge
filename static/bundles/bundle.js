@@ -43543,7 +43543,14 @@ var Trip = function Trip(_ref) {
     style: {
       maxWidth: '600px'
     }
-  }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
+  }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
+    src: trip.imageUrl,
+    style: {
+      width: '100%',
+      padding: '20px 0 10px'
+    },
+    alt: "pic placeholder"
+  }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
     className: "text-center"
   }, trip.travel_style, " : ", trip.title), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
     className: "list-group align-items-center"

@@ -14,4 +14,5 @@ class TripSerializer(serializers.ModelSerializer):
             "hotel",
             "accomodation",
             "transportation",
+            "imageUrl"
         )

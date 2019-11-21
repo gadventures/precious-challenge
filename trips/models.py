@@ -1,6 +1,13 @@
 from django.db import models
 # Expand the Trip model
 class Trip(models.Model):
+    # Add option to add image url to each trip for better UX
+    imageUrl = models.CharField(
+        max_length=300,
+        help_text="Add thumbnail image to the trip",
+        blank=True,
+        default =""
+    )
     title = models.CharField(
         max_length=300,
         unique=True,
@@ -18,7 +25,7 @@ class Trip(models.Model):
     duration_days = models.IntegerField(help_text="How many days this trip runs")
     # Add services inside the Trip model
     # Default values are empty and they are not displayed on the frontend
-    # The services are not obligatory to fill in
+    # The services are optional to fill in
     hotel = models.CharField(
         max_length=300,
         help_text="Add Hotel",

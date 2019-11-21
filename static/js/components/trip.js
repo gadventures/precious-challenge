@@ -4,6 +4,8 @@ import React from 'react';
 const Trip = ({ trip }) => {
     return (
         <div className="container" style={{ maxWidth: '600px' }}>
+            {trip.imageUrl &&
+                <img src={trip.imageUrl} style={{ width: '100%', padding:'20px 0 10px' }} alt="pic placeholder" />}
             <h4 className="text-center">
                 {trip.travel_style} : {trip.title}
             </h4>
