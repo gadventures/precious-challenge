@@ -9,3 +9,5 @@ class TripsAdmin(admin.ModelAdmin):
     search_fields = ["title", "duration_days", "cost"]
 
 admin.site.register(Trip,TripsAdmin)
+
+
