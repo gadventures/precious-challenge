@@ -43502,7 +43502,7 @@ function (_Component) {
       var _this3 = this;
 
       jquery__WEBPACK_IMPORTED_MODULE_2___default.a.getJSON({
-        url: "/api/"
+        url: "/api/trips"
       }).then(function (trips) {
         return _this3.setState({
           trips: trips

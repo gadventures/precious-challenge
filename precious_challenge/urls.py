@@ -8,6 +8,6 @@ from trips import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/trips', views.TripList.as_view()),
-    path('api/services', views.ServiceList.as_view()),
+    path('api/services', views.service_api),
     path('', TemplateView.as_view(template_name='index.html')),
 ]

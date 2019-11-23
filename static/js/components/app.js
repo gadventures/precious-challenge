@@ -37,7 +37,7 @@ export default class App extends Component{
     // getTrips makes a call to /api/ which returns the trip data in JSON format
     getTrips() {
         $.getJSON( {
-            url: "/api/",
+            url: "/api/trips",
         } ).then((trips) => this.setState({trips:trips})).catch(
             (error) => {
             console.log("Oops - ", error)
