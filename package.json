@@ -4,6 +4,7 @@
   "description": "Displays Trip information",
   "main": "index.js",
   "scripts": {
+    "start": "webpack --watch",
     "test": "test"
   },
   "repository": {
