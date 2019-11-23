@@ -22,5 +22,5 @@ class ServiceSerializer(serializers.ModelSerializer):
             "name",
             "location",
             "type",
-            "trip_id",
+            "trip",
         )

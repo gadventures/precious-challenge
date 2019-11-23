@@ -18,6 +18,11 @@ class Trip(models.Model):
     duration_days = models.IntegerField(help_text="How many days this trip runs")
 
 class Service(models.Model):
+    service_types = (
+        (1, "Hotel"),
+        (2, "Accommodations"),
+        (3, "Transportation"),
+    )
     name = models.CharField(
         max_length=300,
         unique=True,
@@ -27,12 +32,11 @@ class Service(models.Model):
         max_length=300,
         help_text="The location of the service",
     )
-    # TODO: Perhapse an Enum would be a better option here
-    type = models.CharField(
-        max_length=300,
+    type = models.IntegerField(
+        choices=service_types,
         help_text="The type of service",
     )
-    trip_id = models.ForeignKey(
+    trip = models.ForeignKey(
         Trip,
         null=True,
         on_delete=models.CASCADE,
