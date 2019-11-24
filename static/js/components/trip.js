@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import Service from './service';
+
 const Trip = ({trip}) => {
     return (
         <div className="container" style={{maxWidth:'600px'}}>
@@ -17,6 +19,7 @@ const Trip = ({trip}) => {
                 <li className="list-group-item">
                     Cost: ${trip.cost}
                 </li>
+                <Service trip={trip}/>
             </ul>
          </div>
     )

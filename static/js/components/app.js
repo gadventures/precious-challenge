@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
-import Trip from "./trip"
-import $ from 'jquery';
+import { Container, Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
+
+import Trip from "./trip";
+import $ from 'jquery';
 
 export default class App extends Component{
 
     constructor() {
         super();
-
         this.state = {
-            // create an empty array that will hold the trips
             trips: []
         }
-
         this.getTrips = this.getTrips.bind(this);
     }
 
@@ -22,8 +21,8 @@ export default class App extends Component{
 
     render() {
         return(
-          <div className="container">
-              <h1 className="text-center"> Adventure Trips   </h1>
+            <Container>
+                <Header as='h1' textAlign='center'>Adventure Trips</Header>
                 { this.state.trips.map((trip,i) =>(
                     <div key = {i} className=".col-md-4">
                             <Trip
@@ -31,7 +30,7 @@ export default class App extends Component{
                             />
                     </div>
                 ))}
-           </div>
+            </Container>
         );
     }
 
