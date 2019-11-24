@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Trip from "./trip"
 import $ from 'jquery';
+import 'semantic-ui-css/semantic.min.css';
 
 export default class App extends Component{
 
