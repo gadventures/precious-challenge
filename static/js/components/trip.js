@@ -17,7 +17,7 @@ const Trip = ({trip}) => {
                     Duration: {trip.duration_days}
                 </li>
                 <li className="list-group-item">
-                    Cost: ${trip.cost}
+                    Total Cost: ${trip.cost}
                 </li>
                 <Service trip={trip}/>
             </ul>
