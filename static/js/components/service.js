@@ -17,6 +17,7 @@ class Service extends Component{
         }
         this.types = {1: "Hotels", 2: "Accommodations", 3: "Transportation"};
         this.getServices = this.getServices.bind(this);
+        this.deleteService = this.deleteService.bind(this);
         this.renderTableBody = this.renderTableBody.bind(this);
         this.renderTableHeader = this.renderTableHeader.bind(this);
         this.renderTableAttached = this.renderTableAttached.bind(this);
@@ -69,7 +70,13 @@ class Service extends Component{
                             {`$${service.cost}`}
                         </Table.Cell>
                         <Table.Cell>
-                            <Button negative size="tiny">
+                            <Button
+                                negative
+                                size="tiny"
+                                onClick={(e) => {
+                                    this.deleteService(e, service)
+                                }}
+                            >
                                 Remove
                             </Button>
                         </Table.Cell>
@@ -104,6 +111,23 @@ class Service extends Component{
                 </Table>
             </Fragment>
         )
+    }
+
+    deleteService(e, service) {
+        e.preventDefault();
+        e.stopPropagation();
+        $.ajax({
+            url: `/api/services/${service.id}`,
+            type: "DELETE",
+            success: () => {
+                this.setState({
+                    services: this.state.services.filter(s => s.id != service.id)
+                });
+            },
+            error: (error) => {
+                console.log("Oops - ", error);
+            }
+        });
     }
 
     getServices(trip) {
