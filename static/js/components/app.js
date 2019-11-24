@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import { Container, Header } from 'semantic-ui-react';
+import React, { Component, Fragment } from 'react';
+import { Header } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 
 import Trip from "./trip";
@@ -21,7 +21,7 @@ export default class App extends Component{
 
     render() {
         return(
-            <Container>
+            <Fragment>
                 <Header as='h1' textAlign='center'>Adventure Trips</Header>
                 { this.state.trips.map((trip,i) =>(
                     <div key = {i} className=".col-md-4">
@@ -30,7 +30,7 @@ export default class App extends Component{
                             />
                     </div>
                 ))}
-            </Container>
+            </Fragment>
         );
     }
 
