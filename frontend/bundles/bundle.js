@@ -86,6 +86,76 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/js/components/TripPreview.js":
+/*!***********************************************!*\
+  !*** ./frontend/js/components/TripPreview.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+
+var TripPreview = function TripPreview(_ref) {
+  var trip = _ref.trip,
+      i = _ref.i;
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    key: i,
+    className: ".col-md-4"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container",
+    style: {
+      maxWidth: '600px'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    className: "trip-entry",
+    to: "/trip/" + trip.id + '/'
+  }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: trip.imageUrl,
+    style: {
+      width: '100%'
+    },
+    alt: "pic placeholder"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+    className: "text-center"
+  }, trip.travel_style, " : ", trip.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "list-group align-items-center"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-group-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Destination:"), " ", trip.destination), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-group-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Duration:"), " ", trip.duration_days), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-group-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Cost:"), " $", trip.cost), trip.hotels.length > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-group-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Hotels:"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, trip.hotels.map(function (t) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: t.id
+    }, t.name);
+  }))), trip.accomodations.length > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-group-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Accomodations:"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, trip.accomodations.map(function (t) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: t.id
+    }, t.name);
+  }))), trip.transportations.length > 0 && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "list-group-item"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Transportations:"), " ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, trip.transportations.map(function (t) {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+      key: t.id
+    }, t.name);
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TripPreview);
+
+/***/ }),
+
 /***/ "./frontend/js/index.js":
 /*!******************************!*\
   !*** ./frontend/js/index.js ***!
@@ -222,6 +292,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TripPreview */ "./frontend/js/components/TripPreview.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -239,6 +310,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -266,7 +338,6 @@ function (_Component) {
       var _this$props = this.props,
           trips = _this$props.trips,
           match = _this$props.match;
-      console.log(trips);
       this.setState({
         trip: trips.length ? trips.find(function (t) {
           return t.id == match.params.id;
@@ -301,36 +372,10 @@ function (_Component) {
         }, "Loading ...");
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container",
-        style: {
-          maxWidth: '600px'
-        }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-        to: "/trip/" + trip.id
-      }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
-        src: trip.imageUrl,
-        style: {
-          width: '100%'
-        },
-        alt: "pic placeholder"
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "text-center"
-      }, trip.travel_style, " : ", trip.title)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-        className: "list-group align-items-center"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Destination:"), " ", trip.destination), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Duration:"), " ", trip.duration_days), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Cost:"), " $", trip.cost), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Hotel:"), " ", trip.hotel), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Accomodation:"), trip.accomodation), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-        className: "list-group-item"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("strong", null, "Transportation:"), " ", trip.transportation)));
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        trip: trip,
+        i: 1
+      });
     }
   }]);
 
@@ -403,7 +448,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TripPreview */ "./frontend/js/components/TripPreview.js");
 
 
 
@@ -411,40 +456,10 @@ __webpack_require__.r(__webpack_exports__);
 var Trip = function Trip(_ref) {
   var trips = _ref.trips;
   return trips.map(function (trip, i) {
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      key: i,
-      className: ".col-md-4"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-      className: "container",
-      style: {
-        maxWidth: '600px'
-      }
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
-      className: "trip-entry",
-      to: "/trip/" + trip.id + '/'
-    }, trip.imageUrl && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("img", {
-      src: trip.imageUrl,
-      style: {
-        width: '100%'
-      },
-      alt: "pic placeholder"
-    }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("h4", {
-      className: "text-center"
-    }, trip.travel_style, " : ", trip.title)), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("ul", {
-      className: "list-group align-items-center"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "list-group-item"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "Destination:"), " ", trip.destination), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "list-group-item"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "Duration:"), " ", trip.duration_days), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "list-group-item"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "Cost:"), " $", trip.cost), trip.hotel && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "list-group-item"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "Hotel:"), " ", trip.hotel), trip.accomodation && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "list-group-item"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "Accomodation:"), " ", trip.accomodation), trip.transportation && react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("li", {
-      className: "list-group-item"
-    }, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("strong", null, "Transportation:"), " ", trip.transportation))));
+    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      trip: trip,
+      i: i
+    });
   });
 };
 
@@ -41872,7 +41887,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

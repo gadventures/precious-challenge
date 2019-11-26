@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+import TripPreview from '../components/TripPreview';
 
 class Details extends Component {
   constructor(props) {
@@ -12,7 +13,6 @@ class Details extends Component {
 
   componentDidMount() {
     const { trips, match } = this.props;
-    console.log(trips);
     
 
     this.setState({
@@ -40,37 +40,7 @@ render() {
   }
 
   return (
-    <div className="container" style={{ maxWidth: '600px' }}>
-      <NavLink to={"/trip/" + trip.id}>
-        {/* Show the trip's featured image in case there is one */}
-        {trip.imageUrl &&
-          <img src={trip.imageUrl} style={{ width: '100%' }} alt="pic placeholder" />}
-        <h4 className="text-center">
-          {trip.travel_style} : {trip.title}
-        </h4>
-      </NavLink>
-      <ul className="list-group align-items-center" >
-        <li className="list-group-item" >
-          <strong>Destination:</strong> {trip.destination}
-        </li>
-        <li className="list-group-item">
-          <strong>Duration:</strong> {trip.duration_days}
-        </li>
-        <li className="list-group-item">
-          <strong>Cost:</strong> ${trip.cost}
-        </li>
-        <li className="list-group-item">
-          <strong>Hotel:</strong> {trip.hotel}
-        </li>
-        <li className="list-group-item">
-          <strong>Accomodation:</strong>{trip.accomodation}
-        </li>
-        <li className="list-group-item">
-          <strong>Transportation:</strong> {trip.transportation}
-        </li>
-      </ul>
-    </div>
-
+    <TripPreview trip={trip} i={1} />
   );
 }
 }
