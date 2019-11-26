@@ -29,8 +29,7 @@ class Trip(models.Model):
         return '%s' % (self.title)
 
 
-# Add new model for each service and link it to the corresponding trip
-
+# Add new model for each service and link it to the corresponding trip via one to many relationship
 # Allow users to add/edit/delete services without modifying the trips
 
 class Hotel(models.Model):
