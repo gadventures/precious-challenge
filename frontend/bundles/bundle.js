@@ -266,6 +266,7 @@ function (_Component) {
       var _this$props = this.props,
           trips = _this$props.trips,
           match = _this$props.match;
+      console.log(trips);
       this.setState({
         trip: trips.length ? trips.find(function (t) {
           return t.id == match.params.id;

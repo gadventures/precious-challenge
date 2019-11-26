@@ -12,6 +12,8 @@ class Details extends Component {
 
   componentDidMount() {
     const { trips, match } = this.props;
+    console.log(trips);
+    
 
     this.setState({
       trip: trips.length ? trips.find(t => t.id == match.params.id) : null,

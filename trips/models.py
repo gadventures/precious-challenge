@@ -35,7 +35,7 @@ class Trip(models.Model):
 
 class Hotel(models.Model):
     # Relate the hotel service to its Trip
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    trip = models.ForeignKey(Trip, related_name='hotels', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100)
     typeOfService = models.TextField(
         max_length=64,
@@ -46,7 +46,7 @@ class Hotel(models.Model):
 
 class Accomodation(models.Model):
     # Relate the service to its Trip
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    trip = models.ForeignKey(Trip, related_name='accomodations', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100)
     typeOfService = models.TextField(
         max_length=64,
@@ -58,7 +58,7 @@ class Accomodation(models.Model):
 
 class Transportation(models.Model):
     # Relate the service to its Trip
-    trip = models.ForeignKey(Trip, on_delete=models.CASCADE)
+    trip = models.ForeignKey(Trip, related_name='transportations', on_delete=models.CASCADE, blank=True, null=True)
     name = models.CharField(max_length=100,
         default ="")
     typeOfService = models.TextField(

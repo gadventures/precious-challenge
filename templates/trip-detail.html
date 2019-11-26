@@ -1,0 +1,39 @@
+{% block content %}
+<div class="container-fluid">
+<div class="row"></div>
+<br/>
+<div class="row">
+	<div class="col-md-1 col-xs-1 col-sm-1">
+    </div>
+	<div class="col-md-8 col-xs-8 col-sm-8">
+		<h2 class="h2">
+			{{trip.title}}
+		</h2>
+    </div>
+
+	<div class="col-md-1 col-xs-1 col-sm-1"></div>
+</div>
+<div class="row">
+	<div class="col-md-1 col-xs-1 col-sm-1"></div>
+	<div class="col-md-10 col-xs-10 col-sm-10">
+		Hotels:
+		{% for t in trip.hotels.all %}
+		<li>{{ t.name }}</li>
+	{% endfor %}
+	</div>
+	<div class="col-md-10 col-xs-10 col-sm-10">
+		Accomodations:
+		{% for t in trip.accomodations.all %}
+		<li>{{ t.name }}</li>
+	{% endfor %}
+	</div>
+	<div class="col-md-10 col-xs-10 col-sm-10">
+		Transportations:
+		{% for t in trip.transportations.all %}
+		<li>{{ t.name }}</li>
+	{% endfor %}
+	</div>
+	<div class="col-md-1 col-xs-1 col-sm-1"></div>
+</div>
+</div>
+{% endblock %}
