@@ -44,6 +44,9 @@ class Hotel(models.Model):
         max_length=100)
     cost = models.IntegerField(help_text="Total cost of the trip")
 
+    def __str__(self):
+        return '%s' % (self.name)
+
 class Accomodation(models.Model):
     # Relate the service to its Trip
     trip = models.ForeignKey(Trip, related_name='accomodations', on_delete=models.CASCADE, blank=True, null=True)
@@ -55,6 +58,9 @@ class Accomodation(models.Model):
     location = models.CharField(
         max_length=100)
     cost = models.IntegerField(help_text="Total cost of the trip")
+
+    def __str__(self):
+        return '%s' % (self.name)
 
 class Transportation(models.Model):
     # Relate the service to its Trip
@@ -71,3 +77,6 @@ class Transportation(models.Model):
         default =""
     )
     cost = models.IntegerField(help_text="Total cost of the trip")
+
+    def __str__(self):
+        return '%s' % (self.name)
