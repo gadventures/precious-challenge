@@ -43,7 +43,6 @@ INSTALLED_APPS = [
 
     # API
     'rest_framework',
-
     # Webpack loader
     'webpack_loader'
 ]
