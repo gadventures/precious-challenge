@@ -14,6 +14,7 @@ export default class App extends Component {
         }
 
         this.getTrips = this.getTrips.bind(this);
+        this.addNewService = this.addNewService.bind(this);
     }
 
     componentDidMount() {
@@ -28,12 +29,19 @@ export default class App extends Component {
                     <div key={i} className=".col-md-4">
                         <Trip
                             trip={this.state.trips[i]}
-                            updateTrips={this.getTrips}
+                            addNewService={this.addNewService}
                         />
                     </div>
                 ))}
             </div>
         );
+    }
+
+    /**
+     * Allow the user to add a new service by displaying some dialog for user input.
+     */
+    addNewService(trip) {
+        alert(trip.id);
     }
 
     /** 

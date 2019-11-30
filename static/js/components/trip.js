@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Service from "./service"
 
-const Trip = ({ trip }) => {
+const Trip = ({ trip, addNewService }) => {
     return (
         <div className="container" style={{ maxWidth: '600px' }}>
             <h4 className="text-center">
@@ -31,7 +31,7 @@ const Trip = ({ trip }) => {
                     </div>
                 ))
             }
-            <button>Add New</button>
+            <button onClick={() => addNewService(trip)}>Add New Service</button>
         </div>
     )
 };
