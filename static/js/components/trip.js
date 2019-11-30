@@ -1,9 +1,10 @@
-import PropTypes from 'prop-types';
 import React from 'react';
+import PropTypes from 'prop-types';
+import Service from "./service"
 
-const Trip = ({trip}) => {
+const Trip = ({ trip }) => {
     return (
-        <div className="container" style={{maxWidth:'600px'}}>
+        <div className="container" style={{ maxWidth: '600px' }}>
             <h4 className="text-center">
                 {trip.travel_style} : {trip.title}
             </h4>
@@ -15,10 +16,23 @@ const Trip = ({trip}) => {
                     Duration: {trip.duration_days}
                 </li>
                 <li className="list-group-item">
-                    Cost: ${trip.cost}
+                    Initial Cost: ${trip.cost}
+                </li>
+                <li className="list-group-item">
+                    Sale Price: ${trip.sale_price}
                 </li>
             </ul>
-         </div>
+            {
+                trip.services.map((service, i) => (
+                    <div key={i} className=".col-md-4">
+                        <Service
+                            service={service}
+                        />
+                    </div>
+                ))
+            }
+            <button>Add New</button>
+        </div>
     )
 };
 
