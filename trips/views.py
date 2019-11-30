@@ -29,25 +29,30 @@ class GenericEndpoint(View):
         handling requests for services and categories
     """
     def __init__(self):
+        """
+        Any class which extends this class to make use of the generic endpoint
+        must override endpoint_serializer and endpoint_model with the serializer 
+        and model definition for that endpoint's class
+        """
         # these will be used to share the logic for handling requests for multiple endpoints
         self.endpoint_serializer = None
         self.endpoint_model = None
 
     @staticmethod
     def format_response(response):
-        '''
+        """
         Take some generic response and append necessary metadata to send a response to the user
-        '''
+        """
         # Format the response to be sent to the client
         response.accepted_renderer = JSONRenderer()
         response.accepted_media_type = "application/json"
         response.renderer_context = {}
 
     def get(self, request, pk=None):
-        '''
+        """
         Allow the user to query the database. 
         If given the primary key, return the target item. else return all items for that table
-        '''
+        """
         # Handle get request
         if pk is not None: 
              # If there is a pk, go and get the record that matches it from the model
@@ -70,10 +75,10 @@ class GenericEndpoint(View):
         return response
 
     def post(self, request):
-        '''
+        """
         Allow the user to post some new record to the dataservice
         This will accept some json data, parse it, validate it and save it.
-        '''
+        """
         # create a new object
         queryset = self.endpoint_model()
         # parse out the request body from the post request
@@ -92,14 +97,14 @@ class GenericEndpoint(View):
         return response
 
     def delete(self, request, pk=None):
-        '''
+        """
         Going to include delete in this project as well
         Including this because the user may make an error creating their service
         They will need some way to remove a service if it is entered incorrectly
         
         Note: As a future enhancement, this project should allow a user to
             edit an existing service.
-        '''
+        """
         # If there is a pk, go and get the record that matches it from the model
         try:
             queryset = self.endpoint_model.objects.get(pk=pk)

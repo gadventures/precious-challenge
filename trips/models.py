@@ -51,11 +51,13 @@ class Service(models.Model):
     cost = models.IntegerField(help_text="The cost of the service")
     category = models.ForeignKey(
         Category,
+        related_name='services',
         on_delete=models.CASCADE,
         help_text=" reference of what category of service this is"
     )
     trip = models.ForeignKey(
         Trip,
+        related_name='services',
         on_delete=models.CASCADE,
         help_text="reference to the trip this service belongs to"
     )

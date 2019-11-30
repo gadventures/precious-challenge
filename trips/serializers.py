@@ -2,19 +2,6 @@ from rest_framework import serializers
 from trips.models import Trip
 from trips.models import Trip, Category, Service
 
-class TripSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Trip
-        fields = (
-            "id",
-            "cost",
-            "destination",
-            "duration_days",
-            "title",
-            "travel_style",
-            "service_set"
-        )
-
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -35,4 +22,20 @@ class ServiceSerializer(serializers.ModelSerializer):
             "cost",
             "category",
             "trip",
+        )
+
+class TripSerializer(serializers.ModelSerializer):
+    # serialize the services along with the trip
+    # I want to make one request for all of the data.
+    services = ServiceSerializer(many=True, read_only=True)
+    class Meta:
+        model = Trip
+        fields = (
+            "id",
+            "cost",
+            "destination",
+            "duration_days",
+            "title",
+            "travel_style",
+            "services"
         )
