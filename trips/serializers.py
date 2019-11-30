@@ -25,14 +25,25 @@ class ServiceSerializer(serializers.ModelSerializer):
         )
 
 class TripSerializer(serializers.ModelSerializer):
+    @staticmethod
+    def calculate_sale_price(instance):
+        """
+        Calculate the sale price of the trip from its base cost and services
+        """
+        # call the class method on the instance of trip given
+        return instance.calculate_sale_price()
+
     # serialize the services along with the trip
     # I want to make one request for all of the data.
     services = ServiceSerializer(many=True, read_only=True)
+    # generate the total sale price before going to the ui
+    sale_price = serializers.SerializerMethodField(method_name='calculate_sale_price')
     class Meta:
         model = Trip
         fields = (
             "id",
             "cost",
+            "sale_price",
             "destination",
             "duration_days",
             "title",

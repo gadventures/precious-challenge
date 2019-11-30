@@ -17,6 +17,20 @@ class Trip(models.Model):
     cost = models.IntegerField(help_text="Total cost of the trip")
     duration_days = models.IntegerField(help_text="How many days this trip runs")
 
+    def calculate_sale_price(self):
+        """
+        Calculate the sale price of the trip from its base cost and services
+        """
+        # start with the base cost
+        sale_price = self.cost
+        
+        # add up the costs of all of its services
+        for service in self.services.all():
+            sale_price += service.cost
+
+        # return the total price of the trip
+        return sale_price
+
 class Category(models.Model):
     """
     Keeping the categories of trips in a seperate table for future configuration.
