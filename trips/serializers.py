@@ -6,10 +6,10 @@ class TripSerializer(serializers.ModelSerializer):
     class Meta:
         model = Trip
         fields = (
-            "cost",
-                "destination",
-            "duration_days",
             "id",
+            "cost",
+            "destination",
+            "duration_days",
             "title",
             "travel_style",
             "service_set"
@@ -19,15 +19,17 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = (
+            "id",
             "display_name",
         )
 
 class ServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = Service
-        category = CategorySerializer(many=False, required=True)
-        trip = TripSerializer(many=False, required=True)
+        category = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
+        trip = serializers.PrimaryKeyRelatedField(many=False, read_only=True)
         fields = (
+            "id",
             "name",
             "location",
             "cost",
