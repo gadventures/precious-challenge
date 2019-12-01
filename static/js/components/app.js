@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
-import { Dialog, Button } from '@material-ui/core';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Select from '@material-ui/core/Select';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
 import $ from 'jquery';
 import Trip from "./trip"
+import ServiceDialog from "./service-dialog";
 
 export default class App extends Component {
 
@@ -20,45 +14,14 @@ export default class App extends Component {
             categoryMap: new Map(),
             categoryList: [],
             serviceDialogOpen: false,
-            // these will need to be moved to a new component that handles its own state
-            trip: null,
-            category: '',
-            cost: 0,
-            location: '',
-            serviceName: ''
+            trip: null
         }
 
         this.getTrips = this.getTrips.bind(this);
         this.addNewService = this.addNewService.bind(this);
         this.closeNewServiceModal = this.closeNewServiceModal.bind(this);
-        this.saveNewService = this.saveNewService.bind(this);
 
-        // all of these will need to be moved to a seperate controller
-        this.handleServiceNameChange = this.handleServiceNameChange.bind(this);
-        this.handleLocationChange = this.handleLocationChange.bind(this);
-        this.handleCostChange = this.handleCostChange.bind(this);
-        this.handleCategoryChange = this.handleCategoryChange.bind(this);
-    }
-
-    handleServiceNameChange(event) {
-        this.setState({ serviceName: event.target.value });
-    }
-
-    handleLocationChange(event) {
-        this.setState({ location: event.target.value });
-    }
-
-    handleCostChange(event) {
-        this.setState({ cost: event.target.value });
-
-    }
-
-    handleCategoryChange(event) {
-        this.setState({ category: event.target.value });
-    }
-
-    componentDidMount() {
-        this.getTrips();
+        this.saveNewService = (parameter) => this.saveNewServiceFn(parameter);
     }
 
     render() {
@@ -73,41 +36,18 @@ export default class App extends Component {
                         />
                     </div>
                 ))}
-                <Dialog open={this.state.serviceDialogOpen}>
-                    <DialogTitle>Add New Service</DialogTitle>
-                    <DialogContent>
-                        <form noValidate autoComplete="off">
-                            <TextField
-                                value={this.state.serviceName}
-                                onChange={this.handleServiceNameChange}
-                                label="Service Name"></TextField>
-                            <TextField
-                                value={this.state.location}
-                                onChange={this.handleLocationChange}
-                                label="Location"></TextField>
-                            <TextField
-                                value={this.state.cost}
-                                onChange={this.handleCostChange}
-                                type="number"
-                                label="Cost"></TextField>
-                            <InputLabel id="category-label">Category</InputLabel>
-                            <Select
-                                labelId="category-label"
-                                id="category-select"
-                                onChange={this.handleCategoryChange}
-                                value={this.state.category}>
-                                {this.state.categoryList.map((category, i) => (
-                                    <MenuItem key={i} value={category.id}>{category.display_name}</MenuItem>
-                                ))}
-                            </Select>
-                        </form>
-
-                    </DialogContent>
-                    <Button onClick={this.closeNewServiceModal}>Cancel</Button>
-                    <Button onClick={this.saveNewService}>Save</Button>
-                </Dialog>
+                <ServiceDialog
+                    open={this.state.serviceDialogOpen}
+                    categoryList={this.state.categoryList}
+                    trip={this.state.trip}
+                    closeFn={this.closeNewServiceModal}
+                    saveServiceFn={this.saveNewService} />
             </div>
         );
+    }
+
+    componentDidMount() {
+        this.getTrips();
     }
 
     /**
@@ -121,38 +61,27 @@ export default class App extends Component {
     }
 
     closeNewServiceModal() {
-        this.setState({ serviceDialogOpen: false });
+        this.setState({
+            trip: null,
+            serviceDialogOpen: false
+        });
     }
 
     /**
      * Validate and save the new item to the dataservice
      */
-    saveNewService() {
-        // form validation should happen on the dialog.
-        // that should happen before the save occurs and reject the save if validation fails
-
-        // create a body based on the state variables of the dialog
-        const body = {
-            trip: this.state.trip.id,
-            category: this.state.category,
-            cost: this.state.cost,
-            location: this.state.location,
-            name: this.state.serviceName,
-        };
-
+    saveNewServiceFn(body) {
         // post the new service to the services endpoint
-        $.post('/api/services', JSON.stringify(body), 'json').then((postResponses) => {
-            // show some success message here
-
-            // close the dialog
-            this.closeNewServiceModal();
+        const postSevice = $.post('/api/services', JSON.stringify(body), 'json');
+        postSevice.then((postResponses) => {
+            // update the ui with the new service
         }, (error) => {
-            // show some error message here
-
+            // echo the event to console
             console.error(error);
-            // close the dialog
-            this.closeNewServiceModal();
         });
+
+        // return the promise for the modal to update its ui based on when the promise resolves
+        return postSevice;
     }
 
     /** 
@@ -187,9 +116,8 @@ export default class App extends Component {
 
             // set the state and update render the view
             this.setState(this.state);
-        }).catch(
-            (error) => {
-                console.error("Error Requesting Trip Data - ", error)
-            });
+        }, (error) => {
+            console.error("Error Requesting Trip Data - ", error)
+        });
     }
 }
