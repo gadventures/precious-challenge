@@ -23,6 +23,7 @@ export default class Trip extends Component {
         super();
         this.state = { showServices: false };
         this.getServiceCategoryDisplayName = (service) => this.getServiceCategoryDisplayNameFn(service);
+        this.openNewServiceDialogFn = () => this.props.openNewServiceDialogFn(this.props.trip)
     }
 
     render() {
@@ -45,7 +46,7 @@ export default class Trip extends Component {
 
                         <Typography color="textSecondary">
                             {this.props.trip.services.length} Services
-                            <Button onClick={() => this.props.addNewService(this.props.trip)}>Add New Service</Button>
+                            <Button onClick={this.openNewServiceDialogFn}>Add New Service</Button>
                         </Typography>
 
                         {this.state.showServices ?
@@ -85,5 +86,5 @@ export default class Trip extends Component {
 Trip.propTypes = {
     trip: PropTypes.object.isRequired,
     categoryMap: PropTypes.object,
-    addNewService: PropTypes.func
+    openNewServiceDialogFn: PropTypes.func
 };

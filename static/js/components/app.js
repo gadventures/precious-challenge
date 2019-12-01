@@ -41,7 +41,7 @@ export default class App extends Component {
         }
 
         this.getTrips = () => this.getTripsFn();
-        this.addNewService = (trip) => this.addNewServiceFn(trip);
+        this.openNewServiceDialog = (trip) => this.openNewServiceDialogFn(trip);
         this.closeNewServiceModal = () => this.closeNewServiceModalFn();
         this.saveNewService = (trip, newService) => this.saveNewServiceFn(trip, newService);
     }
@@ -58,7 +58,7 @@ export default class App extends Component {
                         <div key={i} className=".col-md-4">
                             <Trip
                                 trip={this.state.trips[i]}
-                                addNewService={this.addNewService}
+                                openNewServiceDialogFn={this.openNewServiceDialog}
                                 categoryMap={this.state.categoryMap}
                             />
                         </div>
@@ -68,7 +68,7 @@ export default class App extends Component {
                 <ServiceDialog
                     open={this.state.serviceDialogOpen}
                     categoryList={this.state.categoryList}
-                    trip={this.state.trip}
+                    trip={this.state.selectedTrip}
                     closeFn={this.closeNewServiceModal}
                     saveServiceFn={this.saveNewService} />
             </div>
@@ -82,16 +82,16 @@ export default class App extends Component {
     /**
      * Allow the user to add a new service by displaying some dialog for user input.
      */
-    addNewServiceFn(trip) {
+    openNewServiceDialogFn(trip) {
         this.setState({
-            trip: trip,
+            selectedTrip: trip,
             serviceDialogOpen: true
         });
     }
 
     closeNewServiceModalFn() {
         this.setState({
-            trip: null,
+            selectedTrip: null,
             serviceDialogOpen: false
         });
     }
