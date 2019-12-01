@@ -8,6 +8,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import DialogActions from '@material-ui/core/DialogActions';
 
 export default class ServiceDialog extends Component {
 
@@ -72,8 +73,10 @@ export default class ServiceDialog extends Component {
                     </form>
 
                 </DialogContent>
-                <Button onClick={this.closeFn}>Cancel</Button>
-                <Button onClick={this.saveService}>Save</Button>
+                <DialogActions>
+                    <Button onClick={this.closeFn}>Cancel</Button>
+                    <Button onClick={this.saveService}>Save</Button>
+                </DialogActions>
             </Dialog>
         );
     }
