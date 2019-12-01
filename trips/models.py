@@ -38,7 +38,6 @@ class Category(models.Model):
     """
     display_name = models.CharField(
         max_length=300,
-        unique=True,
         help_text="the name of the service category"
     )
 
