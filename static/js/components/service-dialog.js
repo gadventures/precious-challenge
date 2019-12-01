@@ -7,6 +7,7 @@ import Select from '@material-ui/core/Select';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
+import FormHelperText from '@material-ui/core/FormHelperText';
 
 export default class ServiceDialog extends Component {
 
@@ -18,7 +19,11 @@ export default class ServiceDialog extends Component {
             category: '',
             cost: '',
             location: '',
-            serviceName: ''
+            serviceName: '',
+            service_name_error_text: '',
+            location_error_text: '',
+            cost_error_text: '',
+            category_error_text: ''
         }
 
         // all of these will need to be moved to a seperate controller
@@ -40,14 +45,17 @@ export default class ServiceDialog extends Component {
                         <TextField
                             value={this.state.serviceName}
                             onChange={this.handleServiceNameChange}
+                            helperText={this.state.service_name_error_text}
                             label="Service Name"></TextField>
                         <TextField
                             value={this.state.location}
                             onChange={this.handleLocationChange}
+                            helperText={this.state.location_error_text}
                             label="Location"></TextField>
                         <TextField
                             value={this.state.cost}
                             onChange={this.handleCostChange}
+                            helperText={this.state.cost_error_text}
                             type="number"
                             label="Cost"></TextField>
                         <InputLabel id="category-label">Category</InputLabel>
@@ -60,6 +68,7 @@ export default class ServiceDialog extends Component {
                                 <MenuItem key={i} value={category.id}>{category.display_name}</MenuItem>
                             ))}
                         </Select>
+                        <FormHelperText>{this.state.category_error_text}</FormHelperText>
                     </form>
 
                 </DialogContent>
@@ -70,13 +79,47 @@ export default class ServiceDialog extends Component {
     }
 
     /**
+     * Validate all of the values set in the model. If any value is invalid, tell the user why.
+     */
+    validateValues(recordedValues) {
+        // set up an error list of empty errors
+        const errors = {
+            category_error_text: '',
+            service_name_error_text: '',
+            location_error_text: '',
+            cost_error_text: ''
+        };
+
+        // populate any error text values if the fields are invalid
+        if (recordedValues.category === '') {
+            errors.category_error_text = 'please select a category';
+        }
+        if (recordedValues.name.trim() === '') {
+            errors.service_name_error_text = 'please enter a service name';
+        }
+        if (recordedValues.location.trim() === '') {
+            errors.location_error_text = 'please enter a location';
+        }
+        if (recordedValues.cost === '') {
+            errors.cost_error_text = 'please enter a cost';
+        }
+        if (recordedValues.cost < 0) {
+            errors.cost_error_text = 'the post must be greater than 0';
+        }
+
+        // set the state so that any errors will be displayed to the user
+        this.setState(errors);
+
+        // return if any input failed validation
+        return Object.keys(errors).filter(key => errors[key] != null) > 0;
+    }
+
+    /**
      * Validate then gather the entered values by the user.
      * Call a props function to save the service
      * Pass the service body into the function
      */
     saveServiceFn() {
-        // form validation should happen on the dialog.
-        // that should happen before the save occurs and reject the save if validation fails
 
         // create a body based on the state variables of the dialog
         const body = {
@@ -87,11 +130,17 @@ export default class ServiceDialog extends Component {
             name: this.state.serviceName,
         };
 
-        this.props.saveServiceFn(body).then(() => {
-            // future: show some success message with a close button
-            // for now, close the modal
-            this.props.closeFn();
-        });
+        // form validation should happen on the dialog.
+        // that should happen before the save occurs and reject the save if validation fails
+        const isValid = this.validateValues(body);
+
+        if (isValid) {
+            this.props.saveServiceFn(body).then(() => {
+                // future: show some success message with a close button
+                // for now, close the modal
+                this.props.closeFn();
+            });
+        }
     }
 
     /**
@@ -103,7 +152,12 @@ export default class ServiceDialog extends Component {
             category: '',
             cost: '',
             location: '',
-            serviceName: ''
+            serviceName: '',
+            serviceName: '',
+            service_name_error_text: '',
+            location_error_text: '',
+            cost_error_text: '',
+            category_error_text: ''
         });
 
         // call the parent close event function
