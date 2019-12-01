@@ -12,13 +12,6 @@ from rest_framework.decorators import api_view, renderer_classes
 from rest_framework.renderers import JSONRenderer
 import json
 
-class TripList(generics.ListAPIView):
-    """
-    A list of all trips, read-only
-    """
-    queryset = Trip.objects.all()
-    serializer_class = TripSerializer
-
 # This decorator is here because I was testing my api with postman
 @method_decorator(csrf_exempt, name='dispatch')
 class GenericEndpoint(View):
@@ -124,6 +117,11 @@ class GenericEndpoint(View):
         GenericEndpoint.format_response(response)
         # return the response
         return response
+
+class TripEndpoint(GenericEndpoint):
+    def __init__(self):
+        self.endpoint_serializer = TripSerializer
+        self.endpoint_model = Trip
 
 class ServiceEndpoint(GenericEndpoint):
     def __init__(self):

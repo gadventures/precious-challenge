@@ -1,6 +1,5 @@
 from django.test import TestCase
 from trips.models import Trip, Category, Service
-from trips.views import TripList, CategoryEndpoint, ServiceEndpoint
 
 class TripSalesPriceWithManyServicesTestase(TestCase):
     def setUp(self):

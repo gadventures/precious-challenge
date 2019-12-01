@@ -44,7 +44,7 @@ export default class App extends Component {
         this.getTrips = () => this.getTripsFn();
         this.openNewServiceDialog = (trip) => this.openNewServiceDialogFn(trip);
         this.closeNewServiceModal = () => this.closeNewServiceModalFn();
-        this.saveNewService = (trip, newService) => this.saveNewServiceFn(trip, newService);
+        this.saveNewService = (newService) => this.saveNewServiceFn(newService);
     }
 
     render() {
@@ -100,15 +100,19 @@ export default class App extends Component {
     /**
      * Validate and save the new item to the dataservice
      */
-    saveNewServiceFn(trip, newService) {
+    saveNewServiceFn(newService) {
         // post the new service to the services endpoint
         const postSevice = $.post('/api/services', JSON.stringify(newService), 'json');
         postSevice.then((postResponses) => {
-            // add the new service to the trip service list
-            trip.services.push(postResponses);
+            $.getJSON({ url: `/api/trips/${postResponses.trip}` }).then((updateTrip) => {
+                // find the index of the updated trip so that we can update the state of that trip
+                const tripIndex = this.state.trips.findIndex(trip => trip.id === updateTrip.id);
 
-            // update the state with the new trip
-            this.setState({ trips: this.state.trips });
+                // update the trip with its new services and sale price
+                this.state.trips[tripIndex] = updateTrip;
+
+                this.setState({ trips: this.state.trips });
+            });
         }, (error) => {
             // echo the event to console
             console.error(error);

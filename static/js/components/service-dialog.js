@@ -188,7 +188,7 @@ export default class ServiceDialog extends Component {
         const isValid = this.validateValues(newService);
 
         if (isValid) {
-            this.props.saveServiceFn(this.props.trip, newService).then(() => {
+            this.props.saveServiceFn(newService).then(() => {
                 // wipe the state values which manage the input values
                 this.wipeStateValues();
                 // future: show some success message with a close button
