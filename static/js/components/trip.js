@@ -26,34 +26,6 @@ export default class Trip extends Component {
     }
 
     render() {
-        let cardActions = null;
-        if (this.state.showServices) {
-            cardActions = <CardActions>
-                <Button onClick={() => this.setState({ showServices: false })} size="small">Hide Services</Button>
-            </CardActions>
-        } else {
-            cardActions = <CardActions>
-                <Button onClick={() => this.setState({ showServices: true })} size="small">Show Services</Button>
-            </CardActions>
-        }
-
-        let services = null;
-        if (this.state.showServices) {
-
-            services = <List>
-                {this.props.trip.services.map((service, index) => (
-                    <div
-                        key={index}>
-                        <Service
-                            service={service}
-                            categoryName={this.getServiceCategoryDisplayName(service)}
-                        />
-                        <Divider />
-                    </div>
-                ))}
-            </List>
-        }
-
         return (
             <div className="container" style={styles.container}>
                 <Card style={styles.card}>
@@ -76,9 +48,26 @@ export default class Trip extends Component {
                             <Button onClick={() => this.props.addNewService(this.props.trip)}>Add New Service</Button>
                         </Typography>
 
-                        {services}
+                        {this.state.showServices ?
+                            <List>
+                                {this.props.trip.services.map((service, index) => (
+                                    <div
+                                        key={index}>
+                                        <Service
+                                            service={service}
+                                            categoryName={this.getServiceCategoryDisplayName(service)}
+                                        />
+                                        <Divider />
+                                    </div>
+                                ))}
+                            </List> : null
+                        }
                     </CardContent>
-                    {cardActions}
+                    <CardActions>
+                        <Button onClick={() => this.setState({ showServices: !this.state.showServices })} size="small">
+                            {this.state.showServices ? 'Hide Services' : 'Show Services'}
+                        </Button>
+                    </CardActions>
                 </Card>
             </div >
         )
