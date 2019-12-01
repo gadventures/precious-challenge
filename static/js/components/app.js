@@ -43,7 +43,7 @@ export default class App extends Component {
 
         this.getTrips = () => this.getTripsFn();
         this.openNewServiceDialog = (trip) => this.openNewServiceDialogFn(trip);
-        this.closeNewServiceModal = () => this.closeNewServiceModalFn();
+        this.closeNewServiceDialog = () => this.closeNewServiceDialogFn();
         this.saveNewService = (newService) => this.saveNewServiceFn(newService);
     }
 
@@ -70,7 +70,7 @@ export default class App extends Component {
                     open={this.state.serviceDialogOpen}
                     categoryList={this.state.categoryList}
                     trip={this.state.selectedTrip}
-                    closeFn={this.closeNewServiceModal}
+                    closeFn={this.closeNewServiceDialog}
                     saveServiceFn={this.saveNewService} />
             </div>
         );
@@ -90,7 +90,10 @@ export default class App extends Component {
         });
     }
 
-    closeNewServiceModalFn() {
+    /**
+     * Allow the user to close the new service dialog
+     */
+    closeNewServiceDialogFn() {
         this.setState({
             selectedTrip: null,
             serviceDialogOpen: false
@@ -118,7 +121,7 @@ export default class App extends Component {
             console.error(error);
         });
 
-        // return the promise for the modal to update its ui based on when the promise resolves
+        // return the promise for the dialog to update its ui based on when the promise resolves
         return postSevice;
     }
 

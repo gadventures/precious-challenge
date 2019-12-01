@@ -11,16 +11,16 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import DialogActions from '@material-ui/core/DialogActions';
 
 const styles = {
-    modalRow: {
+    dialogRow: {
         height: '65px',
         minWidth: '250px'
     },
-    modalLeft: {
+    dialogLeft: {
         float: 'left',
         width: '45%',
         bottom: '0px'
     },
-    modalRight: {
+    dialogRight: {
         float: 'right',
         width: '45%',
         bottom: '0px'
@@ -48,13 +48,13 @@ export default class ServiceDialog extends Component {
             validation_error_text: ''
         }
 
-        // all of these will need to be moved to a seperate controller
+        // handle model updates on all of the input fields inside the dialog
         this.handleServiceNameChange = (event) => this.setState({ serviceName: event.target.value });
         this.handleLocationChange = (event) => this.setState({ location: event.target.value });
         this.handleCostChange = (event) => this.setState({ cost: event.target.value });
         this.handleCategoryChange = (event) => this.setState({ category: event.target.value });
 
-        this.closeFn = () => this.closeModalFn();
+        this.closeFn = () => this.closeDialogFn();
         this.saveService = () => this.saveServiceFn();
     }
 
@@ -64,14 +64,14 @@ export default class ServiceDialog extends Component {
                 <DialogTitle>Add New Service</DialogTitle>
                 <DialogContent>
                     <form autoComplete="off">
-                        <div style={styles.modalRow}>
+                        <div style={styles.dialogRow}>
                             <TextField
-                                style={styles.modalLeft}
+                                style={styles.dialogLeft}
                                 value={this.state.serviceName}
                                 onChange={this.handleServiceNameChange}
                                 helperText={this.state.service_name_error_text}
                                 label="Service Name"></TextField>
-                            <div style={styles.modalRight}>
+                            <div style={styles.dialogRight}>
                                 <InputLabel id="category-label">Category</InputLabel>
                                 <Select
                                     style={styles.inputField}
@@ -86,15 +86,15 @@ export default class ServiceDialog extends Component {
                                 <FormHelperText>{this.state.category_error_text}</FormHelperText>
                             </div>
                         </div>
-                        <div style={styles.modalRow}>
+                        <div style={styles.dialogRow}>
                             <TextField
-                                style={styles.modalLeft}
+                                style={styles.dialogLeft}
                                 value={this.state.location}
                                 onChange={this.handleLocationChange}
                                 helperText={this.state.location_error_text}
                                 label="Location"></TextField>
                             <TextField
-                                style={styles.modalRight}
+                                style={styles.dialogRight}
                                 value={this.state.cost}
                                 onChange={this.handleCostChange}
                                 helperText={this.state.cost_error_text}
@@ -192,16 +192,16 @@ export default class ServiceDialog extends Component {
                 // wipe the state values which manage the input values
                 this.wipeStateValues();
                 // future: show some success message with a close button
-                // for now, close the modal
+                // for now, close the dialog
                 this.props.closeFn();
             });
         }
     }
 
     /**
-     * This function will wipe and close the modal
+     * This function will wipe and close the dialog
      */
-    closeModalFn() {
+    closeDialogFn() {
         // wipe the state values which manage the input values
         this.wipeStateValues();
 
