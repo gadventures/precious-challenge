@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-const Service = ({ service }) => {
+const Service = ({ service, categoryName }) => {
     return (
         <div className="container" style={{ maxWidth: '600px' }}>
             id: {service.id}
@@ -13,14 +13,13 @@ const Service = ({ service }) => {
             cost: {service.cost}
             <br />
             category: {service.category}
-            <br />
-            trip: {service.trip}
         </div>
     )
 };
 
 Service.propTypes = {
-    service: PropTypes.object.isRequired
+    service: PropTypes.object.isRequired,
+    categoryName: PropTypes.string
 };
 
 export default Service;

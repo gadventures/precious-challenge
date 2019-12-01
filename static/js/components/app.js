@@ -2,6 +2,17 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import Trip from "./trip"
 import ServiceDialog from "./service-dialog";
+import Divider from '@material-ui/core/Divider';
+
+const styles = {
+    noMargin: {
+        paddingLeft: '0px',
+        paddingRight: '0px',
+        marginLeft: '0px',
+        marginRight: '0px',
+        width: '100%',
+    }
+};
 
 export default class App extends Component {
 
@@ -26,16 +37,23 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="container">
-                <h1 className="text-center"> Adventure Trips   </h1>
-                {this.state.trips.map((trip, i) => (
-                    <div key={i} className=".col-md-4">
-                        <Trip
-                            trip={this.state.trips[i]}
-                            addNewService={this.addNewService}
-                        />
-                    </div>
-                ))}
+            <div className="container" style={styles.noMargin} >
+                <section className="text-center">
+                    <h1>Adventure Trips</h1>
+                    <Divider style={styles.noMargin} />
+                </section>
+                {
+                    this.state.trips.map((trip, i) => (
+                        <div key={i} className=".col-md-4">
+                            <Trip
+                                trip={this.state.trips[i]}
+                                addNewService={this.addNewService}
+                                categoryMap={this.state.categoryMap}
+                            />
+                        </div>
+                    ))
+                }
+
                 <ServiceDialog
                     open={this.state.serviceDialogOpen}
                     categoryList={this.state.categoryList}
