@@ -53,7 +53,6 @@ class Service(models.Model):
     """
     name = models.CharField(
         max_length=300,
-        unique=True,
         help_text="the name of the trip"
     )
     # Assuming an address is sufficient for the location for now
