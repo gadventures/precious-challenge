@@ -82,7 +82,12 @@ class GenericEndpoint(View):
         # create a new object
         queryset = self.endpoint_model()
         # parse out the request body from the post request
-        requestBody = json.loads(request.body)
+        try:
+            # attempt to parse json. If that fails, use the body directly
+            requestBody = json.loads(request.body)
+        except ValueError:
+            requestBody = request.body
+
         serializer = self.endpoint_serializer(queryset, data=requestBody)
     
         # verify the record and if valid, save it
