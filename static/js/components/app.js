@@ -11,6 +11,18 @@ const styles = {
         marginLeft: '0px',
         marginRight: '0px',
         width: '100%',
+        backgroundColor: '#f5f5f5'
+    },
+    header: {
+        marginTop: '0px',
+        paddingTop: '0px',
+        backgroundColor: 'rgb(71, 38, 141)'
+    },
+    headerText: {
+        marginTop: '0px',
+        paddingTop: '20px',
+        marginBottom: '20px',
+        color: 'white',
     }
 };
 
@@ -28,18 +40,17 @@ export default class App extends Component {
             trip: null
         }
 
-        this.getTrips = this.getTrips.bind(this);
-        this.addNewService = this.addNewService.bind(this);
-        this.closeNewServiceModal = this.closeNewServiceModal.bind(this);
-
+        this.getTrips = () => this.getTripsFn();
+        this.addNewService = (trip) => this.addNewServiceFn(trip);
+        this.closeNewServiceModal = () => this.closeNewServiceModalFn();
         this.saveNewService = (trip, newService) => this.saveNewServiceFn(trip, newService);
     }
 
     render() {
         return (
             <div className="container" style={styles.noMargin} >
-                <section className="text-center">
-                    <h1>Adventure Trips</h1>
+                <section className="text-center" style={styles.header}>
+                    <h2 style={styles.headerText}>Adventure Trips</h2>
                     <Divider style={styles.noMargin} />
                 </section>
                 {
@@ -65,20 +76,20 @@ export default class App extends Component {
     }
 
     componentDidMount() {
-        this.getTrips();
+        this.getTripsFn();
     }
 
     /**
      * Allow the user to add a new service by displaying some dialog for user input.
      */
-    addNewService(trip) {
+    addNewServiceFn(trip) {
         this.setState({
             trip: trip,
             serviceDialogOpen: true
         });
     }
 
-    closeNewServiceModal() {
+    closeNewServiceModalFn() {
         this.setState({
             trip: null,
             serviceDialogOpen: false
@@ -109,7 +120,7 @@ export default class App extends Component {
     /** 
      * getTrips makes a call to /api/ which returns the trip data in JSON format
      */
-    getTrips() {
+    getTripsFn() {
         const getTripDataPromises = [];
         // first query for all trips
         getTripDataPromises.push($.getJSON({ url: "/api/trips" }));

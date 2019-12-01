@@ -9,6 +9,15 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
 
+const styles = {
+    container: {
+        maxWidth: '600px'
+    },
+    card: {
+        marginTop: '5px'
+    }
+};
+
 export default class Trip extends Component {
     constructor() {
         super();
@@ -46,8 +55,8 @@ export default class Trip extends Component {
         }
 
         return (
-            <div className="container" style={{ maxWidth: '600px' }}>
-                <Card style={{ marginTop: '5px' }}>
+            <div className="container" style={styles.container}>
+                <Card style={styles.card}>
                     <CardContent>
                         <Typography variant="h5" component="h5">
                             {this.props.trip.travel_style} : {this.props.trip.title}
