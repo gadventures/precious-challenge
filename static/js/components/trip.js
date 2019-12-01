@@ -8,6 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import List from '@material-ui/core/List';
+import CardMedia from '@material-ui/core/CardMedia';
+import CardHeader from '@material-ui/core/CardHeader';
 
 const styles = {
     container: {
@@ -15,6 +17,9 @@ const styles = {
     },
     card: {
         marginTop: '5px'
+    },
+    cardImage: {
+        height: '100px'
     }
 };
 
@@ -30,13 +35,16 @@ export default class Trip extends Component {
         return (
             <div className="container" style={styles.container}>
                 <Card style={styles.card}>
+                    <CardHeader
+                        title={`${this.props.trip.travel_style} : ${this.props.trip.title}`}
+                        subheader={`${this.props.trip.destination} - ${this.props.trip.duration_days} days`}
+                    />
+                    {this.props.trip.image_url != null ? <CardMedia
+                        style={styles.cardImage}
+                        image={this.props.trip.image_url}
+                    /> : null}
+
                     <CardContent>
-                        <Typography variant="h5" component="h5">
-                            {this.props.trip.travel_style} : {this.props.trip.title}
-                        </Typography>
-                        <Typography color="textSecondary">
-                            {this.props.trip.destination} - {this.props.trip.duration_days} days
-                    </Typography>
                         <Typography variant="body2" component="p">
                             Initial Cost - ${this.props.trip.cost}
                         </Typography>

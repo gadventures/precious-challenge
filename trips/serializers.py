@@ -48,5 +48,6 @@ class TripSerializer(serializers.ModelSerializer):
             "duration_days",
             "title",
             "travel_style",
+            "image_url",
             "services"
         )

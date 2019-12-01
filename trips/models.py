@@ -14,6 +14,11 @@ class Trip(models.Model):
         max_length=300,
         help_text="Initial location of the trip",
     )
+    image_url = models.CharField(
+        max_length=300,
+        null=True,
+        help_text="Image of the location of the trip"
+    )
     cost = models.IntegerField(help_text="Total cost of the trip")
     duration_days = models.IntegerField(help_text="How many days this trip runs")
 
