@@ -10,6 +10,26 @@ import TextField from '@material-ui/core/TextField';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import DialogActions from '@material-ui/core/DialogActions';
 
+const styles = {
+    modalRow: {
+        height: '65px',
+        minWidth: '250px'
+    },
+    modalLeft: {
+        float: 'left',
+        width: '45%',
+        bottom: '0px'
+    },
+    modalRight: {
+        float: 'right',
+        width: '45%',
+        bottom: '0px'
+    },
+    inputField: {
+        width: '100%'
+    }
+}
+
 export default class ServiceDialog extends Component {
 
     constructor() {
@@ -43,34 +63,44 @@ export default class ServiceDialog extends Component {
             <Dialog open={this.props.open}>
                 <DialogTitle>Add New Service</DialogTitle>
                 <DialogContent>
-                    <form noValidate autoComplete="off">
-                        <TextField
-                            value={this.state.serviceName}
-                            onChange={this.handleServiceNameChange}
-                            helperText={this.state.service_name_error_text}
-                            label="Service Name"></TextField>
-                        <TextField
-                            value={this.state.location}
-                            onChange={this.handleLocationChange}
-                            helperText={this.state.location_error_text}
-                            label="Location"></TextField>
-                        <TextField
-                            value={this.state.cost}
-                            onChange={this.handleCostChange}
-                            helperText={this.state.cost_error_text}
-                            type="number"
-                            label="Cost"></TextField>
-                        <InputLabel id="category-label">Category</InputLabel>
-                        <Select
-                            labelId="category-label"
-                            id="category-select"
-                            onChange={this.handleCategoryChange}
-                            value={this.state.category}>
-                            {this.props.categoryList.map((category, i) => (
-                                <MenuItem key={i} value={category.id}>{category.display_name}</MenuItem>
-                            ))}
-                        </Select>
-                        <FormHelperText>{this.state.category_error_text}</FormHelperText>
+                    <form autoComplete="off">
+                        <div style={styles.modalRow}>
+                            <TextField
+                                style={styles.modalLeft}
+                                value={this.state.serviceName}
+                                onChange={this.handleServiceNameChange}
+                                helperText={this.state.service_name_error_text}
+                                label="Service Name"></TextField>
+                            <div style={styles.modalRight}>
+                                <InputLabel id="category-label">Category</InputLabel>
+                                <Select
+                                    style={styles.inputField}
+                                    labelId="category-label"
+                                    id="category-select"
+                                    onChange={this.handleCategoryChange}
+                                    value={this.state.category}>
+                                    {this.props.categoryList.map((category, i) => (
+                                        <MenuItem key={i} value={category.id}>{category.display_name}</MenuItem>
+                                    ))}
+                                </Select>
+                                <FormHelperText>{this.state.category_error_text}</FormHelperText>
+                            </div>
+                        </div>
+                        <div style={styles.modalRow}>
+                            <TextField
+                                style={styles.modalLeft}
+                                value={this.state.location}
+                                onChange={this.handleLocationChange}
+                                helperText={this.state.location_error_text}
+                                label="Location"></TextField>
+                            <TextField
+                                style={styles.modalRight}
+                                value={this.state.cost}
+                                onChange={this.handleCostChange}
+                                helperText={this.state.cost_error_text}
+                                type="number"
+                                label="Cost"></TextField>
+                        </div>
                     </form>
                     <h5>{this.state.validation_error_text}</h5>
                 </DialogContent>
@@ -116,8 +146,13 @@ export default class ServiceDialog extends Component {
         errors.category_error_text = recordedValues.category === '' ? 'please select a category' : '';
         errors.service_name_error_text = recordedValues.name.trim() === '' ? 'please enter a service name' : '';
         errors.location_error_text = recordedValues.location.trim() === '' ? 'please enter a location' : '';
-        errors.cost_error_text = recordedValues.cost === '' ? 'please enter a cost' : '';
-        errors.cost_error_text = recordedValues.cost < 0 ? 'the post must be greater than 0' : '';
+
+        // validate the cost which was entered. Some value greater than 0 is required.
+        if (recordedValues.cost === '') {
+            errors.cost_error_text = 'please enter a cost';
+        } else if (recordedValues.cost < 0) {
+            errors.cost_error_text = 'the cost must be greater than 0';
+        }
 
         // the form will be valid when no errors were reported during the validation process
         let isValid = Object.keys(errors).filter(key => errors[key] != '').length === 0;
