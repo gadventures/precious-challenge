@@ -1,8 +1,10 @@
 {% load render_bundle from webpack_loader %}
+{% load staticfiles %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>Trips</title>
+        <link rel="shortcut icon" href="{% static 'favicon.ico' type='image/x-icon' %}">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
