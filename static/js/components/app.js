@@ -5,11 +5,12 @@ import ServiceDialog from "./service-dialog";
 import Divider from '@material-ui/core/Divider';
 
 const styles = {
-    noMargin: {
+    container: {
         paddingLeft: '0px',
         paddingRight: '0px',
         marginLeft: '0px',
         marginRight: '0px',
+        marginBottom: '10px',
         width: '100%',
         backgroundColor: '#f5f5f5'
     },
@@ -48,10 +49,10 @@ export default class App extends Component {
 
     render() {
         return (
-            <div className="container" style={styles.noMargin} >
+            <div className="container" style={styles.container} >
                 <section className="text-center" style={styles.header}>
                     <h2 style={styles.headerText}>Adventure Trips</h2>
-                    <Divider style={styles.noMargin} />
+                    <Divider />
                 </section>
                 {
                     this.state.trips.map((trip, i) => (
