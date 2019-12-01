@@ -32,7 +32,7 @@ export default class App extends Component {
         this.addNewService = this.addNewService.bind(this);
         this.closeNewServiceModal = this.closeNewServiceModal.bind(this);
 
-        this.saveNewService = (parameter) => this.saveNewServiceFn(parameter);
+        this.saveNewService = (trip, newService) => this.saveNewServiceFn(trip, newService);
     }
 
     render() {
@@ -88,11 +88,15 @@ export default class App extends Component {
     /**
      * Validate and save the new item to the dataservice
      */
-    saveNewServiceFn(body) {
+    saveNewServiceFn(trip, newService) {
         // post the new service to the services endpoint
-        const postSevice = $.post('/api/services', JSON.stringify(body), 'json');
+        const postSevice = $.post('/api/services', JSON.stringify(newService), 'json');
         postSevice.then((postResponses) => {
-            // update the ui with the new service
+            // add the new service to the trip service list
+            trip.services.push(postResponses);
+
+            // update the state with the new trip
+            this.setState({ trips: this.state.trips });
         }, (error) => {
             // echo the event to console
             console.error(error);

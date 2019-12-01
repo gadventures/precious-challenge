@@ -83,6 +83,24 @@ export default class ServiceDialog extends Component {
     }
 
     /**
+     * Wipe the state of the model
+     */
+    wipeStateValues() {
+        // wipe the state of the component
+        this.setState({
+            category: '',
+            cost: '',
+            location: '',
+            serviceName: '',
+            service_name_error_text: '',
+            location_error_text: '',
+            cost_error_text: '',
+            category_error_text: '',
+            validation_error_text: ''
+        });
+    }
+
+    /**
      * Validate all of the values set in the model. If any value is invalid, tell the user why.
      */
     validateValues(recordedValues) {
@@ -95,21 +113,11 @@ export default class ServiceDialog extends Component {
         };
 
         // populate any error text values if the fields are invalid
-        if (recordedValues.category === '') {
-            errors.category_error_text = 'please select a category';
-        }
-        if (recordedValues.name.trim() === '') {
-            errors.service_name_error_text = 'please enter a service name';
-        }
-        if (recordedValues.location.trim() === '') {
-            errors.location_error_text = 'please enter a location';
-        }
-        if (recordedValues.cost === '') {
-            errors.cost_error_text = 'please enter a cost';
-        }
-        if (recordedValues.cost < 0) {
-            errors.cost_error_text = 'the post must be greater than 0';
-        }
+        errors.category_error_text = recordedValues.category === '' ? 'please select a category' : '';
+        errors.service_name_error_text = recordedValues.name.trim() === '' ? 'please enter a service name' : '';
+        errors.location_error_text = recordedValues.location.trim() === '' ? 'please enter a location' : '';
+        errors.cost_error_text = recordedValues.cost === '' ? 'please enter a cost' : '';
+        errors.cost_error_text = recordedValues.cost < 0 ? 'the post must be greater than 0' : '';
 
         // the form will be valid when no errors were reported during the validation process
         let isValid = Object.keys(errors).filter(key => errors[key] != '').length === 0;
@@ -132,7 +140,7 @@ export default class ServiceDialog extends Component {
     saveServiceFn() {
 
         // create a body based on the state variables of the dialog
-        const body = {
+        const newService = {
             trip: this.props.trip.id,
             category: this.state.category,
             cost: this.state.cost,
@@ -142,10 +150,12 @@ export default class ServiceDialog extends Component {
 
         // form validation should happen on the dialog.
         // that should happen before the save occurs and reject the save if validation fails
-        const isValid = this.validateValues(body);
+        const isValid = this.validateValues(newService);
 
         if (isValid) {
-            this.props.saveServiceFn(body).then(() => {
+            this.props.saveServiceFn(this.props.trip, newService).then(() => {
+                // wipe the state values which manage the input values
+                this.wipeStateValues();
                 // future: show some success message with a close button
                 // for now, close the modal
                 this.props.closeFn();
@@ -157,20 +167,8 @@ export default class ServiceDialog extends Component {
      * This function will wipe and close the modal
      */
     closeModalFn() {
-        // wipe the state of the component
-        this.setState({
-            category: '',
-            cost: '',
-            location: '',
-            serviceName: '',
-            serviceName: '',
-            service_name_error_text: '',
-            location_error_text: '',
-            cost_error_text: '',
-            category_error_text: '',
-            category_error_text: '',
-            validation_error_text: ''
-        });
+        // wipe the state values which manage the input values
+        this.wipeStateValues();
 
         // call the parent close event function
         this.props.closeFn();
