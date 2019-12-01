@@ -24,7 +24,8 @@ export default class ServiceDialog extends Component {
             service_name_error_text: '',
             location_error_text: '',
             cost_error_text: '',
-            category_error_text: ''
+            category_error_text: '',
+            validation_error_text: ''
         }
 
         // all of these will need to be moved to a seperate controller
@@ -71,7 +72,7 @@ export default class ServiceDialog extends Component {
                         </Select>
                         <FormHelperText>{this.state.category_error_text}</FormHelperText>
                     </form>
-
+                    <h5>{this.state.validation_error_text}</h5>
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={this.closeFn}>Cancel</Button>
@@ -110,11 +111,17 @@ export default class ServiceDialog extends Component {
             errors.cost_error_text = 'the post must be greater than 0';
         }
 
+        // the form will be valid when no errors were reported during the validation process
+        let isValid = Object.keys(errors).filter(key => errors[key] != '').length === 0;
+
+        // if the form was invalid, warn the user
+        errors.validation_error_text = !isValid ? 'Validation failed for the service. Please check each value and try again.' : null;
+
         // set the state so that any errors will be displayed to the user
         this.setState(errors);
 
         // return if any input failed validation
-        return Object.keys(errors).filter(key => errors[key] != null) > 0;
+        return isValid;
     }
 
     /**
@@ -160,7 +167,9 @@ export default class ServiceDialog extends Component {
             service_name_error_text: '',
             location_error_text: '',
             cost_error_text: '',
-            category_error_text: ''
+            category_error_text: '',
+            category_error_text: '',
+            validation_error_text: ''
         });
 
         // call the parent close event function

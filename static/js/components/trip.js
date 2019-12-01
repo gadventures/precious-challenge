@@ -33,9 +33,9 @@ export default class Trip extends Component {
 
             services = <List>
                 {this.props.trip.services.map((service, index) => (
-                    <div>
+                    <div
+                        key={index}>
                         <Service
-                            key={index}
                             service={service}
                             categoryName={this.getServiceCategoryDisplayName(service)}
                         />
