@@ -1,19 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const Service = ({ service, categoryName }) => {
     return (
-        <div className="container" style={{ maxWidth: '600px' }}>
-            id: {service.id}
-            <br />
-            name: {service.name}
-            <br />
-            location: {service.location}
-            <br />
-            cost: {service.cost}
-            <br />
-            category: {service.category}
-        </div>
+        <ListItem>
+            <ListItemText style={{ width: '33%' }} primary={service.name} secondary={service.location} />
+            <ListItemText style={{ width: '33%' }} primary="Type" secondary={categoryName} />
+            <ListItemText style={{ width: '33%' }} primary="Service Cost" secondary={`$ ${service.cost}`} />
+        </ListItem>
     )
 };
 
