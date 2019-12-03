@@ -3,12 +3,12 @@ import React from 'react';
 
 const Service = ({ service }) => {
   return (
-    <ul className='list-group align-items-center'>
-      <li className='list-group-item'>Service: {service.name}</li>
-      <li className='list-group-item'>Type: {service.type}</li>
-      <li className='list-group-item'>Location: {service.location}</li>
-      <li className='list-group-item'>Cost: ${service.cost}</li>
-    </ul>
+    <tr>
+      <td>{service.name}</td>
+      <td>{service.location}</td>
+      <td>{service.type.name}</td>
+      <td>{service.cost}&nbsp;$</td>
+    </tr>
   );
 };
 

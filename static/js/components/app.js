@@ -22,11 +22,13 @@ export default class App extends Component {
     return (
       <div className='container'>
         <h1 className='text-center'> Adventure Trips </h1>
-        {this.state.trips.map((trip, i) => (
-          <div key={i} className='.col-md-4'>
-            <Trip trip={this.state.trips[i]} />
-          </div>
-        ))}
+        <div className='row'>
+          {this.state.trips.map((trip, i) => (
+            <div key={i} className='col-12'>
+              <Trip trip={this.state.trips[i]} />
+            </div>
+          ))}
+        </div>
       </div>
     );
   }

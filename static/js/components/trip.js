@@ -4,22 +4,49 @@ import Service from './service';
 
 const Trip = ({ trip }) => {
   return (
-    <div className='container' style={{ maxWidth: '600px' }}>
-      <h4 className='text-center'>
+    <div className='jumbotron'>
+      <h5 className='card-title text-center'>
         {trip.travel_style} : {trip.title}
-      </h4>
-      <ul className='list-group align-items-center'>
+      </h5>
+      <ul className='list-group'>
         <li className='list-group-item'>Destination: {trip.destination}</li>
-        <li className='list-group-item'>Duration: {trip.duration_days}</li>
-        <li className='list-group-item'>Base cost: ${trip.cost}</li>
-        <li className='list-group-item'>Total cost: ${trip.total_cost}</li>
+        <li className='list-group-item'>
+          Duration: {trip.duration_days}&nbsp;days
+        </li>
+        <li className='list-group-item'>Base cost: {trip.cost}&nbsp;$</li>
+        <li className='list-group-item text-success'>
+          <strong>Total cost: {trip.total_cost}&nbsp;$</strong>
+        </li>
       </ul>
-      <h6 className='text-center'>Services</h6>
-      <ul className='list-group align-items-center'>
-        {trip.services.map((service, i) => (
-          <Service service={service} />
-        ))}
-      </ul>
+      <br></br>
+      <div className='card'>
+        <div className='card-body'>
+          <h6 className='card-title text-center'>Services</h6>
+          {trip.services.length > 0 ? (
+            <table className='table table-bordered'>
+             <thead>
+             <tr>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Type</th>
+                <th>Cost</th>
+              </tr>
+                           
+             </thead>
+             <tbody>
+             {trip.services.map((service, i) => (
+                <Service key={i} service={service} />
+              ))}
+             </tbody>
+            </table>
+          ) : (
+            <div className='alert'>No services added yet</div>
+          )}
+          <a href='#' className='btn btn-success'>
+            Add services &nbsp; <strong>+</strong>
+          </a>
+        </div>
+      </div>
     </div>
   );
 };
