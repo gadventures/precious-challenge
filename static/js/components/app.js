@@ -8,7 +8,7 @@ export default class App extends Component {
 
     this.state = {
       // create an empty array that will hold the trips
-      trips: []
+      trips: [],
     };
 
     this.getTrips = this.getTrips.bind(this);

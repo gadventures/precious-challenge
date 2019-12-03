@@ -3,12 +3,12 @@ import React from 'react';
 
 const Service = ({ service }) => {
   return (
-    <tr>
-      <td>{service.name}</td>
-      <td>{service.location}</td>
-      <td>{service.type.name}</td>
-      <td>{service.cost}&nbsp;$</td>
-    </tr>
+      <tr>
+        <td>{service.name}</td>
+        <td>{service.location}</td>
+        <td>{service.type.name}</td>
+        <td>{service.cost}&nbsp;$</td>
+      </tr>
   );
 };
 

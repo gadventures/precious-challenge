@@ -68,3 +68,6 @@ class Trip(models.Model):
             total += service.cost
 
         return total
+        
+    def __str__(self):
+        return self.title
