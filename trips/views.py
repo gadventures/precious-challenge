@@ -1,55 +1,34 @@
-from rest_framework import viewsets
-from trips.serializers import TripSerializer, ServiceSerializer
-from trips.models import Trip, Service
+
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
-from rest_framework import generics
+from rest_framework import generics, viewsets
 from rest_framework.decorators import action
 
+from trips.serializers import TripSerializer, ServiceSerializer
+from trips.models import Trip, Service
 
-class TripList(viewsets.ModelViewSet):
+
+class TripsViewSet(viewsets.ModelViewSet):
     """
-    List all trips and view or add services
+    A list of all trips
     """
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
 
-    # List services associated with trip
-    @action(detail=False, methods=['get'])
-    def list_services(self, request, id=None):
-        trip = trip = get_object_or_404(self.queryset, id=id)
+    @action(detail=True, methods=['get'], name='Trip services', description="View services associated to trip")
+    def services(self, request, pk=None):
+        """
+        A list of the trip's services
+        """
+        trip = get_object_or_404(self.queryset, id=pk)
         services = trip.services.all()
         serializer = ServiceSerializer(services, many=True)
         return Response(serializer.data)
 
-    def create(self, request):
-        pass
 
-    def retrieve(self, request, pk=None):
-        pass
-
-    def update(self, request, pk=None):
-        pass
-
-    def destroy(self, request, pk=None):
-        pass
-
-
-class ServiceList(viewsets.ModelViewSet):
+class ServicesViewSet(viewsets.ModelViewSet):
     """
-    A list of all services, read-only
+    A list of all services
     """
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
-
-    def create(self, request):
-        pass
-
-    def retrieve(self, request, pk=None):
-        pass
-
-    def update(self, request, pk=None):
-        pass
-
-    def destroy(self, request, pk=None):
-        pass
