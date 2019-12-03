@@ -86,6 +86,193 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./frontend/js/components/AddHotel.js":
+/*!********************************************!*\
+  !*** ./frontend/js/components/AddHotel.js ***!
+  \********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+
+
+
+var AddHotel =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(AddHotel, _React$Component);
+
+  function AddHotel(props) {
+    var _this;
+
+    _classCallCheck(this, AddHotel);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddHotel).call(this, props));
+    _this.state = {
+      trip: null,
+      name: null,
+      typeOfService: null,
+      location: null,
+      cost: null
+    };
+    _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
+    _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
+    return _this;
+  }
+
+  _createClass(AddHotel, [{
+    key: "handleChange",
+    value: function handleChange(e, data) {
+      this.setState(_defineProperty({}, e.target.name, e.target.value));
+    }
+  }, {
+    key: "handleSubmit",
+    value: function handleSubmit(e, data) {
+      var _this2 = this;
+
+      //Destructure the data object to change its trip property value to include only the id
+      var response = _objectSpread({}, data, {
+        trip: this.props.trip.id
+      });
+
+      e.preventDefault();
+      console.log(response); //Post data using the fetch api
+
+      fetch('/api/hotels', {
+        method: "POST",
+        body: JSON.stringify(response),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }).then(function (rawData) {
+        return rawData.json();
+      }).then(function (body) {
+        if (!body.errors) {
+          console.log('Success!');
+
+          _this2.props.history.push('/');
+
+          window.location.reload();
+        } else {
+          console.log(body.message);
+        }
+      })["catch"](function (error) {
+        return console.error(error);
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var _this3 = this;
+
+      var trip = this.props.trip;
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "container",
+        style: {
+          maxWidth: '600px'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
+        className: "text-center"
+      }, "Add Hotel to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        onSubmit: function onSubmit(e) {
+          return _this3.handleSubmit(e, _this3.state);
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "col-sm-2 control-label "
+      }, "Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-10"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "name",
+        onChange: this.handleChange,
+        className: "form-control",
+        type: "text"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "col-sm-2 control-label "
+      }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-10"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+        name: "typeOfService",
+        onChange: this.handleChange,
+        className: "form-control",
+        defaultValue: ""
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The name of the service, e.g. hotel, accomodation or transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "col-sm-2 control-label "
+      }, "Location"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-10"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "location",
+        onChange: this.handleChange,
+        className: "form-control",
+        type: "text"
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-group "
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+        className: "col-sm-2 control-label "
+      }, "Cost"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "col-sm-10"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+        name: "cost",
+        onChange: this.handleChange,
+        className: "form-control",
+        type: "number"
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "Cost of the hotel"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "form-actions",
+        style: {
+          "float": 'right',
+          paddingBottom: '2em'
+        }
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        className: "btn btn-primary js-tooltip",
+        type: "submit"
+      }, "POST"))));
+    }
+  }]);
+
+  return AddHotel;
+}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AddHotel));
+
+/***/ }),
+
 /***/ "./frontend/js/components/TripPreview.js":
 /*!***********************************************!*\
   !*** ./frontend/js/components/TripPreview.js ***!
@@ -241,6 +428,8 @@ function (_Component) {
   _createClass(App, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      //Stay on top of page when the component is mounted
+      window.scrollTo(0, 0);
       this.getTrips();
     }
   }, {
@@ -293,6 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TripPreview */ "./frontend/js/components/TripPreview.js");
+/* harmony import */ var _components_AddHotel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/AddHotel */ "./frontend/js/components/AddHotel.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -310,6 +500,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -335,6 +526,8 @@ function (_Component) {
   _createClass(Details, [{
     key: "componentDidMount",
     value: function componentDidMount() {
+      //Stay on top of page when the component is mounted
+      window.scrollTo(0, 0);
       var _this$props = this.props,
           trips = _this$props.trips,
           match = _this$props.match;
@@ -354,7 +547,6 @@ function (_Component) {
       var _this$props2 = this.props,
           trips = _this$props2.trips,
           match = _this$props2.match;
-      console.log(trips);
       this.setState({
         trip: trips.length ? trips.find(function (t) {
           return t.id == match.params.id;
@@ -372,10 +564,12 @@ function (_Component) {
         }, "Loading ...");
       }
 
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
         trip: trip,
-        i: 1
-      });
+        i: trip.id
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddHotel__WEBPACK_IMPORTED_MODULE_3__["default"], {
+        trip: trip
+      }));
     }
   }]);
 
@@ -455,10 +649,10 @@ __webpack_require__.r(__webpack_exports__);
 
 var Trip = function Trip(_ref) {
   var trips = _ref.trips;
-  return trips.map(function (trip, i) {
+  return trips.map(function (trip) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
       trip: trip,
-      i: i
+      key: trip.id
     });
   });
 };

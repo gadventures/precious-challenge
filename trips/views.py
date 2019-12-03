@@ -21,9 +21,7 @@ class TripList(generics.ListAPIView):
     """
     A list of all trips, read-only
     """
-    # queryset = Trip.objects.all()
     serializer_class = TripSerializer
-    #queryset = Trip.objects.all()
 
     def get_queryset(self):
         queryset = Trip.objects.all()
@@ -34,5 +32,9 @@ class TripList(generics.ListAPIView):
 class TripDetailView(DetailView):
     model=Trip
     template_name = 'index.html'
+
+class PostHotel(generics.ListCreateAPIView):
+    queryset = Hotel.objects.all()
+    serializer_class = HotelSerializer
 
 

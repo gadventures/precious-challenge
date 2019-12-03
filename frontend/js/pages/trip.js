@@ -4,8 +4,8 @@ import TripPreview from '../components/TripPreview';
 
 const Trip = ({ trips }) => {
     return (
-        trips.map((trip, i) => (
-            <TripPreview trip={trip} i={i} />
+        trips.map((trip) => (
+            <TripPreview trip={trip} key={trip.id} />
         ))
     )
 };

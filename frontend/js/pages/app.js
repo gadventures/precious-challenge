@@ -6,7 +6,6 @@ export default class App extends Component {
 
     constructor() {
         super();
-
         this.state = {
             // create an empty array that will hold the trips
             trips: []
@@ -16,6 +15,8 @@ export default class App extends Component {
     }
 
     componentDidMount() {
+        //Stay on top of page when the component is mounted
+        window.scrollTo(0, 0)
         this.getTrips();
     }
 

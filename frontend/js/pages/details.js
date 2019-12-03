@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom'
 import TripPreview from '../components/TripPreview';
+import AddHotel from '../components/AddHotel';
 
 class Details extends Component {
   constructor(props) {
@@ -10,11 +11,10 @@ class Details extends Component {
     }
   }
 
-
   componentDidMount() {
+    //Stay on top of page when the component is mounted
+    window.scrollTo(0, 0)
     const { trips, match } = this.props;
-    
-
     this.setState({
       trip: trips.length ? trips.find(t => t.id == match.params.id) : null,
     })
@@ -25,24 +25,26 @@ class Details extends Component {
       return
     }
     const { trips, match } = this.props;
-    console.log(trips);
 
     this.setState({
       trip: trips.length ? trips.find(t => t.id == match.params.id) : null,
     })
   }
 
-render() {
-  const { trip } = this.state;
+  render() {
+    const {trip} = this.state;
 
-  if (!trip) {
-    return <span className="spinner">Loading ...</span>;
+    if (!trip) {
+      return <span className="spinner">Loading ...</span>;
+    }
+
+    return (
+      <Fragment>
+        <TripPreview trip={trip} i={trip.id} />
+        <AddHotel trip={trip}/>
+      </Fragment>
+    );
   }
-
-  return (
-    <TripPreview trip={trip} i={1} />
-  );
-}
 }
 
 export default Details;
