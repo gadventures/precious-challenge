@@ -10,23 +10,19 @@ class Service(models.Model):
         (2, "Accommodation"),
         (3, "Transportation"),
     )
-
     name = models.CharField(
         max_length=300,
         unique=True,
         help_text="The name of the service",
     )
-
     location = models.CharField(
         max_length=300,
         help_text="The location of the service",
     )
-
     type = models.IntegerField(
         choices=types,
         help_text="The type of service (Hotel, Accomodation or Transportation)",
     )
-
     cost = models.IntegerField(help_text="The cost of the service")
 
 
@@ -50,3 +46,14 @@ class Trip(models.Model):
 
     # Associated services
     services = models.ManyToManyField(Service)
+
+    def calc_total(self):
+        """
+        Calculate total cost of the trip including services
+        """
+        total = self.cost
+
+        for service in self.services.all():
+            total += service.cost
+
+        return total
