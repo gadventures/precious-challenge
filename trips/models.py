@@ -10,6 +10,8 @@ class ServiceType(models.Model):
         max_length=300, unique=True, help_text="The name of the service type"
     )
 
+    def __str__(self):
+        return self.name
 
 class Service(models.Model):
     """
@@ -31,6 +33,8 @@ class Service(models.Model):
     )
     cost = models.IntegerField(help_text="The cost of the service")
 
+    def __str__(self):
+        return self.name
 
 class Trip(models.Model):
     title = models.CharField(
