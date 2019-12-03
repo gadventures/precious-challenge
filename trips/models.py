@@ -1,15 +1,21 @@
 from django.db import models
 
 
+class ServiceType(models.Model):
+    """
+    Store different service types (ex. Hotel, Accommodation, Transportation) so that more can be added, as well as to be able to add type parameters
+    """
+
+    name = models.CharField(
+        max_length=300, unique=True, help_text="The name of the service type"
+    )
+
+
 class Service(models.Model):
     """
     Store all available services
     """
-    types = (
-        (1, "Hotel"),
-        (2, "Accommodation"),
-        (3, "Transportation"),
-    )
+    
     name = models.CharField(
         max_length=300,
         unique=True,
@@ -19,9 +25,9 @@ class Service(models.Model):
         max_length=300,
         help_text="The location of the service",
     )
-    type = models.IntegerField(
-        choices=types,
-        help_text="The type of service (Hotel, Accomodation or Transportation)",
+    type = models.ForeignKey(
+        ServiceType,
+        on_delete=models.CASCADE
     )
     cost = models.IntegerField(help_text="The cost of the service")
 
@@ -40,9 +46,10 @@ class Trip(models.Model):
         max_length=300,
         help_text="Initial location of the trip",
     )
-    cost = models.IntegerField(help_text="Total cost of the trip")
-    duration_days = models.IntegerField(
-        help_text="How many days this trip runs")
+    cost = models.IntegerField(
+        help_text="Total cost of the trip")
+
+    duration_days = models.IntegerField(help_text="How many days this trip runs")
 
     # Associated services
     services = models.ManyToManyField(Service)

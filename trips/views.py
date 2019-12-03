@@ -4,8 +4,8 @@ from rest_framework.response import Response
 from rest_framework import generics, viewsets
 from rest_framework.decorators import action
 
-from trips.serializers import TripSerializer, ServiceSerializer
-from trips.models import Trip, Service
+from trips.serializers import TripSerializer, ServiceSerializer, ServiceTypeSerializer
+from trips.models import Trip, Service, ServiceType
 
 
 class TripsViewSet(viewsets.ModelViewSet):
@@ -32,3 +32,10 @@ class ServicesViewSet(viewsets.ModelViewSet):
     """
     queryset = Service.objects.all()
     serializer_class = ServiceSerializer
+
+class ServiceTypesViewSet(viewsets.ModelViewSet):
+    """
+    A list of all service types (categories)
+    """
+    queryset = ServiceType.objects.all()
+    serializer_class = ServiceTypeSerializer

@@ -18,3 +18,10 @@ router.register(
     views.ServicesViewSet,
     basename='service'
 )
+
+# List all service types
+router.register(
+    r'service-types',
+    views.ServiceTypesViewSet,
+    basename='service-type'
+)
