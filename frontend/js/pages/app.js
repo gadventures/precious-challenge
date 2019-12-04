@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import $ from 'jquery';
 import Pages from '.';
 import Footer from '../components/Footer';
@@ -19,26 +19,28 @@ export default class App extends Component {
         this.getTrips();
     }
 
-        // getTrips makes a call to /api/ which returns the trip data in JSON format
-        getTrips() {
-            $.getJSON({
-                url: "/api/",
-            }).then((trips) => this.setState({ trips: trips })).catch(
-                (error) => {
-                    console.log("Oops - ", error)
-                })
-        }
+    // getTrips makes a call to /api/ which returns the trip data in JSON format
+    getTrips() {
+        $.getJSON({
+            url: "/api/",
+        }).then((trips) => this.setState({ trips: trips })).catch(
+            (error) => {
+                console.log("Oops - ", error)
+            })
+    }
 
     render() {
         //Render the App component and pass the trips as props to all the Pages
         return (
-            <div className="container">
-                <h1 className="text-center"> Adventure Trips </h1>
-                <Pages
-                    trips={this.state.trips}
-                />
-                <Footer/>
-           </div>
+            <Fragment>
+                <div className="container">
+                    <h1 className="text-center"> Adventure Trips </h1>
+                    <Pages
+                        trips={this.state.trips}
+                    />
+                </div>
+                <Footer />
+            </Fragment>
         );
     }
 }

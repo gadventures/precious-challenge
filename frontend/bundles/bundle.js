@@ -97,10 +97,9 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postAccomodation */ "./frontend/js/data/requests/postAccomodation.js");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/requests/postAccomodation */ "./frontend/js/data/requests/postAccomodation.js");
+/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
+/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -125,11 +124,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var AddAccomodation =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(AddAccomodation, _React$Component);
+function (_Component) {
+  _inherits(AddAccomodation, _Component);
 
   function AddAccomodation(props) {
     var _this;
@@ -162,9 +160,7 @@ function (_React$Component) {
       //on form submit, prevent the browser from refreshing
       e.preventDefault(); //post form data to db
 
-      Object(_data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_2__["postAccomodation"])(data); //go back to home page
-
-      this.props.history.push('/');
+      Object(_data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_1__["postAccomodation"])(data);
     }
   }, {
     key: "render",
@@ -173,15 +169,15 @@ function (_React$Component) {
 
       var trip = this.props.trip;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.wrapper, " container")
+        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.wrapper, " container")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " text-center")
+        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.heading, " text-center")
       }, "Add Accomodation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.form
+        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.form
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -193,24 +189,22 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text",
+        placeholder: "The name of the accomodation",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The name of the accomodation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
-      }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-10"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
         defaultValue: "accomodation",
+        placeholder: "The type of the service that you offer",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -221,10 +215,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text",
+        placeholder: "The location of the service",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -235,11 +228,10 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "number",
+        placeolder: "Cost of the accomodation",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "Cost of the accomodation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.btnActions, " \"form-actions\"")
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.btnActions, " \"form-actions\"")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary js-tooltip",
         type: "submit"
@@ -248,9 +240,9 @@ function (_React$Component) {
   }]);
 
   return AddAccomodation;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AddAccomodation));
+/* harmony default export */ __webpack_exports__["default"] = (AddAccomodation);
 
 /***/ }),
 
@@ -265,10 +257,9 @@ function (_React$Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
+/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
+/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -293,11 +284,10 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-
 var AddHotel =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(AddHotel, _React$Component);
+function (_Component) {
+  _inherits(AddHotel, _Component);
 
   function AddHotel(props) {
     var _this;
@@ -330,8 +320,7 @@ function (_React$Component) {
       //on form submit, prevent the browser from refreshing
       e.preventDefault(); //post form data to db
 
-      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data); //go back to home page
-      //this.props.history.push('/');
+      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_1__["postHotel"])(data);
     }
   }, {
     key: "render",
@@ -340,15 +329,15 @@ function (_React$Component) {
 
       var trip = this.props.trip;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.wrapper, " container")
+        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.wrapper, " container")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
-      }, "Add Hotel to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.heading, " \"text-center\"")
+      }, "Add Hotel to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.form
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
         }
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.form
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -360,24 +349,22 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text",
+        placeholder: "The name of the hotel",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The name of the hotel"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
-      }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-10"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
         defaultValue: "hotel",
+        placeholder: "The type of the service that you offer",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -388,10 +375,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text",
+        placeholder: "The location of the service",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -402,11 +388,10 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "number",
+        placeholder: "The cost of the hotel",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "Cost of the hotel"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.btnActions, " \"form-actions\"")
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.btnActions, " \"form-actions\"")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary js-tooltip",
         type: "submit"
@@ -415,9 +400,9 @@ function (_React$Component) {
   }]);
 
   return AddHotel;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AddHotel));
+/* harmony default export */ __webpack_exports__["default"] = (AddHotel);
 
 /***/ }),
 
@@ -463,8 +448,8 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 var AddTransportation =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(AddTransportation, _React$Component);
+function (_Component) {
+  _inherits(AddTransportation, _Component);
 
   function AddTransportation(props) {
     var _this;
@@ -497,9 +482,7 @@ function (_React$Component) {
       //on form submit, prevent the browser from refreshing
       e.preventDefault(); //post form data to db
 
-      Object(_data_requests_postTransportation__WEBPACK_IMPORTED_MODULE_2__["postTransportation"])(data); //go back to home page
-
-      this.props.history.push('/');
+      Object(_data_requests_postTransportation__WEBPACK_IMPORTED_MODULE_2__["postTransportation"])(data);
     }
   }, {
     key: "render",
@@ -528,24 +511,22 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text",
+        placeholder: "The name of the transportation",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The name of the transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
-      }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-10"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
         defaultValue: "transportation",
+        placeholder: "The type of the service that you offer",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -556,10 +537,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text",
+        placeholder: "The location of the service",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -570,10 +550,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "number",
+        placeholder: "Cost of the transportation",
         required: true
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: "help-block"
-      }, "Cost of the transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.btnActions, " \"form-actions\"")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary js-tooltip",
@@ -583,9 +562,9 @@ function (_React$Component) {
   }]);
 
   return AddTransportation;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(AddTransportation));
+/* harmony default export */ __webpack_exports__["default"] = (AddTransportation);
 
 /***/ }),
 
@@ -631,26 +610,34 @@ __webpack_require__.r(__webpack_exports__);
 
 var Footer = function Footer(props) {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
-    className: "site-footer"
+    className: "site-footer",
+    style: {
+      paddingTop: "2em"
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "row"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "col-md-12 text-center"
+    className: "col-md-12 text-center",
+    style: {
+      background: "#e8e8e8",
+      width: "100%",
+      height: "3em"
+    }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-    className: "small"
-  }, "\xA9 2019 Atanas Yonkov")))));
+    style: {
+      margin: "10px"
+    }
+  }, "Designed by ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "https://yonkov.github.io"
+  }, "Atanas Yonkov "), "|| \xA9 2019 Precious Challenge")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Footer);
 
 /***/ }),
 
-/***/ "./frontend/js/components/ToggleBox.js":
-/*!*********************************************!*\
-  !*** ./frontend/js/components/ToggleBox.js ***!
-  \*********************************************/
+/***/ "./frontend/js/components/ToggleForm.js":
+/*!**********************************************!*\
+  !*** ./frontend/js/components/ToggleForm.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -681,17 +668,17 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
-var ToggleBox =
+var ToggleForm =
 /*#__PURE__*/
-function (_React$Component) {
-  _inherits(ToggleBox, _React$Component);
+function (_Component) {
+  _inherits(ToggleForm, _Component);
 
-  function ToggleBox() {
+  function ToggleForm() {
     var _this;
 
-    _classCallCheck(this, ToggleBox);
+    _classCallCheck(this, ToggleForm);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ToggleBox).call(this));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(ToggleForm).call(this));
     _this.state = {
       opened: false
     };
@@ -699,7 +686,7 @@ function (_React$Component) {
     return _this;
   }
 
-  _createClass(ToggleBox, [{
+  _createClass(ToggleForm, [{
     key: "toggleBox",
     value: function toggleBox() {
       var opened = this.state.opened;
@@ -725,7 +712,13 @@ function (_React$Component) {
           textAlign: 'center'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.boxTitle, " fa fa-angle-double-down btn btn-primary"),
+        className: opened ? 'fa fa-angle-double-up btn btn-primary' : "fa fa-angle-double-down btn btn-primary",
+        style: {
+          minWidth: "32%",
+          padding: "12px",
+          fontSize: "18px",
+          margin: "15px 0"
+        },
         onClick: this.toggleBox
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: _Components_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.span
@@ -735,10 +728,10 @@ function (_React$Component) {
     }
   }]);
 
-  return ToggleBox;
-}(react__WEBPACK_IMPORTED_MODULE_0___default.a.Component);
+  return ToggleForm;
+}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
-/* harmony default export */ __webpack_exports__["default"] = (ToggleBox);
+/* harmony default export */ __webpack_exports__["default"] = (ToggleForm);
 
 /***/ }),
 
@@ -952,7 +945,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! . */ "./frontend/js/pages/index.js");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Footer */ "./frontend/js/components/Footer.js");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./frontend/js/components/Footer.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1022,13 +1015,13 @@ function (_Component) {
     key: "render",
     value: function render() {
       //Render the App component and pass the trips as props to all the Pages
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "text-center"
       }, " Adventure Trips "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_2__["default"], {
         trips: this.state.trips
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_4__["default"], null));
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
   }]);
 
@@ -1081,7 +1074,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_AddHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/AddHotel */ "./frontend/js/components/AddHotel.js");
 /* harmony import */ var _components_AddAccomodation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/AddAccomodation */ "./frontend/js/components/AddAccomodation.js");
 /* harmony import */ var _components_AddTransportation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/AddTransportation */ "./frontend/js/components/AddTransportation.js");
-/* harmony import */ var _components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/ToggleBox */ "./frontend/js/components/ToggleBox.js");
+/* harmony import */ var _components_ToggleForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/ToggleForm */ "./frontend/js/components/ToggleForm.js");
 /* harmony import */ var _Details_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Details.module.css */ "./frontend/js/pages/Details/Details.module.css");
 /* harmony import */ var _Details_module_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_Details_module_css__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -1173,15 +1166,15 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
         trip: trip,
         i: trip.id
-      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
         title: "Add Hotel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddHotel__WEBPACK_IMPORTED_MODULE_2__["default"], {
         trip: trip
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
         title: "Add Accomodation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddAccomodation__WEBPACK_IMPORTED_MODULE_3__["default"], {
         trip: trip
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleForm__WEBPACK_IMPORTED_MODULE_5__["default"], {
         title: "Add Transportation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddTransportation__WEBPACK_IMPORTED_MODULE_4__["default"], {
         trip: trip
@@ -1205,30 +1198,24 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/TripPreview */ "./frontend/js/components/TripPreview.js");
-
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/TripPreview */ "./frontend/js/components/TripPreview.js");
 
 
 
 var Trip = function Trip(_ref) {
   var trips = _ref.trips;
-  return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-wrapper"
   }, trips.map(function (trip) {
-    return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
       trip: trip,
       key: trip.id
     });
   }));
 };
 
-Trip.propTypes = {
-  trip: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object.isRequired
-};
 /* harmony default export */ __webpack_exports__["default"] = (Trip);
 
 /***/ }),
@@ -1383,16 +1370,15 @@ module.exports = _inheritsLoose;
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "._17AXsd1Lj3NT9NEIcbSB1B{\r\n    color: #337ab7;\r\n    padding: 20px 0;\r\n}\r\n._3l4SO4ZMwWyyytkr-Vpy1x{\r\n    max-width: 600px;\r\n     margin: 20px 0;\r\n}\r\n._2ymXXq4qIrzv2_5w57lRzD{\r\n    float: right;\r\n    padding-bottom: 2em;\r\n}\r\n._2kp3KwIFS96jaFo224L1cu{\r\n    font-size: 18px;\r\n     margin: 15px 0;\r\n     padding: 12px;\r\n}\r\n@media(min-Width:680px){\r\n    ._2kp3KwIFS96jaFo224L1cu{\r\n         width: 32%; \r\n    }\r\n}\r\n._2LMZzfNhX4h90jNEUcUYgV{\r\n    background: #f8f9fa;\r\n}\r\n@media(min-Width:680px){\r\n    ._3WQqp1ts0KvRQSvjvCar3y {\r\n        width: 75%;\r\n        margin: 0 auto;\r\n    }\r\n}\r\n._3LJsMRDCUsk_R0TQDrh7F8{\r\n    padding-left: 7px;\r\n}", ""]);
+exports.push([module.i, "._17AXsd1Lj3NT9NEIcbSB1B{\r\n    color: #337ab7;\r\n    padding: 20px 0;\r\n}\r\n._3l4SO4ZMwWyyytkr-Vpy1x{\r\n    max-width: 600px;\r\n     margin: 20px 0;\r\n}\r\n._2ymXXq4qIrzv2_5w57lRzD{\r\n    float: right;\r\n    padding-bottom: 2em;\r\n}\r\n._2LMZzfNhX4h90jNEUcUYgV{\r\n    background: #f8f9fa;\r\n}\r\n._3LJsMRDCUsk_R0TQDrh7F8{\r\n    padding-left: 7px;\r\n}\r\n\r\n._3WQqp1ts0KvRQSvjvCar3y{\r\n    width: 70%;\r\n    margin: 0 auto\r\n}", ""]);
 // Exports
 exports.locals = {
 	"heading": "_17AXsd1Lj3NT9NEIcbSB1B",
 	"wrapper": "_3l4SO4ZMwWyyytkr-Vpy1x",
 	"btnActions": "_2ymXXq4qIrzv2_5w57lRzD",
-	"boxTitle": "_2kp3KwIFS96jaFo224L1cu",
 	"boxContent": "_2LMZzfNhX4h90jNEUcUYgV",
-	"form": "_3WQqp1ts0KvRQSvjvCar3y",
-	"span": "_3LJsMRDCUsk_R0TQDrh7F8"
+	"span": "_3LJsMRDCUsk_R0TQDrh7F8",
+	"form": "_3WQqp1ts0KvRQSvjvCar3y"
 };
 
 /***/ }),
@@ -42841,7 +42827,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

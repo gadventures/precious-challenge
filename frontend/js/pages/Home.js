@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import TripPreview from '../components/TripPreview';
 
@@ -10,10 +9,6 @@ const Trip = ({trips}) => {
         ))}
         </div>
     )
-};
-
-Trip.propTypes = {
-    trip: PropTypes.object.isRequired
 };
 
 export default Trip;

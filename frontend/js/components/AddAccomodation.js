@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
 import {postAccomodation} from '../data/requests/postAccomodation'
 import styles from './Components.module.css'
-class AddAccomodation extends React.Component {
+class AddAccomodation extends Component {
 
     constructor(props) {
         super(props);
@@ -29,8 +28,6 @@ class AddAccomodation extends React.Component {
         e.preventDefault();
         //post form data to db
         postAccomodation(data);
-        //go back to home page
-        this.props.history.push('/');
     }
 
     render() {
@@ -45,17 +42,17 @@ class AddAccomodation extends React.Component {
                             Name
                         </label>
                         <div className="col-sm-10">
-                            <input name="name" onChange={this.handleChange} className="form-control" type="text" required />
-                            <span className="help-block">The name of the accomodation</span>
+                            <input name="name" onChange={this.handleChange} className="form-control" type="text" placeholder="The name of the accomodation" required />
+                            <br />
                         </div>
                     </div>
                     <div className="form-group ">
                         <label className="col-sm-2 control-label ">
-                            Type Of Service
+                            Service
                         </label>
                         <div className="col-sm-10">
-                            <input name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue="accomodation" required />
-                            <span className="help-block">The type of the service that you offer</span>
+                            <input name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue="accomodation" placeholder="The type of the service that you offer" required />
+                            <br />
                         </div>
                     </div>
                     <div className="form-group ">
@@ -63,8 +60,8 @@ class AddAccomodation extends React.Component {
                             Location
                         </label>
                         <div className="col-sm-10">
-                            <input name="location" onChange={this.handleChange} className="form-control" type="text" required />
-                            <span className="help-block">The location of the service</span>
+                            <input name="location" onChange={this.handleChange} className="form-control" type="text" placeholder="The location of the service" required />
+                            <br />
                         </div>
                     </div>
                     <div className="form-group ">
@@ -72,8 +69,8 @@ class AddAccomodation extends React.Component {
                             Cost
                         </label>
                         <div className="col-sm-10">
-                            <input name="cost" onChange={this.handleChange} className="form-control" type="number" required />
-                            <span className="help-block">Cost of the accomodation</span>
+                            <input name="cost" onChange={this.handleChange} className="form-control" type="number" placeolder="Cost of the accomodation" required />
+                            <br />
                         </div>
                     </div>
                     <div className={`${styles.btnActions} "form-actions"`}>
@@ -87,4 +84,4 @@ class AddAccomodation extends React.Component {
     }
 }
 
-export default withRouter(AddAccomodation);
+export default AddAccomodation;

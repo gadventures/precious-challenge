@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom'
-import {postHotel} from '../data/requests/postHotel'
+import { postHotel } from '../data/requests/postHotel'
 import styles from './Components.module.css'
 
-class AddHotel extends React.Component {
+class AddHotel extends Component {
 
     constructor(props) {
         super(props);
@@ -30,8 +29,6 @@ class AddHotel extends React.Component {
         e.preventDefault();
         //post form data to db
         postHotel(data);
-        //go back to home page
-        //this.props.history.push('/');
     }
 
     render() {
@@ -39,52 +36,52 @@ class AddHotel extends React.Component {
         return (
             <div className={`${styles.wrapper} container`}>
                 <h4 className={`${styles.heading} "text-center"`}>Add Hotel to the {trip.title} Trip</h4>
-                <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                 <div className={styles.form}>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Name
+                    <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Name
                         </label>
-                        <div className="col-sm-10">
-                            <input name="name" onChange={this.handleChange} className="form-control" type="text" required />
-                            <span className="help-block">The name of the hotel</span>
+                            <div className="col-sm-10">
+                                <input name="name" onChange={this.handleChange} className="form-control" type="text" placeholder="The name of the hotel" required />
+                                <br />
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Type Of Service
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Service
                         </label>
-                        <div className="col-sm-10">
-                            <input name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue="hotel" required />
-                            <span className="help-block">The type of the service that you offer</span>
+                            <div className="col-sm-10">
+                                <input name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue="hotel" placeholder="The type of the service that you offer" required />
+                                <br />
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Location
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Location
                         </label>
-                        <div className="col-sm-10">
-                            <input name="location" onChange={this.handleChange} className="form-control" type="text" required />
-                            <span className="help-block">The location of the service</span>
+                            <div className="col-sm-10">
+                                <input name="location" onChange={this.handleChange} className="form-control" type="text" placeholder="The location of the service" required />
+                                <br />
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Cost
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Cost
                         </label>
-                        <div className="col-sm-10">
-                            <input name="cost" onChange={this.handleChange} className="form-control" type="number" required />
-                            <span className="help-block">Cost of the hotel</span>
+                            <div className="col-sm-10">
+                                <input name="cost" onChange={this.handleChange} className="form-control" type="number" placeholder="The cost of the hotel" required />
+                                <br />
+                            </div>
                         </div>
-                    </div>
-                    <div className={`${styles.btnActions} "form-actions"`}>
-                        <button className="btn btn-primary js-tooltip" type="submit">POST</button>
-                    </div>
-                    </div>
-                </form>
-        </div>
+                        <div className={`${styles.btnActions} "form-actions"`}>
+                            <button className="btn btn-primary js-tooltip" type="submit">POST</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         )
     }
 }
 
-export default withRouter(AddHotel);
+export default AddHotel;

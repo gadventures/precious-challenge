@@ -3,7 +3,7 @@ import TripPreview from '../../components/TripPreview';
 import AddHotel from '../../components/AddHotel';
 import AddAccomodation from '../../components/AddAccomodation';
 import AddTransportation from '../../components/AddTransportation';
-import ToggleBox from '../../components/ToggleBox';
+import ToggleForm from '../../components/ToggleForm';
 import styles from './Details.module.css'
 class Details extends Component {
   constructor() {
@@ -43,15 +43,15 @@ class Details extends Component {
     return (
       <div className={styles.wrapper}>
         <TripPreview trip={trip} i={trip.id} />
-        <ToggleBox title="Add Hotel">
+        <ToggleForm title="Add Hotel">
 				   <AddHotel trip={trip}/>
-			</ToggleBox>
-      <ToggleBox title="Add Accomodation">
+			</ToggleForm>
+      <ToggleForm title="Add Accomodation">
 				   <AddAccomodation trip={trip}/>
-			</ToggleBox>
-      <ToggleBox title="Add Transportation">
+			</ToggleForm>
+      <ToggleForm title="Add Transportation">
 				   <AddTransportation trip={trip}/>
-			</ToggleBox>
+			</ToggleForm>
       </div>
     );
   }

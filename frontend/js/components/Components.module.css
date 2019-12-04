@@ -10,25 +10,14 @@
     float: right;
     padding-bottom: 2em;
 }
-.boxTitle{
-    font-size: 18px;
-     margin: 15px 0;
-     padding: 12px;
-}
-@media(min-Width:680px){
-    .boxTitle{
-         width: 32%; 
-    }
-}
 .boxContent{
     background: #f8f9fa;
 }
-@media(min-Width:680px){
-    .form {
-        width: 75%;
-        margin: 0 auto;
-    }
-}
 .span{
     padding-left: 7px;
+}
+
+.form{
+    width: 70%;
+    margin: 0 auto
 }

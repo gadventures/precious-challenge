@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styles from './Components.module.css'
-class ToggleBox extends React.Component {
+class ToggleForm extends Component {
 
 	constructor() {
 		super();
@@ -27,7 +27,14 @@ class ToggleBox extends React.Component {
 
 		return (
 			<div className="box"  style={{textAlign: 'center'}}>
-				<div className={`${styles.boxTitle} fa fa-angle-double-down btn btn-primary`} onClick={this.toggleBox}>
+				<div 
+				className={opened ? 'fa fa-angle-double-up btn btn-primary': "fa fa-angle-double-down btn btn-primary"} 
+				style={{minWidth: "32%", 
+					padding: "12px", 
+					fontSize: "18px", 
+					margin: "15px 0"
+				}} 
+				onClick={this.toggleBox}>
 					  <span className={styles.span}>{title}</span>
 				</div>
 				{opened && (					
@@ -40,4 +47,4 @@ class ToggleBox extends React.Component {
 	}
 }
 
-export default ToggleBox;
+export default ToggleForm;
