@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import { NavLink } from 'react-router-dom'
 import TripPreview from '../components/TripPreview';
 import AddHotel from '../components/AddHotel';
 import AddAccomodation from '../components/AddAccomodation';
 import AddTransportation from '../components/AddTransportation';
-
+import ToggleBox from '../components/ToggleBox';
+import styles from './details.module.css'
 class Details extends Component {
   constructor() {
     super();
@@ -41,12 +41,18 @@ class Details extends Component {
     }
 
     return (
-      <Fragment>
+      <div className={styles.wrapper}>
         <TripPreview trip={trip} i={trip.id} />
-        <AddHotel trip={trip}/>
-        <AddAccomodation trip={trip} />
-        <AddTransportation trip={trip} />
-      </Fragment>
+        <ToggleBox title="Add Hotel Service">
+				   <AddHotel trip={trip}/>
+			</ToggleBox>
+      <ToggleBox title="Add Accomodation Service">
+				   <AddAccomodation trip={trip}/>
+			</ToggleBox>
+      <ToggleBox title="Add transportation Service">
+				   <AddTransportation trip={trip}/>
+			</ToggleBox>
+      </div>
     );
   }
 }

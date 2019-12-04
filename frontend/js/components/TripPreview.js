@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 const TripPreview = ({ trip, i }) => {
 
     return (
-        <div key={i} className=".col-md-4">
-            <div className="container" style={{ maxWidth: '600px' }}>
+        <div key={i} className=".col-md-4 wrapper">
+            <div className="wrapper">
                 <NavLink className="trip-entry" to={"/trip/" + trip.id + '/'}>
                     {/* Show the trip's featured image in case there is one */}
                     {trip.imageUrl &&

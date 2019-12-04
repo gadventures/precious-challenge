@@ -3,7 +3,6 @@ import { Switch, Route} from 'react-router-dom';
 import Trip from './trip';
 import Details from './details';
 import { withRouter } from 'react-router-dom';
-
 const Pages = (props) => {
   const {trips} =props;
   /* I am adding routing so the user can easily switch between different views*/

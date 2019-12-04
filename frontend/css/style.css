@@ -1,6 +1,5 @@
-
+/* Landing page */
 .trip-entry {
-
     display: block;
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
@@ -43,5 +42,9 @@
     text-align: center;
     -webkit-transition: all .4s;
     transition: all .4s;
+}
 
+.wrapper{
+    max-width: 600px;
+    margin: 0 auto;
 }
