@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-import {
-  Modal,
-  Button,
-  Row,
-  Col,
-  ListGroup,
-  Form
-} from 'react-bootstrap';
-
+import { Modal, Button, Row, Col, ListGroup, Form } from 'react-bootstrap';
 
 export default class ServicesModal extends Component {
   constructor(props) {
@@ -20,52 +12,87 @@ export default class ServicesModal extends Component {
       allServices: [],
       // Empty arrays for all service types
       serviceTypes: [],
-      selectedService: {}
+      // Empty object for selection of existing services to add to trip
+      selectedService: {},
+      // Empty object for creating a new service
+      newService: {}
     };
-    this.handleChange = this.handleChange.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
     this.onAddService = this.onAddService.bind(this);
     this.addService = this.addService.bind(this);
   }
 
-  // Called when the "create new service" form is interacted with (name, destination. location, type or cost changes)
-  handleChange(e) {
+  /**
+   * Called when the "create new service" form is interacted with (name, destination. location, type or cost changes)
+   * @param e - the HTML Element where the change occurs
+   */
+  onInputChange(e) {
+    // Reformat type to include only the id for easier handling
     var value = e.target.value;
     if (e.target.name === 'type' && e.target.value.id) {
       value = value.id;
     }
+    // Clear selected service to avoid mistakes
     this.setState({
-      selectedService: { ...this.state.selectedService, [e.target.name]: value }
+      selectedService: {},
+      newService: { ...this.state.newService, [e.target.name]: value }
     });
+    console.log(this.state.selectedService);
+    console.log(this.state.newService);
   }
 
-  // Select existing service to add it to trip (that has not bee assigned to the trip yet)
-  // Would be nice to be able to add multiple services at once
+  /**
+   * Select existing service to add it to trip (that has not bee assigned to the trip yet)
+   * @param service - the selected service
+   * @todo Add ability to select multiple services and add them at once
+   */
   selectService(service) {
+    // Reformat type to include only the id for easier handling
     if (service.type.id) {
       service.type = service.type.id;
     }
+    // Clear data for new service to avoid mistakes
     this.setState({
-      selectedService: service
+      selectedService: service,
+      newService: {}
     });
+    console.log(service);
   }
 
-  // Called when the "add" button is clicked in the services modal
+  /**
+   * Called when the "Add" button is clicked in the services modal
+   * Used to abstract logic to distinguish between creating a new service and using an existing one
+   */
   onAddService() {
     // Add service only if all fields are present, otherwise alert for simplicity
     if (
+      this.state.newService.name &&
+      this.state.newService.location &&
+      this.state.newService.type &&
+      this.state.newService.cost
+    ) {
+      console.log('Creating new service!');
+      this.addService(this.state.newService);
+    } else if (
       this.state.selectedService.name &&
       this.state.selectedService.location &&
       this.state.selectedService.type &&
-      this.state.selectedService.cost
+      this.state.selectedService.cost &&
+      this.state.selectedService.id
     ) {
+      console.log('Adding existing service!');
       this.addService(this.state.selectedService);
     } else {
-      alert('Please enter all fields to add service!');
+      alert('Please check your input or select an existing service!');
     }
   }
 
-  // Add selected or created service to trip
+  /**
+   * Add service to trip in backend
+   * @param service the service to associate to the trip
+   */
   addService(service) {
+    // Initialize form
     let formData = new FormData();
 
     // Add CSRF to form from cookie
@@ -76,11 +103,12 @@ export default class ServicesModal extends Component {
     for (let key in service) {
       formData.set(key, service[key]);
     }
+    console.log('Adding new service + ', service);
 
-    // Call method to add service to trip
-    // If the service does not exist, it is created and added
+    // Associate service to trip in backend
+    // If the service does not exist, it is created, handled by the backend
     $.ajax({
-      url: '/api/trips/' + this.props.trip.id + '/add_service/',
+      url: '/api/trips/' + this.props.trip.id + '/services/add/',
       data: formData,
       processData: false,
       contentType: false,
@@ -91,14 +119,19 @@ export default class ServicesModal extends Component {
       success: () => {
         // Refresh trip list and close modal
         this.props.getTrips();
-        this.props.handleClose();
+        this.getServices();
+        this.getServiceTypes();
+        this.props.closeModal();
       },
       error: error => {
         console.log('There was an error adding the service - ', error);
       }
     });
   }
-  // Call /api/service-types/ which returns all the available service types (in this case Hotel, Accommodation and Transportation) in JSON format
+
+  /**
+   * Call /api/service-types/ which returns all the available service types (in this case Hotel, Accommodation and Transportation) in JSON format
+   */
   getServiceTypes() {
     $.getJSON({
       url: '/api/service-types'
@@ -110,12 +143,16 @@ export default class ServicesModal extends Component {
         console.log('Oops - ', error);
       });
   }
-  // Call /api/services/ which returns all the available services in JSON format
+
+  /**
+   * Call /api/services/ which returns all the available services in JSON format
+   */
   getServices() {
     $.getJSON({
       url: '/api/services'
     })
       .then(services => {
+        console.log(services);
         this.setState({ allServices: services });
       })
       .catch(error => {
@@ -158,7 +195,7 @@ export default class ServicesModal extends Component {
                   <Form.Label>Name</Form.Label>
                   <Form.Control
                     name='name'
-                    onChange={e => this.handleChange(e)}
+                    onChange={e => this.onInputChange(e)}
                     type='text'
                     placeholder='A nice name for the service'
                   />
@@ -168,7 +205,7 @@ export default class ServicesModal extends Component {
                 <Form.Group controlId='serviceLocation'>
                   <Form.Label>Location</Form.Label>
                   <Form.Control
-                    onChange={e => this.handleChange(e)}
+                    onChange={e => this.onInputChange(e)}
                     name='location'
                     type='text'
                     placeholder='Where?'
@@ -184,7 +221,7 @@ export default class ServicesModal extends Component {
                     placeholder='Select type of service'
                     name='type'
                     as='select'
-                    onChange={e => this.handleChange(e)}
+                    onChange={e => this.onInputChange(e)}
                   >
                     {' '}
                     <option>Select service type</option>
@@ -198,12 +235,12 @@ export default class ServicesModal extends Component {
               </Col>
               <Col>
                 <Form.Group
-                  onChange={e => this.handleChange(e)}
+                  onChange={e => this.onInputChange(e)}
                   controlId='serviceCost'
                 >
                   <Form.Label>Cost</Form.Label>
                   <Form.Control
-                    onChange={e => this.handleChange(e)}
+                    onChange={e => this.onInputChange(e)}
                     name='cost'
                     type='number'
                     placeholder='How much does it cost?'
@@ -213,49 +250,39 @@ export default class ServicesModal extends Component {
             </Row>
           </Form>
           {/* ------- SELECT SERVICE FROM EXISTING SERVICES LIST ------- */}
-          {!this.props.trip.services.length === this.state.allServices.length ||
-          this.props.trip.services.length < 1 ? (
+          {!(
+            this.props.trip.services.length === this.state.allServices.length
+          ) ? (
             <Row>
+              <Col xs='12'>
+                <h5 className='padding margin text-center'>Select a service</h5>
+              </Col>
+
               <Col>
-                <h5 className='padding margin text-center'>
-                  Select an existing service
-                </h5>
+                <ListGroup>
+                  {/* Hide services that have already been added to the trip from selection */}
+                  {this.state.allServices.map((service, i) =>
+                    !this.props.trip.services.find(s => s.id === service.id) ? (
+                      <ListGroup.Item
+                        active={this.state.selectedService === service}
+                        onClick={() => this.selectService(service)}
+                        key={i}
+                      >
+                        {service.name}
+                      </ListGroup.Item>
+                    ) : (
+                      ''
+                    )
+                  )}
+                </ListGroup>
               </Col>
             </Row>
           ) : (
-            <Row>
-              <Col>
-                <h6 className='padding margin text-center'>
-                  All available services have been already added to this trip
-                </h6>
-              </Col>
-            </Row>
+            ''
           )}
-          <Row>
-            <Col>
-              <ListGroup>
-                {/* Hide services that have already been added to the trip from selection */}
-                {this.state.allServices.map((service, i) =>
-                  !this.props.trip.services.find(
-                    s => s.name === service.name
-                  ) ? (
-                    <ListGroup.Item
-                      active={this.state.selectedService === service}
-                      onClick={() => this.selectService(service)}
-                      key={i}
-                    >
-                      {service.name}
-                    </ListGroup.Item>
-                  ) : (
-                    ''
-                  )
-                )}
-              </ListGroup>
-            </Col>
-          </Row>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={this.props.handleClose}>
+          <Button variant='secondary' onClick={this.props.closeModal}>
             Cancel
           </Button>
           <Button variant='primary' onClick={this.onAddService}>

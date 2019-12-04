@@ -20,7 +20,6 @@ class Service(models.Model):
     
     name = models.CharField(
         max_length=300,
-        unique=True,
         help_text="The name of the service",
     )
     location = models.CharField(
