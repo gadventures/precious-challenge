@@ -15,96 +15,112 @@ export default class Trip extends Component {
       form: {}
     };
 
-    this.handleClose = () => this.setState({ showDialog: false });
-    this.handleShow = () => this.setState({ showDialog: true });
     this.handleChange = this.handleChange.bind(this);
     this.addService = this.addService.bind(this);
+
+    // Close services modal
+    this.handleClose = () => this.setState({ showDialog: false });
+
+    // Show services modal
+    this.handleShow = () => this.setState({ showDialog: true });
+   
   }
 
+  // Called when the new service form is interacted with (name, destination. location, type or cost changes)
   handleChange(e) {
-    // e.preventDefault();
-    // e.stopPropagation();
-
-    // if (e.target.name !== 'type') {
+    var value = e.target.value;
+    if (e.target.name === 'type' && e.target.value.id) {
+      value = value.id;
+    }
     this.setState({
-      form: { ...this.state.form, [e.target.name]: e.target.value }
+      selectedService: {},
+      form: { ...this.state.form, [e.target.name]: value }
     });
-    // } else {
-    //   const temp = e.target.value.split(',');
-    //   const type = {
-    //     id: temp[0],
-    //     name: temp[1]
-    //   };
-    //   this.setState({
-    //     form: { ...this.state.form, type: type }
-    //   });
-    // }
   }
 
+  // Select existing service to add it to trip (that has not bee assigned to the trip yet)
+  // Would be nice to be able to add multiple services at once
   selectService(service) {
-    console.log('Selected service: ' + service.name);
-    const temp = service.type.id;
-    service.type = temp;
+    if (service.type.id) {
+      service.type = service.type.id;
+    }
     this.setState({
       selectedService: service,
       form: service
     });
-
-    console.log(this.state.form);
   }
 
+
+  // Add selected or created service to trip
   addService() {
+    // Add service only if all fields are present, otherwise alert for simplicity
     if (
       this.state.form.name &&
       this.state.form.location &&
       this.state.form.type &&
       this.state.form.cost
     ) {
+      
       let formData = new FormData();
 
+      // Add CSRF to allow authentification
       const csrftoken = document.cookie.split(';')[0].split('csrftoken=')[1];
-
       formData.set('csrftoken', csrftoken);
 
-      if (this.state.allServices.find(s => s.id === this.state.form.id)) {
-        for (let key in this.props.trip) {
-          console.log(key);
-          if (key !== 'services' && key !== 'total_cost') {
-            formData.set(key, this.props.trip[key]);
-          } else if (key !== 'total_cost') {
-            console.log(this.props.trip[key]);
-            var trip_services = [];
-            this.props.trip.services.map(s => {
-              console.log(s.id);
-              trip_services.push(s.id);
-            });
-            trip_services.push(this.state.form.id);
-            formData.set('services', trip_services);
-          }
-        }
+      // Add all fields to form (name, location, type(id), cost)
+      for (let key in this.state.form) {
+        formData.set(key, this.state.form[key]);
       }
 
-      console.log(formData);
+      // Call method to add service to trip
+      // If the service does not exist, it is created and added
       $.ajax({
-        url: '/api/trips/' + this.props.trip.id + '/',
+        url: '/api/trips/' + this.props.trip.id + '/add_service/',
         data: formData,
         processData: false,
+        contentType: false,
         headers: {
           Authorization: 'Token ' + csrftoken
         },
         beforeSend: function(xhr, settings) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken);
         },
-        type: 'put',
-        contentType: 'application/json; charset=utf-8',
+        type: 'post',
         success: () => {
-          window.location.reload();
+          location.reload()
         },
         error: error => {
           console.log('Oops - ', error);
         }
       });
+    } else {
+      alert("Please enter all fields to add service!")
     }
+  }
+
+  // Call /api/service-types/ which returns all the available service types (in this case Hotel, Accommodation and Transportation) in JSON format
+  getServiceTypes() {
+    $.getJSON({
+      url: '/api/service-types'
+    })
+      .then(types => {
+        this.setState({ serviceTypes: types });
+      })
+      .catch(error => {
+        console.log('Oops - ', error);
+      });
+  }
+  // Call /api/services/ which returns all the available services in JSON format
+  getServices() {
+    $.getJSON({
+      url: '/api/services'
+    })
+      .then(services => {
+        this.setState({ allServices: services });
+      })
+      .catch(error => {
+        console.log('Oops - ', error);
+      });
   }
 
   componentDidMount() {
@@ -116,7 +132,7 @@ export default class Trip extends Component {
     return (
       <div className='jumbotron'>
         <h5 className='card-title text-center'>
-          {this.props.trip.travel_style} <br></br>{' '}
+          {this.props.trip.travel_style} <br></br>
           <strong>{this.props.trip.title}</strong>
         </h5>
         <ul className='list-group'>
@@ -163,25 +179,43 @@ export default class Trip extends Component {
           </div>
         </div>
 
-        <Modal show={this.state.showDialog} onHide={this.handleClose}>
+        <Modal size="lg" show={this.state.showDialog} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Add a service to the trip</Modal.Title>
+            <Modal.Title>
+              <strong>{this.props.trip.title}</strong> <br></br>Add a service to
+              the trip{' '}
+            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Row>
-              <Col>
-                <h5 className='padding margin text-center'>
-                  Select and existing service
-                </h5>
-              </Col>
-            </Row>
+            {// Basic logic to hide title when all services have already been added to the trip
+            !this.props.trip.services.length ===
+            this.state.allServices.length ? (
+              <Row>
+                <Col>
+                  <h5 className='padding margin text-center'>
+                    Select and existing service
+                  </h5>
+                </Col>
+              </Row>
+            ) : (
+              <Row>
+                <Col>
+                  <h6 className='padding margin text-center'>
+                    All available services have been already added to this trip
+                  </h6>
+                </Col>
+              </Row>
+            )}
             <Row>
               <Col>
                 <ListGroup>
+                  {/* Hide services that have already been added to the trip from selection */}
                   {this.state.allServices.map((service, i) =>
-                    !this.props.trip.services.find(s => s.id === service.id) ? (
+                    !this.props.trip.services.find(
+                      s => s.name === service.name
+                    ) ? (
                       <ListGroup.Item
-                        active={this.state.selectedService.id === service.id}
+                        active={this.state.selectedService === service}
                         onClick={() => this.selectService(service)}
                         key={i}
                       >
@@ -197,7 +231,7 @@ export default class Trip extends Component {
             <Row>
               <Col>
                 <h5 className='padding margin text-center'>
-                  Or create a new service
+                  Create a new service
                 </h5>
               </Col>
             </Row>
@@ -210,7 +244,7 @@ export default class Trip extends Component {
                       name='name'
                       onChange={e => this.handleChange(e)}
                       type='text'
-                      placeholder='What?'
+                      placeholder='A nice name for the service'
                     />
                   </Form.Group>
                 </Col>
@@ -231,10 +265,11 @@ export default class Trip extends Component {
                   <Form.Group controlId='exampleForm.ControlSelect1'>
                     <Form.Label>Type</Form.Label>
                     <Form.Control
+                    placeholder="Select type of service"
                       name='type'
                       as='select'
                       onChange={e => this.handleChange(e)}
-                    >
+                    > <option>Select service type</option>
                       {this.state.serviceTypes.map((type, i) => (
                         <option key={i} value={type.id}>
                           {type.name}
@@ -253,7 +288,7 @@ export default class Trip extends Component {
                       onChange={e => this.handleChange(e)}
                       name='cost'
                       type='number'
-                      placeholder='How much?'
+                      placeholder='How much does it cost?'
                     />
                   </Form.Group>
                 </Col>
@@ -271,28 +306,5 @@ export default class Trip extends Component {
         </Modal>
       </div>
     );
-  }
-  getServiceTypes() {
-    $.getJSON({
-      url: '/api/service-types'
-    })
-      .then(types => {
-        this.setState({ serviceTypes: types });
-      })
-      .catch(error => {
-        console.log('Oops - ', error);
-      });
-  }
-
-  getServices() {
-    $.getJSON({
-      url: '/api/services'
-    })
-      .then(services => {
-        this.setState({ allServices: services });
-      })
-      .catch(error => {
-        console.log('Oops - ', error);
-      });
   }
 }
