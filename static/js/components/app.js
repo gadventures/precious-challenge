@@ -25,7 +25,7 @@ export default class App extends Component {
         <div className='row'>
           {this.state.trips.map((trip, i) => (
             <div key={i} className='col-12'>
-              <Trip trip={this.state.trips[i]} />
+              <Trip getTrips={this.getTrips} trip={this.state.trips[i]} />
             </div>
           ))}
         </div>

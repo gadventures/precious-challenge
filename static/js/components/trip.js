@@ -2,11 +2,11 @@ import $ from 'jquery';
 import React, { Component } from 'react';
 
 import Service from './service';
-import { Modal, Button, Form, Row, Col, ListGroup } from 'react-bootstrap';
+import { Modal, Button, Form, Row, Col, ListGroup, Table } from 'react-bootstrap';
 
 export default class Trip extends Component {
-  constructor(trip) {
-    super(trip);
+  constructor(props) {
+    super(props);
     this.state = {
       allServices: [],
       serviceTypes: [],
@@ -17,6 +17,7 @@ export default class Trip extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.addService = this.addService.bind(this);
+    this.removeService = this.removeService.bind(this);
 
     // Close services modal
     this.handleClose = () => this.setState({ showDialog: false });
@@ -63,7 +64,7 @@ export default class Trip extends Component {
       
       let formData = new FormData();
 
-      // Add CSRF to allow authentification
+      // Add CSRF to form from cookie
       const csrftoken = document.cookie.split(';')[0].split('csrftoken=')[1];
       formData.set('csrftoken', csrftoken);
 
@@ -79,23 +80,51 @@ export default class Trip extends Component {
         data: formData,
         processData: false,
         contentType: false,
-        headers: {
-          Authorization: 'Token ' + csrftoken
-        },
         beforeSend: function(xhr, settings) {
           xhr.setRequestHeader('X-CSRFToken', csrftoken);
         },
         type: 'post',
         success: () => {
-          location.reload()
+          // Refresh trip list and close modal
+          this.props.getTrips();
+          this.handleClose();
         },
         error: error => {
-          console.log('Oops - ', error);
+          console.log('There was an error adding the service - ', error);
         }
       });
     } else {
       alert("Please enter all fields to add service!")
     }
+  }
+
+  // Remove selected service from trip
+  removeService(id) {
+    let formData = new FormData()
+
+    // Add CSRF to form from cookie
+    const csrftoken = document.cookie.split(';')[0].split('csrftoken=')[1];
+    formData.set('csrftoken', csrftoken);
+    formData.set('id', id);
+
+    // Call method to remove service from trip
+    $.ajax({
+      url: '/api/trips/' + this.props.trip.id + '/remove_service/',
+      data: formData,
+      processData: false,
+      contentType: false,
+      beforeSend: function(xhr, settings) {
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+      },
+      type: 'post',
+      success: () => {
+        // Refresh trip list
+        this.props.getTrips();
+      },
+      error: error => {
+        console.log('There was an error removing the service - ', error);
+      }
+    });
   }
 
   // Call /api/service-types/ which returns all the available service types (in this case Hotel, Accommodation and Transportation) in JSON format
@@ -154,21 +183,22 @@ export default class Trip extends Component {
           <div className='card-body'>
             <h6 className='card-title text-center'>Services</h6>
             {this.props.trip.services.length > 0 ? (
-              <table className='table table-bordered'>
-                <thead>
+              <Table striped bordered hover>
+               <thead>
                   <tr>
                     <th>Name</th>
                     <th>Location</th>
                     <th>Type</th>
                     <th>Cost</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
                   {this.props.trip.services.map((service, i) => (
-                    <Service key={i} service={service} />
+                    <Service key={i} removeService={this.removeService} service={service} />
                   ))}
                 </tbody>
-              </table>
+            </Table>           
             ) : (
               <div className='alert'>No services added yet</div>
             )}
@@ -187,48 +217,9 @@ export default class Trip extends Component {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {// Basic logic to hide title when all services have already been added to the trip
-            !this.props.trip.services.length ===
-            this.state.allServices.length ? (
-              <Row>
-                <Col>
-                  <h5 className='padding margin text-center'>
-                    Select and existing service
-                  </h5>
-                </Col>
-              </Row>
-            ) : (
-              <Row>
-                <Col>
-                  <h6 className='padding margin text-center'>
-                    All available services have been already added to this trip
-                  </h6>
-                </Col>
-              </Row>
-            )}
-            <Row>
-              <Col>
-                <ListGroup>
-                  {/* Hide services that have already been added to the trip from selection */}
-                  {this.state.allServices.map((service, i) =>
-                    !this.props.trip.services.find(
-                      s => s.name === service.name
-                    ) ? (
-                      <ListGroup.Item
-                        active={this.state.selectedService === service}
-                        onClick={() => this.selectService(service)}
-                        key={i}
-                      >
-                        {service.name}
-                      </ListGroup.Item>
-                    ) : (
-                      ''
-                    )
-                  )}
-                </ListGroup>
-              </Col>
-            </Row>
-            <Row>
+            {/* ------ CREATE NEW SERVICE ------*/}
+
+          <Row>
               <Col>
                 <h5 className='padding margin text-center'>
                   Create a new service
@@ -294,6 +285,49 @@ export default class Trip extends Component {
                 </Col>
               </Row>
             </Form>
+            {/* ------ EXISTING SERVICES LIST ------*/}
+            {
+            !this.props.trip.services.length ===
+            this.state.allServices.length ? (
+              <Row>
+                <Col>
+                  <h5 className='padding margin text-center'>
+                    Select and existing service
+                  </h5>
+                </Col>
+              </Row>
+            ) : (
+              <Row>
+                <Col>
+                  <h6 className='padding margin text-center'>
+                    All available services have been already added to this trip
+                  </h6>
+                </Col>
+              </Row>
+            )}
+            <Row>
+              <Col>
+                <ListGroup>
+                  {/* Hide services that have already been added to the trip from selection */}
+                  {this.state.allServices.map((service, i) =>
+                    !this.props.trip.services.find(
+                      s => s.name === service.name
+                    ) ? (
+                      <ListGroup.Item
+                        active={this.state.selectedService === service}
+                        onClick={() => this.selectService(service)}
+                        key={i}
+                      >
+                        {service.name}
+                      </ListGroup.Item>
+                    ) : (
+                      ''
+                    )
+                  )}
+                </ListGroup>
+              </Col>
+            </Row>
+            
           </Modal.Body>
           <Modal.Footer>
             <Button variant='secondary' onClick={this.handleClose}>

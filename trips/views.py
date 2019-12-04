@@ -15,7 +15,22 @@ class TripsViewSet(viewsets.ModelViewSet):
     """
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
-    
+    @action(detail=True, methods=['post'])
+    def remove_service(self, request, pk=None):
+        """
+        A method to remove services from trip
+        """
+        if (request.method == 'POST'):
+            service_id = request.POST.get('id')
+            trip = Trip.objects.get(id=pk)
+            try:
+                service = Service.objects.get(id=service_id)
+                with transaction.atomic():
+                    trip.services.remove(service)
+            except:
+                pass
+            return Response(status=status.HTTP_200_OK)
+        
     @action(detail=True, methods=['post'])
     def add_service(self,request, pk=None):
         """
@@ -42,17 +57,6 @@ class TripsViewSet(viewsets.ModelViewSet):
                     new_service.save()
                     trip.services.add(new_service)
             return Response(status=status.HTTP_201_CREATED)
-    
-    @action(detail=True, methods=['get'], name='Trip services', description="View services associated to trip")
-    def services(self, request, pk=None):
-        """
-        A list of the trip's services
-        """
-        trip = get_object_or_404(self.queryset, id=pk)
-        services = trip.services.all()
-        serializer = ServiceSerializer(services, many=True)
-        return Response(serializer.data)
-
 
 class ServicesViewSet(viewsets.ModelViewSet):
     """
