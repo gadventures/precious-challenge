@@ -37,7 +37,7 @@ class AddHotel extends React.Component {
     render() {
         const {trip} = this.props;
         return (
-            <div className="container" style={{ maxWidth: '600px' }}>
+            <div className="container" style={{ maxWidth: '600px', margin: '20px 0' }}>
                 <h4 className={`${styles.heading} "text-center"`}>Add Hotel to the {trip.title} Trip</h4>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <div className="form-group ">
@@ -80,7 +80,7 @@ class AddHotel extends React.Component {
                         <button className="btn btn-primary js-tooltip" type="submit">POST</button>
                     </div>
                 </form>
-            </div>
+        </div>
         )
     }
 }

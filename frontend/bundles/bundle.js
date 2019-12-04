@@ -175,7 +175,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         style: {
-          maxWidth: '600px'
+          maxWidth: '600px',
+          margin: '20px 0'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "".concat(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
@@ -344,7 +345,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         style: {
-          maxWidth: '600px'
+          maxWidth: '600px',
+          margin: '20px 0'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "".concat(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
@@ -513,7 +515,8 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "container",
         style: {
-          maxWidth: '600px'
+          maxWidth: '600px',
+          margin: '20px 0'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "".concat(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
@@ -665,13 +668,20 @@ function (_React$Component) {
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "box",
         style: {
-          textAlign: 'center',
-          padding: '15px 0'
+          textAlign: 'center'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "boxTitle btn btn-primary",
+        style: {
+          fontSize: '18px',
+          width: '35%',
+          margin: '15px 0'
+        },
         onClick: this.toggleBox
       }, title), opened && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        style: {
+          background: 'lightgray'
+        },
         className: "boxContent"
       }, children));
     }
@@ -1145,7 +1155,7 @@ function (_Component) {
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddAccomodation__WEBPACK_IMPORTED_MODULE_3__["default"], {
         trip: trip
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        title: "Add transportation"
+        title: "Add Transportation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddTransportation__WEBPACK_IMPORTED_MODULE_4__["default"], {
         trip: trip
       })));
@@ -1346,10 +1356,11 @@ module.exports = _inheritsLoose;
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "._3UNor3V8OiLPzJ5-NpXU02{\r\n    color: #337ab7;\r\n}", ""]);
+exports.push([module.i, "._3UNor3V8OiLPzJ5-NpXU02{\r\n    color: #337ab7;\r\n}\r\n\r\n._163TonuicOI69SXcR4or2I{\r\n    border: 1px solid #ddd;\r\n}", ""]);
 // Exports
 exports.locals = {
-	"heading": "_3UNor3V8OiLPzJ5-NpXU02"
+	"heading": "_3UNor3V8OiLPzJ5-NpXU02",
+	"service": "_163TonuicOI69SXcR4or2I"
 };
 
 /***/ }),

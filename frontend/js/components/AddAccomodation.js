@@ -36,7 +36,7 @@ class AddAccomodation extends React.Component {
     render() {
         const {trip} = this.props;
         return (
-            <div className="container" style={{ maxWidth: '600px' }}>
+            <div className="container" style={{ maxWidth: '600px', margin: '20px 0' }}>
                 <h4 className={`${styles.heading} "text-center"`}>Add Accomodation to the {trip.title} Trip</h4>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <div className="form-group ">

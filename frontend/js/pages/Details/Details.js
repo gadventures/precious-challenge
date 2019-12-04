@@ -49,7 +49,7 @@ class Details extends Component {
       <ToggleBox title="Add Accomodation">
 				   <AddAccomodation trip={trip}/>
 			</ToggleBox>
-      <ToggleBox title="Add transportation">
+      <ToggleBox title="Add Transportation">
 				   <AddTransportation trip={trip}/>
 			</ToggleBox>
       </div>

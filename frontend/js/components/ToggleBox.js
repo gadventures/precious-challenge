@@ -26,12 +26,12 @@ class ToggleBox extends React.Component {
         }
 
 		return (
-			<div className="box" style={{textAlign: 'center', padding: '15px 0'}}>
-				<div className="boxTitle btn btn-primary" onClick={this.toggleBox}>
+			<div className="box" style={{textAlign: 'center'}}>
+				<div className="boxTitle btn btn-primary" style={{fontSize: '18px', width: '35%', margin: '15px 0'}} onClick={this.toggleBox}>
 					{title}
 				</div>
 				{opened && (					
-					<div className="boxContent">
+					<div style={{background: 'lightgray'}} className="boxContent">
 						{children}
 					</div>
 				)}
