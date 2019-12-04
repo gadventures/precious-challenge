@@ -34,39 +34,56 @@ class Trip(models.Model):
 
 class Hotel(models.Model):
     # Relate the hotel service to its Trip
-    trip = models.ForeignKey(Trip, related_name='hotels', on_delete=models.CASCADE, blank=True, null=True)
+    trip = models.ForeignKey(Trip, related_name='hotels', 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True, 
+        help_text="Add the service to its corresponding trip"
+    )
     name = models.CharField(max_length=100)
-    typeOfService = models.TextField(
+    typeOfService = models.CharField(
         max_length=64,
-        help_text="The name of the service, e.g. hotel, accomodation or transportation")
+        help_text="The name of the service, e.g. hotel, accomodation or transportation",
+        default ="hotel")
     location = models.CharField(
         max_length=100)
-    cost = models.IntegerField(help_text="Total cost of the trip")
+    cost = models.IntegerField(help_text="Cost of the service")
 
     def __str__(self):
         return '%s' % (self.name)
 
 class Accomodation(models.Model):
     # Relate the service to its Trip
-    trip = models.ForeignKey(Trip, related_name='accomodations', on_delete=models.CASCADE, blank=True, null=True)
+    trip = models.ForeignKey(Trip, related_name='accomodations', 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True,
+        help_text="Add the service to its corresponding trip"
+    )
     name = models.CharField(max_length=100)
-    typeOfService = models.TextField(
+    typeOfService = models.CharField(
         max_length=64,
         help_text="The name of the service, e.g. hotel, accomodation or transportation",
-        default ="accomodation")
+        default ="accomodation"
+    )
     location = models.CharField(
         max_length=100)
-    cost = models.IntegerField(help_text="Total cost of the trip")
+    cost = models.IntegerField(help_text="Cost of the service")
 
     def __str__(self):
         return '%s' % (self.name)
 
 class Transportation(models.Model):
     # Relate the service to its Trip
-    trip = models.ForeignKey(Trip, related_name='transportations', on_delete=models.CASCADE, blank=True, null=True)
+    trip = models.ForeignKey(Trip, related_name='transportations', 
+        on_delete=models.CASCADE, 
+        blank=True, 
+        null=True, 
+        help_text="Add the service to its corresponding trip"
+    )
     name = models.CharField(max_length=100,
         default ="")
-    typeOfService = models.TextField(
+    typeOfService = models.CharField(
         max_length=64,
         help_text="The name of the service, e.g. hotel, accomodation or transportation",
         default ="transportation"
@@ -75,7 +92,7 @@ class Transportation(models.Model):
         max_length=100,
         default =""
     )
-    cost = models.IntegerField(help_text="Total cost of the trip")
+    cost = models.IntegerField(help_text="Cost of the service")
 
     def __str__(self):
         return '%s' % (self.name)

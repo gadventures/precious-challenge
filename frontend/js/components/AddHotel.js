@@ -47,7 +47,7 @@ class AddHotel extends React.Component {
                             Type Of Service
                         </label>
                         <div className="col-sm-10">
-                            <textarea name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue={""} />
+                            <textarea name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue={"hotel"} />
                             <span className="help-block">The name of the service, e.g. hotel, accomodation or transportation</span>
                         </div>
                     </div>
