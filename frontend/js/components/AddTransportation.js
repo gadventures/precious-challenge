@@ -43,7 +43,7 @@ class AddTransportation extends React.Component {
                             Name
                         </label>
                         <div className="col-sm-10">
-                            <input name="name" onChange={this.handleChange} className="form-control" type="text" />
+                            <input name="name" onChange={this.handleChange} className="form-control" type="text" required />
                             <span className="help-block">The name of the transportation</span>
                         </div>
                     </div>
@@ -52,7 +52,7 @@ class AddTransportation extends React.Component {
                             Type Of Service
                         </label>
                         <div className="col-sm-10">
-                            <input name="typeOfService" onChange={this.handleChange} className="form-control"  defaultValue="transportation" />
+                            <input name="typeOfService" onChange={this.handleChange} className="form-control"  defaultValue="transportation" required />
                             <span className="help-block">The type of the service that you offer</span>
                         </div>
                     </div>
@@ -61,7 +61,7 @@ class AddTransportation extends React.Component {
                             Location
                         </label>
                         <div className="col-sm-10">
-                            <input name="location" onChange={this.handleChange} className="form-control" type="text" />
+                            <input name="location" onChange={this.handleChange} className="form-control" type="text" required />
                             <span className="help-block">The location of the service</span>
                         </div>
                     </div>
@@ -70,7 +70,7 @@ class AddTransportation extends React.Component {
                             Cost
                         </label>
                         <div className="col-sm-10">
-                            <input name="cost" onChange={this.handleChange} className="form-control" type="number" />
+                            <input name="cost" onChange={this.handleChange} className="form-control" type="number" required />
                             <span className="help-block">Cost of the transportation</span>
                         </div>
                     </div>
