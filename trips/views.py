@@ -20,16 +20,18 @@ class TripsViewSet(viewsets.ModelViewSet):
         """
         A method to remove services from trip
         """
-        if (request.method == 'POST'):
-            service_id = request.POST.get('id')
-            trip = Trip.objects.get(id=pk)
-            try:
-                service = Service.objects.get(id=service_id)
-                with transaction.atomic():
-                    trip.services.remove(service)
-            except:
-                pass
+        service_id = request.POST.get('id')
+        trip = Trip.objects.get(id=pk)
+
+
+        try:
+            service = Service.objects.get(id=service_id)
+            with transaction.atomic():
+                trip.services.remove(service)
             return Response(status=status.HTTP_200_OK)
+        except:
+            return Response(status=status.HTTP_304_NOT_MODIFIED)
+            
         
     @action(detail=True, methods=['post'])
     def add_service(self,request, pk=None):
@@ -37,26 +39,36 @@ class TripsViewSet(viewsets.ModelViewSet):
         A method to add services to a trip. 
         If the service is new, it is created and added to the trip
         """
-        if(request.method == 'POST'):
-            service_name = request.POST.get('name')
-            trip = Trip.objects.get(id=pk)
-            try:
-                # If its an existing service, add it to the trip
-                service = Service.objects.get(name=service_name)
-                with transaction.atomic():
-                    trip.services.add(service)
-            except Service.DoesNotExist:
-                # Otherwise create the new service and then add it to the trip
-                print("Service does not exist. Creating..")
-                service_location = request.POST.get('location')
-                service_type = ServiceType.objects.get(id=request.POST.get('type'))
-                service_cost = request.POST.get('cost')
+        # Form data
+        service_name = request.POST.get('name')
+        service_type = ServiceType.objects.get(id=request.POST.get('type')) # Get 
+        service_location = request.POST.get('location')
+        service_cost = request.POST.get('cost')
 
-                new_service = Service(name=service_name, location=service_location, type=service_type, cost=service_cost)
-                with transaction.atomic():
-                    new_service.save()
-                    trip.services.add(new_service)
+        # Current trip
+        trip = Trip.objects.get(id=pk)
+        try:
+            # If its an existing service, add it to the trip
+            service = Service.objects.get(name=service_name)
+
+            with transaction.atomic():
+                trip.services.add(service)
+                
+            return Response(status=status.HTTP_200_OK)
+            
+        except Service.DoesNotExist:
+            # Otherwise create the new service and then add it to the trip
+            new_service = Service(name=service_name, location=service_location, type=service_type, cost=service_cost)
+
+            with transaction.atomic():
+                new_service.save()
+                trip.services.add(new_service)
+
             return Response(status=status.HTTP_201_CREATED)
+        except:
+            return Response(status=status.HTTP_304_NOT_MODIFIED)
+                
+            
 
 class ServicesViewSet(viewsets.ModelViewSet):
     """

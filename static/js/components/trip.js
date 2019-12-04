@@ -16,11 +16,7 @@ export default class Trip extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allServices: [],
-      serviceTypes: [],
       showModal: false,
-      selectedService: {},
-      selectedServices: []
     };
 
     this.removeService = this.removeService.bind(this);
