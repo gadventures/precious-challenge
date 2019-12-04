@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TripPreview from '../components/TripPreview';
 
-const Trip = ({ trips }) => {
+const Trip = ({trips}) => {
     return (
         <div className ="home-wrapper">
         {trips.map((trip) => (

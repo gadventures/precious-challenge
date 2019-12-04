@@ -7,10 +7,7 @@ export const postAccomodation = (data) => {
         .then(rawData => rawData.json())
         .then(
             body => {
-                console.log(body);
-                
                 if (!body.errors) {
-                    
                     window.location.reload();
                 }
                 else {

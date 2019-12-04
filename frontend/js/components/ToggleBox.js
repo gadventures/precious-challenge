@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import styles from './Components.module.css'
 class ToggleBox extends React.Component {
 
 	constructor() {
@@ -26,12 +26,12 @@ class ToggleBox extends React.Component {
         }
 
 		return (
-			<div className="box" style={{textAlign: 'center'}}>
-				<div className="boxTitle btn btn-primary" style={{fontSize: '18px', width: '35%', margin: '15px 0'}} onClick={this.toggleBox}>
-					{title}
+			<div className="box"  style={{textAlign: 'center'}}>
+				<div className={`${styles.boxTitle} fa fa-angle-double-down btn btn-primary`} onClick={this.toggleBox}>
+					  <span className={styles.span}>{title}</span>
 				</div>
 				{opened && (					
-					<div style={{background: '#f8f9fa'}} className="boxContent">
+					<div className={styles.boxContent}>
 						{children}
 					</div>
 				)}

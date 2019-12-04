@@ -5,11 +5,11 @@ const TripPreview = ({ trip, i }) => {
     return (
         <div key={i} className=".col-md-4 wrapper">
             <div className="wrapper">
-                <NavLink className="trip-entry" to={"/trip/" + trip.id + '/'}>
+                <NavLink className="trip-entry" style={{textDecoration: "none"}} to={"/trip/" + trip.id + '/'}>
                     {/* Show the trip's featured image in case there is one */}
                     {trip.imageUrl &&
-                        <img src={trip.imageUrl} style={{ width: '100%' }} alt="pic placeholder" />}
-                    <h4 className="text-center">
+                        <img src={trip.imageUrl} style={{ width: "100%" }} alt="pic placeholder" />}
+                    <h4 className="text-center" style={{margin: "20px"}}>
                         {trip.travel_style} : {trip.title}
                     </h4>
                 </NavLink>

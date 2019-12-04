@@ -1,4 +1,5 @@
 export const postHotel = (data) => {
+    //Post the hotel onbject to the db
     fetch('/api/hotels', {
         method: "POST",
         body: JSON.stringify(data),
@@ -7,11 +8,9 @@ export const postHotel = (data) => {
         .then(rawData => rawData.json())
         .then(
             body => {
-                console.log(body);
-                
+                //Backend form validation                
                 if (!body.errors) {
-                    //window.location.reload();
-                    
+                    window.location.reload();  
                 }
                 else {
                     console.log(body.message)

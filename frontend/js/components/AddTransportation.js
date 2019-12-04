@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import {postTransportation} from '../data/requests/postTransportation'
-import styles from './../pages/App.module.css'
+import { postTransportation } from '../data/requests/postTransportation'
+import styles from './Components.module.css'
 class AddTransportation extends React.Component {
 
     constructor(props) {
@@ -33,51 +33,53 @@ class AddTransportation extends React.Component {
     }
 
     render() {
-        const {trip} = this.props;
+        const { trip } = this.props;
         return (
-            <div className="container" style={{ maxWidth: '600px', margin: '20px 0'}}>
+            <div className={`${styles.wrapper} container`}>
                 <h4 className={`${styles.heading} "text-center"`}>Add Transportation to the {trip.title} Trip</h4>
-                <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Name
+                <div className={styles.form}>
+                    <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Name
                         </label>
-                        <div className="col-sm-10">
-                            <input name="name" onChange={this.handleChange} className="form-control" type="text" required />
-                            <span className="help-block">The name of the transportation</span>
+                            <div className="col-sm-10">
+                                <input name="name" onChange={this.handleChange} className="form-control" type="text" required />
+                                <span className="help-block">The name of the transportation</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Type Of Service
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Type Of Service
                         </label>
-                        <div className="col-sm-10">
-                            <input name="typeOfService" onChange={this.handleChange} className="form-control"  defaultValue="transportation" required />
-                            <span className="help-block">The type of the service that you offer</span>
+                            <div className="col-sm-10">
+                                <input name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue="transportation" required />
+                                <span className="help-block">The type of the service that you offer</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Location
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Location
                         </label>
-                        <div className="col-sm-10">
-                            <input name="location" onChange={this.handleChange} className="form-control" type="text" required />
-                            <span className="help-block">The location of the service</span>
+                            <div className="col-sm-10">
+                                <input name="location" onChange={this.handleChange} className="form-control" type="text" required />
+                                <span className="help-block">The location of the service</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-group ">
-                        <label className="col-sm-2 control-label ">
-                            Cost
+                        <div className="form-group ">
+                            <label className="col-sm-2 control-label ">
+                                Cost
                         </label>
-                        <div className="col-sm-10">
-                            <input name="cost" onChange={this.handleChange} className="form-control" type="number" required />
-                            <span className="help-block">Cost of the transportation</span>
+                            <div className="col-sm-10">
+                                <input name="cost" onChange={this.handleChange} className="form-control" type="number" required />
+                                <span className="help-block">Cost of the transportation</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className="form-actions" style={{ float: 'right', paddingBottom: '2em' }}>
-                        <button className="btn btn-primary js-tooltip" type="submit">POST</button>
-                    </div>
-                </form>
+                        <div className={`${styles.btnActions} "form-actions"`}>
+                            <button className="btn btn-primary js-tooltip" type="submit">POST</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         )
     }

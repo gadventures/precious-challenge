@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import {postAccomodation} from '../data/requests/postAccomodation'
-import styles from './../pages/App.module.css'
+import styles from './Components.module.css'
 class AddAccomodation extends React.Component {
 
     constructor(props) {
@@ -36,9 +36,10 @@ class AddAccomodation extends React.Component {
     render() {
         const {trip} = this.props;
         return (
-            <div className="container" style={{ maxWidth: '600px', margin: '20px 0' }}>
-                <h4 className={`${styles.heading} "text-center"`}>Add Accomodation to the {trip.title} Trip</h4>
+            <div className={`${styles.wrapper} container`}>
+                <h4 className={`${styles.heading} text-center`}>Add Accomodation to the {trip.title} Trip</h4>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
+                    <div className={styles.form}>
                     <div className="form-group ">
                         <label className="col-sm-2 control-label ">
                             Name
@@ -75,9 +76,11 @@ class AddAccomodation extends React.Component {
                             <span className="help-block">Cost of the accomodation</span>
                         </div>
                     </div>
-                    <div className="form-actions" style={{ float: 'right', paddingBottom: '2em' }}>
+                    <div className={`${styles.btnActions} "form-actions"`}>
                         <button className="btn btn-primary js-tooltip" type="submit">POST</button>
                     </div>
+                    </div>
+                    
                 </form>
             </div>
         )
