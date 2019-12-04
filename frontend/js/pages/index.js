@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route} from 'react-router-dom';
-import Trip from './trip';
-import Details from './details';
+import Trip from './home';
+import Details from './Details/details';
 import { withRouter } from 'react-router-dom';
 const Pages = (props) => {
   const {trips} =props;

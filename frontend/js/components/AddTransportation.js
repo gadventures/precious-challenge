@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import {postTransportation} from '../data/requests/postTransportation'
+import styles from './../pages/App.module.css'
 class AddTransportation extends React.Component {
 
     constructor(props) {
@@ -35,7 +36,7 @@ class AddTransportation extends React.Component {
         const {trip} = this.props;
         return (
             <div className="container" style={{ maxWidth: '600px' }}>
-                <h4 className="text-center">Add Transportation to the {trip.title} Trip</h4>
+                <h4 className={`${styles.heading} "text-center"`}>Add Transportation to the {trip.title} Trip</h4>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <div className="form-group ">
                         <label className="col-sm-2 control-label ">

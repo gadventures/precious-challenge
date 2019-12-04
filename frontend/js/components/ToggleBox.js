@@ -26,8 +26,8 @@ class ToggleBox extends React.Component {
         }
 
 		return (
-			<div className="box">
-				<div className="boxTitle" onClick={this.toggleBox}>
+			<div className="box" style={{textAlign: 'center', padding: '15px 0'}}>
+				<div className="boxTitle btn btn-primary" onClick={this.toggleBox}>
 					{title}
 				</div>
 				{opened && (					

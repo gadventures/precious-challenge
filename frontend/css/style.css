@@ -1,15 +1,14 @@
-/* Landing page */
-.trip-entry {
+/* Css for the Landing page */
+.home-wrapper .trip-entry {
     display: block;
     -webkit-transition: .3s all ease;
     -o-transition: .3s all ease;
     transition: .3s all ease;
     margin-bottom: 30px;
     position: relative;
-
 }
 
-.trip-entry::before {
+.home-wrapper .trip-entry::before {
     font-family: FontAwesome;
     content: "\f055";
     color: rgb(97, 219, 251);
@@ -27,24 +26,23 @@
     z-index: -1;
 }
 
-.trip-entry:hover {
+.home-wrapper .trip-entry:hover {
     top: -1px;
 }
 
-.trip-entry:hover::before {
+.home-wrapper .trip-entry:hover::before {
     top: 45%;
     text-align: center;
     z-index: 10;
 }
 
-.trip-entry:hover img {
+.home-wrapper .trip-entry:hover img {
     opacity: .7;
     text-align: center;
     -webkit-transition: all .4s;
     transition: all .4s;
 }
-
-.wrapper{
+.home-wrapper{
     max-width: 600px;
     margin: 0 auto;
 }

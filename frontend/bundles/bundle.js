@@ -99,6 +99,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postAccomodation */ "./frontend/js/data/requests/postAccomodation.js");
+/* harmony import */ var _pages_App_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../pages/App.module.css */ "./frontend/js/pages/App.module.css");
+/* harmony import */ var _pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -118,6 +120,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -175,7 +178,7 @@ function (_React$Component) {
           maxWidth: '600px'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "text-center"
+        className: "".concat(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
       }, "Add Accomodation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
@@ -265,6 +268,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
+/* harmony import */ var _pages_App_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../pages/App.module.css */ "./frontend/js/pages/App.module.css");
+/* harmony import */ var _pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -284,6 +289,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -341,7 +347,7 @@ function (_React$Component) {
           maxWidth: '600px'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "text-center"
+        className: "".concat(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
       }, "Add Hotel to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
@@ -431,6 +437,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _data_requests_postTransportation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postTransportation */ "./frontend/js/data/requests/postTransportation.js");
+/* harmony import */ var _pages_App_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./../pages/App.module.css */ "./frontend/js/pages/App.module.css");
+/* harmony import */ var _pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -450,6 +458,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -507,7 +516,7 @@ function (_React$Component) {
           maxWidth: '600px'
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "text-center"
+        className: "".concat(_pages_App_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
       }, "Add Transportation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
@@ -654,9 +663,13 @@ function (_React$Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "box"
+        className: "box",
+        style: {
+          textAlign: 'center',
+          padding: '15px 0'
+        }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "boxTitle",
+        className: "boxTitle btn btn-primary",
         onClick: this.toggleBox
       }, title), opened && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "boxContent"
@@ -849,20 +862,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _pages_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/app */ "./frontend/js/pages/app.js");
+/* harmony import */ var _pages_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/App */ "./frontend/js/pages/App.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 
 
 
  //Enable routing with BrowserRouter
 
-react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_app__WEBPACK_IMPORTED_MODULE_2__["default"], null)), document.getElementById('container'));
+react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages_App__WEBPACK_IMPORTED_MODULE_2__["default"], null)), document.getElementById('container'));
 
 /***/ }),
 
-/***/ "./frontend/js/pages/app.js":
+/***/ "./frontend/js/pages/App.js":
 /*!**********************************!*\
-  !*** ./frontend/js/pages/app.js ***!
+  !*** ./frontend/js/pages/App.js ***!
   \**********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -872,10 +885,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return App; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _trip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./trip */ "./frontend/js/pages/trip.js");
+/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./home */ "./frontend/js/pages/home.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _pages__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../pages */ "./frontend/js/pages/index.js");
+/* harmony import */ var ___WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! . */ "./frontend/js/pages/index.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -933,7 +946,7 @@ function (_Component) {
         className: "container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
         className: "text-center"
-      }, " Adventure Trips "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_pages__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, " Adventure Trips "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_3__["default"], {
         trips: this.state.trips
       }));
     } // getTrips makes a call to /api/ which returns the trip data in JSON format
@@ -962,10 +975,64 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./frontend/js/pages/details.js":
-/*!**************************************!*\
-  !*** ./frontend/js/pages/details.js ***!
-  \**************************************/
+/***/ "./frontend/js/pages/App.module.css":
+/*!******************************************!*\
+  !*** ./frontend/js/pages/App.module.css ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!./App.module.css */ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/pages/App.module.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+
+/***/ "./frontend/js/pages/Details/Details.module.css":
+/*!******************************************************!*\
+  !*** ./frontend/js/pages/Details/Details.module.css ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader/dist/cjs.js??ref--5-1!./Details.module.css */ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/pages/Details/Details.module.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+
+/***/ "./frontend/js/pages/Details/details.js":
+/*!**********************************************!*\
+  !*** ./frontend/js/pages/Details/details.js ***!
+  \**********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -973,13 +1040,13 @@ function (_Component) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/TripPreview */ "./frontend/js/components/TripPreview.js");
-/* harmony import */ var _components_AddHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/AddHotel */ "./frontend/js/components/AddHotel.js");
-/* harmony import */ var _components_AddAccomodation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/AddAccomodation */ "./frontend/js/components/AddAccomodation.js");
-/* harmony import */ var _components_AddTransportation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/AddTransportation */ "./frontend/js/components/AddTransportation.js");
-/* harmony import */ var _components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/ToggleBox */ "./frontend/js/components/ToggleBox.js");
-/* harmony import */ var _details_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./details.module.css */ "./frontend/js/pages/details.module.css");
-/* harmony import */ var _details_module_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_details_module_css__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var _components_TripPreview__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../components/TripPreview */ "./frontend/js/components/TripPreview.js");
+/* harmony import */ var _components_AddHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/AddHotel */ "./frontend/js/components/AddHotel.js");
+/* harmony import */ var _components_AddAccomodation__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/AddAccomodation */ "./frontend/js/components/AddAccomodation.js");
+/* harmony import */ var _components_AddTransportation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/AddTransportation */ "./frontend/js/components/AddTransportation.js");
+/* harmony import */ var _components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/ToggleBox */ "./frontend/js/components/ToggleBox.js");
+/* harmony import */ var _Details_module_css__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Details.module.css */ "./frontend/js/pages/Details/Details.module.css");
+/* harmony import */ var _Details_module_css__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_Details_module_css__WEBPACK_IMPORTED_MODULE_6__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1065,20 +1132,20 @@ function (_Component) {
       }
 
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _details_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.wrapper
+        className: _Details_module_css__WEBPACK_IMPORTED_MODULE_6___default.a.wrapper
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
         trip: trip,
         i: trip.id
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        title: "Add Hotel Service"
+        title: "Add Hotel"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddHotel__WEBPACK_IMPORTED_MODULE_2__["default"], {
         trip: trip
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        title: "Add Accomodation Service"
+        title: "Add Accomodation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddAccomodation__WEBPACK_IMPORTED_MODULE_3__["default"], {
         trip: trip
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_ToggleBox__WEBPACK_IMPORTED_MODULE_5__["default"], {
-        title: "Add transportation Service"
+        title: "Add transportation"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_AddTransportation__WEBPACK_IMPORTED_MODULE_4__["default"], {
         trip: trip
       })));
@@ -1092,85 +1159,9 @@ function (_Component) {
 
 /***/ }),
 
-/***/ "./frontend/js/pages/details.module.css":
-/*!**********************************************!*\
-  !*** ./frontend/js/pages/details.module.css ***!
-  \**********************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!./details.module.css */ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/pages/details.module.css");
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
-
-/***/ }),
-
-/***/ "./frontend/js/pages/index.js":
-/*!************************************!*\
-  !*** ./frontend/js/pages/index.js ***!
-  \************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _trip__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./trip */ "./frontend/js/pages/trip.js");
-/* harmony import */ var _details__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./details */ "./frontend/js/pages/details.js");
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
-
-
-
-
-
-
-
-var Pages = function Pages(props) {
-  var trips = props.trips;
-  /* I am adding routing so the user can easily switch between different views*/
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    exact: true,
-    path: "/",
-    render: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_trip__WEBPACK_IMPORTED_MODULE_2__["default"], {
-        trips: trips
-      });
-    }
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
-    path: "/trip/:id",
-    render: function render(props) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_details__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
-        trips: trips
-      }, props));
-    }
-  }));
-}; // WithRouter enables the Routing. Without it the Details component will not be rendered
-
-
-/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Pages));
-
-/***/ }),
-
-/***/ "./frontend/js/pages/trip.js":
+/***/ "./frontend/js/pages/home.js":
 /*!***********************************!*\
-  !*** ./frontend/js/pages/trip.js ***!
+  !*** ./frontend/js/pages/home.js ***!
   \***********************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -1189,7 +1180,7 @@ __webpack_require__.r(__webpack_exports__);
 var Trip = function Trip(_ref) {
   var trips = _ref.trips;
   return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement("div", {
-    className: "home"
+    className: "home-wrapper"
   }, trips.map(function (trip) {
     return react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_2__["default"], {
       trip: trip,
@@ -1202,6 +1193,55 @@ Trip.propTypes = {
   trip: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.object.isRequired
 };
 /* harmony default export */ __webpack_exports__["default"] = (Trip);
+
+/***/ }),
+
+/***/ "./frontend/js/pages/index.js":
+/*!************************************!*\
+  !*** ./frontend/js/pages/index.js ***!
+  \************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./home */ "./frontend/js/pages/home.js");
+/* harmony import */ var _Details_details__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Details/details */ "./frontend/js/pages/Details/details.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+
+
+
+
+var Pages = function Pages(props) {
+  var trips = props.trips;
+  /* I am adding routing so the user can easily switch between different views*/
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/",
+    render: function render() {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_home__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        trips: trips
+      });
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/trip/:id",
+    render: function render(props) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Details_details__WEBPACK_IMPORTED_MODULE_3__["default"], _extends({
+        trips: trips
+      }, props));
+    }
+  }));
+}; // WithRouter enables the Routing. Without it the Details component will not be rendered
+
+
+/* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(Pages));
 
 /***/ }),
 
@@ -1297,19 +1337,37 @@ module.exports = _inheritsLoose;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/pages/details.module.css":
-/*!**********************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./frontend/js/pages/details.module.css ***!
-  \**********************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/pages/App.module.css":
+/*!******************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./frontend/js/pages/App.module.css ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, ".NxxfKFUkM53TNqBzFSB30{\r\n    max-width: 600px;\r\n    margin: 0 auto;\r\n}", ""]);
+exports.push([module.i, "._3UNor3V8OiLPzJ5-NpXU02{\r\n    color: #337ab7;\r\n}", ""]);
 // Exports
 exports.locals = {
-	"wrapper": "NxxfKFUkM53TNqBzFSB30"
+	"heading": "_3UNor3V8OiLPzJ5-NpXU02"
+};
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/pages/Details/Details.module.css":
+/*!******************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./frontend/js/pages/Details/Details.module.css ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
+// Module
+exports.push([module.i, "._114Jio_ESTfC2RgkbboHO9{\r\n    max-width: 600px;\r\n    margin: 0 auto;\r\n}\r\n\r\n._2YHzWzVAMF7k7sCdOxvOD7{\r\n    color: #337ab7;\r\n}", ""]);
+// Exports
+exports.locals = {
+	"wrapper": "_114Jio_ESTfC2RgkbboHO9",
+	"heading": "_2YHzWzVAMF7k7sCdOxvOD7"
 };
 
 /***/ }),
@@ -42740,7 +42798,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

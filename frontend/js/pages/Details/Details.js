@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from 'react';
-import TripPreview from '../components/TripPreview';
-import AddHotel from '../components/AddHotel';
-import AddAccomodation from '../components/AddAccomodation';
-import AddTransportation from '../components/AddTransportation';
-import ToggleBox from '../components/ToggleBox';
-import styles from './details.module.css'
+import TripPreview from '../../components/TripPreview';
+import AddHotel from '../../components/AddHotel';
+import AddAccomodation from '../../components/AddAccomodation';
+import AddTransportation from '../../components/AddTransportation';
+import ToggleBox from '../../components/ToggleBox';
+import styles from './Details.module.css'
 class Details extends Component {
   constructor() {
     super();
@@ -43,13 +43,13 @@ class Details extends Component {
     return (
       <div className={styles.wrapper}>
         <TripPreview trip={trip} i={trip.id} />
-        <ToggleBox title="Add Hotel Service">
+        <ToggleBox title="Add Hotel">
 				   <AddHotel trip={trip}/>
 			</ToggleBox>
-      <ToggleBox title="Add Accomodation Service">
+      <ToggleBox title="Add Accomodation">
 				   <AddAccomodation trip={trip}/>
 			</ToggleBox>
-      <ToggleBox title="Add transportation Service">
+      <ToggleBox title="Add transportation">
 				   <AddTransportation trip={trip}/>
 			</ToggleBox>
       </div>
