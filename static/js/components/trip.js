@@ -2,7 +2,18 @@ import $ from 'jquery';
 import React, { Component } from 'react';
 
 import Service from './service';
-import { Modal, Button, Form, Row, Col, ListGroup, Table } from 'react-bootstrap';
+import {
+  Modal,
+  Button,
+  Form,
+  Row,
+  Col,
+  ListGroup,
+  Table,
+  Card,
+  Alert,
+  Jumbotron
+} from 'react-bootstrap';
 
 export default class Trip extends Component {
   constructor(props) {
@@ -24,7 +35,6 @@ export default class Trip extends Component {
 
     // Show services modal
     this.handleShow = () => this.setState({ showDialog: true });
-   
   }
 
   // Called when the new service form is interacted with (name, destination. location, type or cost changes)
@@ -51,7 +61,6 @@ export default class Trip extends Component {
     });
   }
 
-
   // Add selected or created service to trip
   addService() {
     // Add service only if all fields are present, otherwise alert for simplicity
@@ -61,7 +70,6 @@ export default class Trip extends Component {
       this.state.form.type &&
       this.state.form.cost
     ) {
-      
       let formData = new FormData();
 
       // Add CSRF to form from cookie
@@ -94,13 +102,13 @@ export default class Trip extends Component {
         }
       });
     } else {
-      alert("Please enter all fields to add service!")
+      alert('Please enter all fields to add service!');
     }
   }
 
   // Remove selected service from trip
   removeService(id) {
-    let formData = new FormData()
+    let formData = new FormData();
 
     // Add CSRF to form from cookie
     const csrftoken = document.cookie.split(';')[0].split('csrftoken=')[1];
@@ -159,32 +167,33 @@ export default class Trip extends Component {
 
   render() {
     return (
-      <div className='jumbotron'>
-        <h5 className='card-title text-center'>
+      <Jumbotron>
+        <h5 className='text-center'>
           {this.props.trip.travel_style} <br></br>
           <strong>{this.props.trip.title}</strong>
         </h5>
-        <ul className='list-group'>
-          <li className='list-group-item'>
+        <ListGroup>
+          <ListGroup.Item>
             Destination: {this.props.trip.destination}
-          </li>
-          <li className='list-group-item'>
+          </ListGroup.Item>
+          <ListGroup.Item>
             Duration: {this.props.trip.duration_days}&nbsp;days
-          </li>
-          <li className='list-group-item'>
+          </ListGroup.Item>
+          <ListGroup.Item>
             Base cost: {this.props.trip.cost}&nbsp;$
-          </li>
-          <li className='list-group-item text-success'>
+          </ListGroup.Item>
+          <ListGroup.Item variant='success'>
             <strong>Total cost: {this.props.trip.total_cost}&nbsp;$</strong>
-          </li>
-        </ul>
+          </ListGroup.Item>
+        </ListGroup>
+
         <br></br>
-        <div className='card'>
-          <div className='card-body'>
-            <h6 className='card-title text-center'>Services</h6>
+        <Card>
+          <Card.Body>
+            <Card.Title>Services</Card.Title>
             {this.props.trip.services.length > 0 ? (
               <Table striped bordered hover>
-               <thead>
+                <thead>
                   <tr>
                     <th>Name</th>
                     <th>Location</th>
@@ -195,21 +204,24 @@ export default class Trip extends Component {
                 </thead>
                 <tbody>
                   {this.props.trip.services.map((service, i) => (
-                    <Service key={i} removeService={this.removeService} service={service} />
+                    <Service
+                      key={i}
+                      removeService={this.removeService}
+                      service={service}
+                    />
                   ))}
                 </tbody>
-            </Table>           
+              </Table>
             ) : (
-              <div className='alert'>No services added yet</div>
+              <Alert variant='light'>No services added yet!</Alert>
             )}
 
             <Button variant='success' onClick={this.handleShow}>
               Add service
             </Button>
-          </div>
-        </div>
-
-        <Modal size="lg" show={this.state.showDialog} onHide={this.handleClose}>
+          </Card.Body>
+        </Card>
+        <Modal size='lg' show={this.state.showDialog} onHide={this.handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
               <strong>{this.props.trip.title}</strong> <br></br>Add a service to
@@ -219,7 +231,7 @@ export default class Trip extends Component {
           <Modal.Body>
             {/* ------ CREATE NEW SERVICE ------*/}
 
-          <Row>
+            <Row>
               <Col>
                 <h5 className='padding margin text-center'>
                   Create a new service
@@ -256,11 +268,13 @@ export default class Trip extends Component {
                   <Form.Group controlId='exampleForm.ControlSelect1'>
                     <Form.Label>Type</Form.Label>
                     <Form.Control
-                    placeholder="Select type of service"
+                      placeholder='Select type of service'
                       name='type'
                       as='select'
                       onChange={e => this.handleChange(e)}
-                    > <option>Select service type</option>
+                    >
+                      {' '}
+                      <option>Select service type</option>
                       {this.state.serviceTypes.map((type, i) => (
                         <option key={i} value={type.id}>
                           {type.name}
@@ -286,9 +300,9 @@ export default class Trip extends Component {
               </Row>
             </Form>
             {/* ------ EXISTING SERVICES LIST ------*/}
-            {
-            !this.props.trip.services.length ===
-            this.state.allServices.length ? (
+            {!this.props.trip.services.length ===
+              this.state.allServices.length ||
+            this.props.trip.services.length < 1 ? (
               <Row>
                 <Col>
                   <h5 className='padding margin text-center'>
@@ -327,7 +341,6 @@ export default class Trip extends Component {
                 </ListGroup>
               </Col>
             </Row>
-            
           </Modal.Body>
           <Modal.Footer>
             <Button variant='secondary' onClick={this.handleClose}>
@@ -338,7 +351,7 @@ export default class Trip extends Component {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </Jumbotron>
     );
   }
 }
