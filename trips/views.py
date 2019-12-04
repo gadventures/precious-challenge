@@ -34,10 +34,16 @@ class TripDetailView(DetailView):
 # Create views for the Post requests
 # In this way we allow post requests on the frontend
 class PostHotel(generics.ListCreateAPIView):
+    """
+    API endpoint that allows hotels to be added to a corresponding trip on the frontend.
+    """
     queryset = Hotel.objects.all()
     serializer_class = HotelSerializer
 
 class PostTransportation(generics.ListCreateAPIView):
+    """
+    API endpoint that allows transportations to be added to a corresponding trip on the frontend.
+    """
     queryset = Transportation.objects.all()
     serializer_class = TransportationSerializer
 
