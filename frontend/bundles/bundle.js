@@ -98,11 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
@@ -125,6 +122,7 @@ function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || func
 
 
 
+
 var AddHotel =
 /*#__PURE__*/
 function (_React$Component) {
@@ -137,7 +135,7 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(AddHotel).call(this, props));
     _this.state = {
-      trip: null,
+      trip: _this.props.trip.id,
       name: null,
       typeOfService: null,
       location: null,
@@ -150,48 +148,20 @@ function (_React$Component) {
 
   _createClass(AddHotel, [{
     key: "handleChange",
-    value: function handleChange(e, data) {
+    value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
     }
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e, data) {
-      var _this2 = this;
-
-      //Destructure the data object to change its trip property value to include only the id
-      var response = _objectSpread({}, data, {
-        trip: this.props.trip.id
-      });
-
       e.preventDefault();
-      console.log(response); //Post data using the fetch api
-
-      fetch('/api/hotels', {
-        method: "POST",
-        body: JSON.stringify(response),
-        headers: {
-          "Content-Type": "application/json"
-        }
-      }).then(function (rawData) {
-        return rawData.json();
-      }).then(function (body) {
-        if (!body.errors) {
-          console.log('Success!');
-
-          _this2.props.history.push('/');
-
-          window.location.reload();
-        } else {
-          console.log(body.message);
-        }
-      })["catch"](function (error) {
-        return console.error(error);
-      });
+      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data);
+      this.props.history.push('/');
     }
   }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this2 = this;
 
       var trip = this.props.trip;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -203,7 +173,7 @@ function (_React$Component) {
         className: "text-center"
       }, "Add Hotel to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
-          return _this3.handleSubmit(e, _this3.state);
+          return _this2.handleSubmit(e, _this2.state);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
@@ -340,6 +310,38 @@ var TripPreview = function TripPreview(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TripPreview);
+
+/***/ }),
+
+/***/ "./frontend/js/data/requests/postHotel.js":
+/*!************************************************!*\
+  !*** ./frontend/js/data/requests/postHotel.js ***!
+  \************************************************/
+/*! exports provided: postHotel */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postHotel", function() { return postHotel; });
+var postHotel = function postHotel(data) {
+  fetch('/api/hotels', {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(function (rawData) {
+    return rawData.json();
+  }).then(function (body) {
+    if (!body.errors) {
+      window.location.reload();
+    } else {
+      console.log(body.message);
+    }
+  })["catch"](function (error) {
+    return console.error(error);
+  });
+};
 
 /***/ }),
 
@@ -511,12 +513,12 @@ var Details =
 function (_Component) {
   _inherits(Details, _Component);
 
-  function Details(props) {
+  function Details() {
     var _this;
 
     _classCallCheck(this, Details);
 
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(Details).call(this, props));
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Details).call(this));
     _this.state = {
       trip: null
     };
@@ -42081,7 +42083,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

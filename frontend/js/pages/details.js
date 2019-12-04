@@ -4,8 +4,8 @@ import TripPreview from '../components/TripPreview';
 import AddHotel from '../components/AddHotel';
 
 class Details extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       trip: null
     }

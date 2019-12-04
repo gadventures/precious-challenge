@@ -1,57 +1,35 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
+import {postHotel} from '../data/requests/postHotel'
 class AddHotel extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            trip: null,
+            trip: this.props.trip.id,
             name: null,
             typeOfService: null,
             location: null,
             cost: null,
         }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
-    handleChange(e, data) {
+    handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
     handleSubmit(e, data) {
-        //Destructure the data object to change its trip property value to include only the id
-        const response = { ...data, trip: this.props.trip.id };
-
-        e.preventDefault()
-        console.log(response);
-
-        //Post data using the fetch api
-        fetch('/api/hotels', {
-            method: "POST",
-            body: JSON.stringify(response),
-            headers: { "Content-Type": "application/json" }
-        })
-            .then(rawData => rawData.json())
-            .then(
-                body => {
-                    if (!body.errors) {
-                        console.log('Success!');
-                        this.props.history.push('/');
-                        window.location.reload();
-                    }
-                    else {
-                        console.log(body.message)
-                    }
-                }
-            )
-            .catch(error => console.error(error));
+        e.preventDefault();
+        postHotel(data);
+        this.props.history.push('/');
     }
 
     render() {
-        const { trip } = this.props;
+        const {trip} = this.props;
         return (
             <div className="container" style={{ maxWidth: '600px' }}>
                 <h4 className="text-center">Add Hotel to the {trip.title} Trip</h4>
