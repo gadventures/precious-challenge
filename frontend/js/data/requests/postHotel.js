@@ -7,8 +7,11 @@ export const postHotel = (data) => {
         .then(rawData => rawData.json())
         .then(
             body => {
+                console.log(body);
+                
                 if (!body.errors) {
-                    window.location.reload();
+                    //window.location.reload();
+                    
                 }
                 else {
                     console.log(body.message)

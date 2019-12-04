@@ -31,7 +31,7 @@ class ToggleBox extends React.Component {
 					{title}
 				</div>
 				{opened && (					
-					<div style={{background: 'lightgray'}} className="boxContent">
+					<div style={{background: '#f8f9fa'}} className="boxContent">
 						{children}
 					</div>
 				)}

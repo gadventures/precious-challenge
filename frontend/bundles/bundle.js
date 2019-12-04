@@ -333,8 +333,7 @@ function (_React$Component) {
       e.preventDefault(); //post form data to db
 
       Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data); //go back to home page
-
-      this.props.history.push('/');
+      //this.props.history.push('/');
     }
   }, {
     key: "render",
@@ -364,7 +363,8 @@ function (_React$Component) {
         name: "name",
         onChange: this.handleChange,
         className: "form-control",
-        type: "text"
+        type: "text",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
       }, "The name of the hotel"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -377,7 +377,8 @@ function (_React$Component) {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
-        defaultValue: "hotel"
+        defaultValue: "hotel",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
       }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -390,7 +391,8 @@ function (_React$Component) {
         name: "location",
         onChange: this.handleChange,
         className: "form-control",
-        type: "text"
+        type: "text",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
       }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -403,7 +405,8 @@ function (_React$Component) {
         name: "cost",
         onChange: this.handleChange,
         className: "form-control",
-        type: "number"
+        type: "number",
+        required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
       }, "Cost of the hotel"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -680,7 +683,7 @@ function (_React$Component) {
         onClick: this.toggleBox
       }, title), opened && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         style: {
-          background: 'lightgray'
+          background: '#f8f9fa'
         },
         className: "boxContent"
       }, children));
@@ -815,8 +818,9 @@ var postHotel = function postHotel(data) {
   }).then(function (rawData) {
     return rawData.json();
   }).then(function (body) {
-    if (!body.errors) {
-      window.location.reload();
+    console.log(body);
+
+    if (!body.errors) {//window.location.reload();
     } else {
       console.log(body.message);
     }
