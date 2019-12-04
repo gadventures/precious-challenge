@@ -23,10 +23,11 @@ export default class Trip extends Component {
       serviceTypes: [],
       showDialog: false,
       selectedService: {},
-      form: {}
+      selectedServices: []
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.onAddService = this.onAddService.bind(this);
     this.addService = this.addService.bind(this);
     this.removeService = this.removeService.bind(this);
 
@@ -37,15 +38,14 @@ export default class Trip extends Component {
     this.handleShow = () => this.setState({ showDialog: true });
   }
 
-  // Called when the new service form is interacted with (name, destination. location, type or cost changes)
+  // Called when the "create new service" form is interacted with (name, destination. location, type or cost changes)
   handleChange(e) {
     var value = e.target.value;
     if (e.target.name === 'type' && e.target.value.id) {
       value = value.id;
     }
     this.setState({
-      selectedService: {},
-      form: { ...this.state.form, [e.target.name]: value }
+      selectedService: { ...this.state.selectedService, [e.target.name]: value }
     });
   }
 
@@ -56,54 +56,58 @@ export default class Trip extends Component {
       service.type = service.type.id;
     }
     this.setState({
-      selectedService: service,
-      form: service
+      selectedService: service
     });
   }
 
-  // Add selected or created service to trip
-  addService() {
+  // Called when the "add" button is clicked in the services modal
+  onAddService() {
     // Add service only if all fields are present, otherwise alert for simplicity
     if (
-      this.state.form.name &&
-      this.state.form.location &&
-      this.state.form.type &&
-      this.state.form.cost
+      this.state.selectedService.name &&
+      this.state.selectedService.location &&
+      this.state.selectedService.type &&
+      this.state.selectedService.cost
     ) {
-      let formData = new FormData();
-
-      // Add CSRF to form from cookie
-      const csrftoken = document.cookie.split(';')[0].split('csrftoken=')[1];
-      formData.set('csrftoken', csrftoken);
-
-      // Add all fields to form (name, location, type(id), cost)
-      for (let key in this.state.form) {
-        formData.set(key, this.state.form[key]);
-      }
-
-      // Call method to add service to trip
-      // If the service does not exist, it is created and added
-      $.ajax({
-        url: '/api/trips/' + this.props.trip.id + '/add_service/',
-        data: formData,
-        processData: false,
-        contentType: false,
-        beforeSend: function(xhr, settings) {
-          xhr.setRequestHeader('X-CSRFToken', csrftoken);
-        },
-        type: 'post',
-        success: () => {
-          // Refresh trip list and close modal
-          this.props.getTrips();
-          this.handleClose();
-        },
-        error: error => {
-          console.log('There was an error adding the service - ', error);
-        }
-      });
+      this.addService(this.state.selectedService);
     } else {
       alert('Please enter all fields to add service!');
     }
+  }
+
+  // Add selected or created service to trip
+  addService(service) {
+    let formData = new FormData();
+
+    // Add CSRF to form from cookie
+    const csrftoken = document.cookie.split(';')[0].split('csrftoken=')[1];
+    formData.set('csrftoken', csrftoken);
+
+    // Add all fields to form (name, location, type(id), cost)
+    for (let key in service) {
+      formData.set(key, service[key]);
+    }
+
+    // Call method to add service to trip
+    // If the service does not exist, it is created and added
+    $.ajax({
+      url: '/api/trips/' + this.props.trip.id + '/add_service/',
+      data: formData,
+      processData: false,
+      contentType: false,
+      beforeSend: function(xhr, settings) {
+        xhr.setRequestHeader('X-CSRFToken', csrftoken);
+      },
+      type: 'post',
+      success: () => {
+        // Refresh trip list and close modal
+        this.props.getTrips();
+        this.handleClose();
+      },
+      error: error => {
+        console.log('There was an error adding the service - ', error);
+      }
+    });
   }
 
   // Remove selected service from trip
@@ -299,14 +303,14 @@ export default class Trip extends Component {
                 </Col>
               </Row>
             </Form>
-            {/* ------ EXISTING SERVICES LIST ------*/}
+            {/* ------ SELECT SERVICE FROM EXISTING SERVICES LIST ------*/}
             {!this.props.trip.services.length ===
               this.state.allServices.length ||
             this.props.trip.services.length < 1 ? (
               <Row>
                 <Col>
                   <h5 className='padding margin text-center'>
-                    Select and existing service
+                    Select an existing service
                   </h5>
                 </Col>
               </Row>
@@ -346,7 +350,7 @@ export default class Trip extends Component {
             <Button variant='secondary' onClick={this.handleClose}>
               Cancel
             </Button>
-            <Button variant='primary' onClick={this.addService}>
+            <Button variant='primary' onClick={this.onAddService}>
               Add
             </Button>
           </Modal.Footer>
