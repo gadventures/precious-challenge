@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { NavLink } from 'react-router-dom'
 import TripPreview from '../components/TripPreview';
 import AddHotel from '../components/AddHotel';
+import AddAccomodation from '../components/AddAccomodation';
+import AddTransportation from '../components/AddTransportation';
 
 class Details extends Component {
   constructor() {
@@ -42,6 +44,8 @@ class Details extends Component {
       <Fragment>
         <TripPreview trip={trip} i={trip.id} />
         <AddHotel trip={trip}/>
+        <AddAccomodation trip={trip} />
+        <AddTransportation trip={trip} />
       </Fragment>
     );
   }

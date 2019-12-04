@@ -32,7 +32,7 @@ class AddAccomodation extends React.Component {
         const {trip} = this.props;
         return (
             <div className="container" style={{ maxWidth: '600px' }}>
-                <h4 className="text-center">Add Hotel to the {trip.title} Trip</h4>
+                <h4 className="text-center">Add Accomodation service to the {trip.title} Trip</h4>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <div className="form-group ">
                         <label className="col-sm-2 control-label ">
@@ -65,7 +65,7 @@ class AddAccomodation extends React.Component {
                         </label>
                         <div className="col-sm-10">
                             <input name="cost" onChange={this.handleChange} className="form-control" type="number" />
-                            <span className="help-block">Cost of the hotel</span>
+                            <span className="help-block">Cost of the accomodation</span>
                         </div>
                     </div>
                     <div className="form-actions" style={{ float: 'right', paddingBottom: '2em' }}>

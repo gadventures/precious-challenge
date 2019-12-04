@@ -65,7 +65,7 @@ class AddTransportation extends React.Component {
                         </label>
                         <div className="col-sm-10">
                             <input name="cost" onChange={this.handleChange} className="form-control" type="number" />
-                            <span className="help-block">Cost of the hotel</span>
+                            <span className="help-block">Cost of the transportation</span>
                         </div>
                     </div>
                     <div className="form-actions" style={{ float: 'right', paddingBottom: '2em' }}>
