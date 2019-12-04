@@ -1,29 +1,82 @@
-import PropTypes from 'prop-types';
-import React from 'react';
+import $ from 'jquery';
+import React, { Component } from 'react';
+import {
+  Button,
+  ListGroup,
+  Table,
+  Card,
+  Alert,
+  Jumbotron
+} from 'react-bootstrap';
 
-const Trip = ({trip}) => {
+import Service from './service';
+
+export default class Trip extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
     return (
-        <div className="container" style={{maxWidth:'600px'}}>
-            <h4 className="text-center">
-                {trip.travel_style} : {trip.title}
-            </h4>
-            <ul className="list-group align-items-center" >
-                <li className="list-group-item" >
-                    Destination: {trip.destination}
-                </li>
-                <li className="list-group-item">
-                    Duration: {trip.duration_days}
-                </li>
-                <li className="list-group-item">
-                    Cost: ${trip.cost}
-                </li>
-            </ul>
-         </div>
-    )
-};
+      <Jumbotron>
+        <h5 className='text-center'>
+          {this.props.trip.travel_style} <br></br>
+          <strong>{this.props.trip.title}</strong>
+        </h5>
+        <ListGroup>
+          <ListGroup.Item>
+            Destination: {this.props.trip.destination}
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Duration: {this.props.trip.duration_days}&nbsp;days
+          </ListGroup.Item>
+          <ListGroup.Item>
+            Base cost: {this.props.trip.cost}&nbsp;$
+          </ListGroup.Item>
+          <ListGroup.Item variant='success'>
+            <strong>Total cost: {this.props.trip.total_cost}&nbsp;$</strong>
+          </ListGroup.Item>
+        </ListGroup>
 
-Trip.propTypes = {
-    trip: PropTypes.object.isRequired
-};
+        <br></br>
+        <Card>
+          <Card.Body>
+            <Card.Title>Services</Card.Title>
+            {this.props.trip.services.length > 0 ? (
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Location</th>
+                    <th>Type</th>
+                    <th>Cost</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {this.props.trip.services.map((service, i) => (
+                    <Service
+                      tripID={this.props.trip.id}
+                      key={i}
+                      removeService={this.props.removeService}
+                      service={service}
+                    />
+                  ))}
+                </tbody>
+              </Table>
+            ) : (
+              <Alert variant='light'>No services added yet!</Alert>
+            )}
 
-export default Trip;
+            <Button
+              variant='success'
+              onClick={() => this.props.openModal(this.props.trip)}
+            >
+              Add service
+            </Button>
+          </Card.Body>
+        </Card>
+      </Jumbotron>
+    );
+  }
+}
