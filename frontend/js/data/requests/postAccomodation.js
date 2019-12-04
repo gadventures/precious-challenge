@@ -1,5 +1,5 @@
-export const postHotel = (data) => {
-    fetch('/api/hotels', {
+export const postAccomodation = (data) => {
+    fetch('/api/accomodations', {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }
@@ -7,7 +7,10 @@ export const postHotel = (data) => {
         .then(rawData => rawData.json())
         .then(
             body => {
+                console.log(body);
+                
                 if (!body.errors) {
+                    
                     window.location.reload();
                 }
                 else {

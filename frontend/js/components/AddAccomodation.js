@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
-import {postHotel} from '../data/requests/postHotel'
+import {postAccomodation} from '../data/requests/postAccomodation'
 class AddAccomodation extends React.Component {
 
     constructor(props) {
@@ -8,7 +8,7 @@ class AddAccomodation extends React.Component {
         this.state = {
             trip: this.props.trip.id,
             name: null,
-            typeOfService: null,
+            typeOfService: 'accomodation',
             location: null,
             cost: null,
         }
@@ -16,15 +16,19 @@ class AddAccomodation extends React.Component {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    //update the state to include form data
     handleChange(e) {
         this.setState({
             [e.target.name]: e.target.value
         })
     }
-
+    //send form data to the db
     handleSubmit(e, data) {
+        //on form submit, prevent the browser from refreshing
         e.preventDefault();
-        postHotel(data);
+        //post form data to db
+        postAccomodation(data);
+        //go back to home page
         this.props.history.push('/');
     }
 
@@ -32,7 +36,7 @@ class AddAccomodation extends React.Component {
         const {trip} = this.props;
         return (
             <div className="container" style={{ maxWidth: '600px' }}>
-                <h4 className="text-center">Add Accomodation service to the {trip.title} Trip</h4>
+                <h4 className="text-center">Add Accomodation to the {trip.title} Trip</h4>
                 <form onSubmit={(e) => this.handleSubmit(e, this.state)}>
                     <div className="form-group ">
                         <label className="col-sm-2 control-label ">
@@ -40,6 +44,7 @@ class AddAccomodation extends React.Component {
                         </label>
                         <div className="col-sm-10">
                             <input name="name" onChange={this.handleChange} className="form-control" type="text" />
+                            <span className="help-block">The name of the accomodation</span>
                         </div>
                     </div>
                     <div className="form-group ">
@@ -47,8 +52,8 @@ class AddAccomodation extends React.Component {
                             Type Of Service
                         </label>
                         <div className="col-sm-10">
-                            <textarea name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue={"accomodation"} />
-                            <span className="help-block">The name of the service, e.g. hotel, accomodation or transportation</span>
+                            <input name="typeOfService" onChange={this.handleChange} className="form-control" defaultValue="accomodation" />
+                            <span className="help-block">The type of the service that you offer</span>
                         </div>
                     </div>
                     <div className="form-group ">
@@ -57,6 +62,7 @@ class AddAccomodation extends React.Component {
                         </label>
                         <div className="col-sm-10">
                             <input name="location" onChange={this.handleChange} className="form-control" type="text" />
+                            <span className="help-block">The location of the service</span>
                         </div>
                     </div>
                     <div className="form-group ">
@@ -74,7 +80,6 @@ class AddAccomodation extends React.Component {
                 </form>
             </div>
         )
-
     }
 }
 

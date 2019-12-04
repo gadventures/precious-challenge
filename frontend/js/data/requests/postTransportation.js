@@ -1,5 +1,5 @@
-export const postHotel = (data) => {
-    fetch('/api/hotels', {
+export const postTransportation = (data) => {
+    fetch('/api/transportations', {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" }

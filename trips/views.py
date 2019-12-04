@@ -55,9 +55,9 @@ class PostTransportation(generics.ListCreateAPIView):
 
 class PostAccomodation(generics.ListCreateAPIView):
     """
-    API endpoint that allows transportations to be added to a corresponding trip on the frontend.
+    API endpoint that allows accomodations to be added to a corresponding trip on the frontend.
     """
     queryset = Accomodation.objects.all()
-    serializer_class = TransportationSerializer
+    serializer_class = AccomodationSerializer
 
 

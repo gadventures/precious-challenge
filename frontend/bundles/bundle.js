@@ -98,7 +98,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
+/* harmony import */ var _data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postAccomodation */ "./frontend/js/data/requests/postAccomodation.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -137,25 +137,30 @@ function (_React$Component) {
     _this.state = {
       trip: _this.props.trip.id,
       name: null,
-      typeOfService: null,
+      typeOfService: 'accomodation',
       location: null,
       cost: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } //update the state to include form data
+
 
   _createClass(AddAccomodation, [{
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
-    }
+    } //send form data to the db
+
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e, data) {
-      e.preventDefault();
-      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data);
+      //on form submit, prevent the browser from refreshing
+      e.preventDefault(); //post form data to db
+
+      Object(_data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_2__["postAccomodation"])(data); //go back to home page
+
       this.props.history.push('/');
     }
   }, {
@@ -171,7 +176,7 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "text-center"
-      }, "Add Accomodation service to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Add Accomodation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
         }
@@ -186,20 +191,22 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The name of the accomodation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
       }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-10"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
         defaultValue: "accomodation"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
-      }, "The name of the service, e.g. hotel, accomodation or transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -210,7 +217,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -294,25 +303,30 @@ function (_React$Component) {
     _this.state = {
       trip: _this.props.trip.id,
       name: null,
-      typeOfService: null,
+      typeOfService: 'hotel',
       location: null,
       cost: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } //update the state to include form data
+
 
   _createClass(AddHotel, [{
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
-    }
+    } //send form data to the db
+
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e, data) {
-      e.preventDefault();
-      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data);
+      //on form submit, prevent the browser from refreshing
+      e.preventDefault(); //post form data to db
+
+      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data); //go back to home page
+
       this.props.history.push('/');
     }
   }, {
@@ -343,20 +357,22 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The name of the hotel"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
       }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-10"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
         defaultValue: "hotel"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
-      }, "The name of the service, e.g. hotel, accomodation or transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -367,7 +383,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -412,7 +430,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
+/* harmony import */ var _data_requests_postTransportation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postTransportation */ "./frontend/js/data/requests/postTransportation.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -451,25 +469,30 @@ function (_React$Component) {
     _this.state = {
       trip: _this.props.trip.id,
       name: null,
-      typeOfService: null,
+      typeOfService: 'transportation',
       location: null,
       cost: null
     };
     _this.handleSubmit = _this.handleSubmit.bind(_assertThisInitialized(_this));
     _this.handleChange = _this.handleChange.bind(_assertThisInitialized(_this));
     return _this;
-  }
+  } //update the state to include form data
+
 
   _createClass(AddTransportation, [{
     key: "handleChange",
     value: function handleChange(e) {
       this.setState(_defineProperty({}, e.target.name, e.target.value));
-    }
+    } //send form data to the db
+
   }, {
     key: "handleSubmit",
     value: function handleSubmit(e, data) {
-      e.preventDefault();
-      Object(_data_requests_postHotel__WEBPACK_IMPORTED_MODULE_2__["postHotel"])(data);
+      //on form submit, prevent the browser from refreshing
+      e.preventDefault(); //post form data to db
+
+      Object(_data_requests_postTransportation__WEBPACK_IMPORTED_MODULE_2__["postTransportation"])(data); //go back to home page
+
       this.props.history.push('/');
     }
   }, {
@@ -485,7 +508,7 @@ function (_React$Component) {
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "text-center"
-      }, "Add Transportation Service to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+      }, "Add Transportation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
         }
@@ -500,20 +523,22 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The name of the transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
       }, "Type Of Service"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "col-sm-10"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         name: "typeOfService",
         onChange: this.handleChange,
         className: "form-control",
         defaultValue: "transportation"
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         className: "help-block"
-      }, "The name of the service, e.g. hotel, accomodation or transportation"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }, "The type of the service that you offer"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -524,7 +549,9 @@ function (_React$Component) {
         onChange: this.handleChange,
         className: "form-control",
         type: "text"
-      }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+        className: "help-block"
+      }, "The location of the service"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
         className: "col-sm-2 control-label "
@@ -627,6 +654,40 @@ var TripPreview = function TripPreview(_ref) {
 
 /***/ }),
 
+/***/ "./frontend/js/data/requests/postAccomodation.js":
+/*!*******************************************************!*\
+  !*** ./frontend/js/data/requests/postAccomodation.js ***!
+  \*******************************************************/
+/*! exports provided: postAccomodation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postAccomodation", function() { return postAccomodation; });
+var postAccomodation = function postAccomodation(data) {
+  fetch('/api/accomodations', {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(function (rawData) {
+    return rawData.json();
+  }).then(function (body) {
+    console.log(body);
+
+    if (!body.errors) {
+      window.location.reload();
+    } else {
+      console.log(body.message);
+    }
+  })["catch"](function (error) {
+    return console.error(error);
+  });
+};
+
+/***/ }),
+
 /***/ "./frontend/js/data/requests/postHotel.js":
 /*!************************************************!*\
   !*** ./frontend/js/data/requests/postHotel.js ***!
@@ -639,6 +700,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postHotel", function() { return postHotel; });
 var postHotel = function postHotel(data) {
   fetch('/api/hotels', {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(function (rawData) {
+    return rawData.json();
+  }).then(function (body) {
+    if (!body.errors) {
+      window.location.reload();
+    } else {
+      console.log(body.message);
+    }
+  })["catch"](function (error) {
+    return console.error(error);
+  });
+};
+
+/***/ }),
+
+/***/ "./frontend/js/data/requests/postTransportation.js":
+/*!*********************************************************!*\
+  !*** ./frontend/js/data/requests/postTransportation.js ***!
+  \*********************************************************/
+/*! exports provided: postTransportation */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "postTransportation", function() { return postTransportation; });
+var postTransportation = function postTransportation(data) {
+  fetch('/api/transportations', {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
@@ -42405,7 +42498,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
