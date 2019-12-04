@@ -15,23 +15,25 @@ class TripsViewSet(viewsets.ModelViewSet):
     """
     queryset = Trip.objects.all()
     serializer_class = TripSerializer
+
     @action(detail=True, methods=['post'])
     def remove_service(self, request, pk=None):
         """
         A method to remove services from trip
         """
+        # Form data
         service_id = request.POST.get('id')
+        # Current trip
         trip = Trip.objects.get(id=pk)
-
-
         try:
             service = Service.objects.get(id=service_id)
+
             with transaction.atomic():
                 trip.services.remove(service)
+
             return Response(status=status.HTTP_200_OK)
         except:
             return Response(status=status.HTTP_304_NOT_MODIFIED)
-            
         
     @action(detail=True, methods=['post'])
     def add_service(self,request, pk=None):
@@ -44,20 +46,21 @@ class TripsViewSet(viewsets.ModelViewSet):
         service_type = ServiceType.objects.get(id=request.POST.get('type')) # Get 
         service_location = request.POST.get('location')
         service_cost = request.POST.get('cost')
-
         # Current trip
         trip = Trip.objects.get(id=pk)
+
+        # Add service to trip
         try:
-            # If its an existing service, add it to the trip
+            # If its an existing service, simply add it
             service = Service.objects.get(name=service_name)
 
             with transaction.atomic():
                 trip.services.add(service)
-                
+
             return Response(status=status.HTTP_200_OK)
             
         except Service.DoesNotExist:
-            # Otherwise create the new service and then add it to the trip
+            # Otherwise create the new service and then add it
             new_service = Service(name=service_name, location=service_location, type=service_type, cost=service_cost)
 
             with transaction.atomic():
@@ -67,8 +70,6 @@ class TripsViewSet(viewsets.ModelViewSet):
             return Response(status=status.HTTP_201_CREATED)
         except:
             return Response(status=status.HTTP_304_NOT_MODIFIED)
-                
-            
 
 class ServicesViewSet(viewsets.ModelViewSet):
     """
