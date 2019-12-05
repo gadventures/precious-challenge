@@ -33,7 +33,7 @@ class TripList(generics.ListAPIView):
 # Details view (view trips detail page)
 class TripDetailView(DetailView):
     model=Trip
-    template_name = 'index.html'
+    template_name = 'details.html'
 
 ####################################
 # Create views for the Post requests

@@ -1016,10 +1016,12 @@ function (_Component) {
     value: function render() {
       //Render the App component and pass the trips as props to all the Pages
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
+        className: "containerer"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "paper-container"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "text-center"
-      }, " Adventure Trips "), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_2__["default"], {
+        className: "text-center title"
+      }, " Adventure Trips ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_2__["default"], {
         trips: this.state.trips
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
@@ -1157,7 +1159,7 @@ function (_Component) {
 
       if (!trip) {
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-          className: "spinner"
+          className: "text-center"
         }, "Loading ...");
       }
 
@@ -1208,7 +1210,9 @@ var Trip = function Trip(_ref) {
   var trips = _ref.trips;
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "home-wrapper"
-  }, trips.map(function (trip) {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", {
+    className: "text-center list-heading"
+  }, "Latest Trips"), trips.map(function (trip) {
     return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_TripPreview__WEBPACK_IMPORTED_MODULE_1__["default"], {
       trip: trip,
       key: trip.id
@@ -42827,7 +42831,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, __RouterContext, generatePath, matchPath, useHistory, useLocation, useParams, useRouteMatch, withRouter, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

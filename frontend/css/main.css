@@ -1,4 +1,29 @@
 /* Css for the Landing page */
+
+/* Header image */
+.paper-container{
+    background-image: url('https://media.gadventures.com/media-server/cache/30/e7/30e7d3e59c520957119a2dc21412548c.jpg'),linear-gradient(130deg,#4a0063 25%,rgba(31,0,40,0.9) 100%) !important;
+    margin-bottom: 3em;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 85% 50%;
+}
+
+.title{
+    padding: 3.5em 0;
+    color: #f5f5f5;
+    font-size: 42px;
+}
+
+.list-heading {
+    padding-bottom: 1em;
+}
+
+* {
+    overflow: auto;
+}
+
 .home-wrapper .trip-entry {
     display: block;
     -webkit-transition: .3s all ease;

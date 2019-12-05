@@ -33,8 +33,10 @@ export default class App extends Component {
         //Render the App component and pass the trips as props to all the Pages
         return (
             <Fragment>
-                <div className="container">
-                    <h1 className="text-center"> Adventure Trips </h1>
+                <div className="containerer">
+                    <div className="paper-container">   
+                    <h1 className="text-center title"> Adventure Trips </h1>
+                    </div>
                     <Pages
                         trips={this.state.trips}
                     />

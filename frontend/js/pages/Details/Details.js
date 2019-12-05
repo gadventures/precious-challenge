@@ -37,7 +37,7 @@ class Details extends Component {
     const {trip} = this.state;
 
     if (!trip) {
-      return <span className="spinner">Loading ...</span>;
+      return <span className="text-center">Loading ...</span>;
     }
 
     return (
