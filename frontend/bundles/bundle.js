@@ -98,8 +98,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _data_requests_postAccomodation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/requests/postAccomodation */ "./frontend/js/data/requests/postAccomodation.js");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Services.module.css */ "./frontend/js/components/Services.module.css");
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Services_module_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -169,15 +169,15 @@ function (_Component) {
 
       var trip = this.props.trip;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.wrapper, " container")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.wrapper, " container")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.heading, " text-center")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.heading, " text-center")
       }, "Add Accomodation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
         }
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.form
+        className: _Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.form
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "form-group "
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
@@ -231,7 +231,7 @@ function (_Component) {
         placeolder: "Cost of the accomodation",
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.btnActions, " \"form-actions\"")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.btnActions, " \"form-actions\"")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary js-tooltip",
         type: "submit"
@@ -258,8 +258,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _data_requests_postHotel__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../data/requests/postHotel */ "./frontend/js/data/requests/postHotel.js");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Services.module.css */ "./frontend/js/components/Services.module.css");
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Services_module_css__WEBPACK_IMPORTED_MODULE_2__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -329,11 +329,11 @@ function (_Component) {
 
       var trip = this.props.trip;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.wrapper, " container")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.wrapper, " container")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.heading, " \"text-center\"")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.heading, " \"text-center\"")
       }, "Add Hotel to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.form
+        className: _Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.form
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
@@ -391,7 +391,7 @@ function (_Component) {
         placeholder: "The cost of the hotel",
         required: true
       }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.btnActions, " \"form-actions\"")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_2___default.a.btnActions, " \"form-actions\"")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary js-tooltip",
         type: "submit"
@@ -419,8 +419,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _data_requests_postTransportation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../data/requests/postTransportation */ "./frontend/js/data/requests/postTransportation.js");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Services.module.css */ "./frontend/js/components/Services.module.css");
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Services_module_css__WEBPACK_IMPORTED_MODULE_3__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -491,11 +491,11 @@ function (_Component) {
 
       var trip = this.props.trip;
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.wrapper, " container")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.wrapper, " container")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.heading, " \"text-center\"")
       }, "Add Transportation to the ", trip.title, " Trip"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.form
+        className: _Services_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.form
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
         onSubmit: function onSubmit(e) {
           return _this2.handleSubmit(e, _this2.state);
@@ -553,7 +553,7 @@ function (_Component) {
         placeholder: "Cost of the transportation",
         required: true
       }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "".concat(_Components_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.btnActions, " \"form-actions\"")
+        className: "".concat(_Services_module_css__WEBPACK_IMPORTED_MODULE_3___default.a.btnActions, " \"form-actions\"")
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
         className: "btn btn-primary js-tooltip",
         type: "submit"
@@ -565,33 +565,6 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (AddTransportation);
-
-/***/ }),
-
-/***/ "./frontend/js/components/Components.module.css":
-/*!******************************************************!*\
-  !*** ./frontend/js/components/Components.module.css ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!./Components.module.css */ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/components/Components.module.css");
-
-if (typeof content === 'string') {
-  content = [[module.i, content, '']];
-}
-
-var options = {}
-
-options.insert = "head";
-options.singleton = false;
-
-var update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
-
-if (content.locals) {
-  module.exports = content.locals;
-}
-
 
 /***/ }),
 
@@ -608,7 +581,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-var Footer = function Footer(props) {
+var Footer = function Footer() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
     className: "site-footer",
     style: {
@@ -634,6 +607,58 @@ var Footer = function Footer(props) {
 
 /***/ }),
 
+/***/ "./frontend/js/components/Header.js":
+/*!******************************************!*\
+  !*** ./frontend/js/components/Header.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var Header = function Header() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "paper-container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    className: "text-center title"
+  }, " Adventure Trips "));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./frontend/js/components/Services.module.css":
+/*!****************************************************!*\
+  !*** ./frontend/js/components/Services.module.css ***!
+  \****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+var content = __webpack_require__(/*! !../../../node_modules/css-loader/dist/cjs.js??ref--5-1!./Services.module.css */ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/components/Services.module.css");
+
+if (typeof content === 'string') {
+  content = [[module.i, content, '']];
+}
+
+var options = {}
+
+options.insert = "head";
+options.singleton = false;
+
+var update = __webpack_require__(/*! ../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js")(content, options);
+
+if (content.locals) {
+  module.exports = content.locals;
+}
+
+
+/***/ }),
+
 /***/ "./frontend/js/components/ToggleForm.js":
 /*!**********************************************!*\
   !*** ./frontend/js/components/ToggleForm.js ***!
@@ -645,8 +670,8 @@ var Footer = function Footer(props) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Components.module.css */ "./frontend/js/components/Components.module.css");
-/* harmony import */ var _Components_module_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Components_module_css__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Services.module.css */ "./frontend/js/components/Services.module.css");
+/* harmony import */ var _Services_module_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Services_module_css__WEBPACK_IMPORTED_MODULE_1__);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -721,9 +746,9 @@ function (_Component) {
         },
         onClick: this.toggleBox
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.span
+        className: _Services_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.span
       }, title)), opened && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: _Components_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.boxContent
+        className: _Services_module_css__WEBPACK_IMPORTED_MODULE_1___default.a.boxContent
       }, children));
     }
   }]);
@@ -946,6 +971,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var ___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! . */ "./frontend/js/pages/index.js");
 /* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Footer */ "./frontend/js/components/Footer.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Header */ "./frontend/js/components/Header.js");
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -963,6 +989,7 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
 function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 
 
 
@@ -1017,11 +1044,7 @@ function (_Component) {
       //Render the App component and pass the trips as props to all the Pages
       return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0__["Fragment"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "containerer"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "paper-container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-        className: "text-center title"
-      }, " Adventure Trips ")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(___WEBPACK_IMPORTED_MODULE_2__["default"], {
         trips: this.state.trips
       })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_3__["default"], null));
     }
@@ -1365,24 +1388,24 @@ module.exports = _inheritsLoose;
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/components/Components.module.css":
-/*!******************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./frontend/js/components/Components.module.css ***!
-  \******************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js?!./frontend/js/components/Services.module.css":
+/*!****************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ref--5-1!./frontend/js/components/Services.module.css ***!
+  \****************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js")(false);
 // Module
-exports.push([module.i, "._17AXsd1Lj3NT9NEIcbSB1B{\r\n    color: #337ab7;\r\n    padding: 20px 0;\r\n}\r\n._3l4SO4ZMwWyyytkr-Vpy1x{\r\n    max-width: 600px;\r\n     margin: 20px 0;\r\n}\r\n._2ymXXq4qIrzv2_5w57lRzD{\r\n    float: right;\r\n    padding-bottom: 2em;\r\n}\r\n._2LMZzfNhX4h90jNEUcUYgV{\r\n    background: #f8f9fa;\r\n}\r\n._3LJsMRDCUsk_R0TQDrh7F8{\r\n    padding-left: 7px;\r\n}\r\n\r\n._3WQqp1ts0KvRQSvjvCar3y{\r\n    width: 70%;\r\n    margin: 0 auto\r\n}", ""]);
+exports.push([module.i, "._2UHejfD8UTrtwwv94u-JpP{\r\n    color: #337ab7;\r\n    padding: 20px 0;\r\n}\r\n._3peMKPAUMYShtqrBp-4Ly7{\r\n    max-width: 600px;\r\n     margin: 20px 0;\r\n}\r\n._1XmTxZyrBkoei1N6B2yAd4{\r\n    float: right;\r\n    padding-bottom: 2em;\r\n}\r\n.DJD67ZLTn2GFJYqcYOoYt{\r\n    background: #f8f9fa;\r\n}\r\n._3NNIKT_T9migWde23g4WX5{\r\n    padding-left: 7px;\r\n}\r\n\r\n.Yd0lpelvUXT_D0n3ati-0{\r\n    width: 80%;\r\n    margin: 0 auto\r\n}", ""]);
 // Exports
 exports.locals = {
-	"heading": "_17AXsd1Lj3NT9NEIcbSB1B",
-	"wrapper": "_3l4SO4ZMwWyyytkr-Vpy1x",
-	"btnActions": "_2ymXXq4qIrzv2_5w57lRzD",
-	"boxContent": "_2LMZzfNhX4h90jNEUcUYgV",
-	"span": "_3LJsMRDCUsk_R0TQDrh7F8",
-	"form": "_3WQqp1ts0KvRQSvjvCar3y"
+	"heading": "_2UHejfD8UTrtwwv94u-JpP",
+	"wrapper": "_3peMKPAUMYShtqrBp-4Ly7",
+	"btnActions": "_1XmTxZyrBkoei1N6B2yAd4",
+	"boxContent": "DJD67ZLTn2GFJYqcYOoYt",
+	"span": "_3NNIKT_T9migWde23g4WX5",
+	"form": "Yd0lpelvUXT_D0n3ati-0"
 };
 
 /***/ }),

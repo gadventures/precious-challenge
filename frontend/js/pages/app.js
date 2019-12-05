@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import $ from 'jquery';
 import Pages from '.';
 import Footer from '../components/Footer';
+import Header from '../components/Header';
 export default class App extends Component {
 
     constructor() {
@@ -34,9 +35,7 @@ export default class App extends Component {
         return (
             <Fragment>
                 <div className="containerer">
-                    <div className="paper-container">   
-                    <h1 className="text-center title"> Adventure Trips </h1>
-                    </div>
+                    <Header />
                     <Pages
                         trips={this.state.trips}
                     />

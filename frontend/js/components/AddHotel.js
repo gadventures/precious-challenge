@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { postHotel } from '../data/requests/postHotel'
-import styles from './Components.module.css'
+import styles from './Services.module.css'
 
 class AddHotel extends Component {
 

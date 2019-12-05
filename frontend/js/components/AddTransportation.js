@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom'
 import { postTransportation } from '../data/requests/postTransportation'
-import styles from './Components.module.css'
+import styles from './Services.module.css'
 class AddTransportation extends Component {
 
     constructor(props) {

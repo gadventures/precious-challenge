@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {postAccomodation} from '../data/requests/postAccomodation'
-import styles from './Components.module.css'
+import styles from './Services.module.css'
 class AddAccomodation extends Component {
 
     constructor(props) {

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Footer =(props) =>{
+const Footer =() =>{
 
     return(
         <footer className="site-footer" style={{paddingTop: "2em"}}>
