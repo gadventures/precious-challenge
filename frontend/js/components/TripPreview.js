@@ -1,15 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { TotalCostCalculator } from './TotalCostCalculator';
 const TripPreview = ({ trip, i }) => {
 
     return (
         <div key={i} className=".col-md-4 wrapper">
             <div className="wrapper">
-                <NavLink className="trip-entry" style={{textDecoration: "none"}} to={"/trip/" + trip.id + '/'}>
+                <NavLink className="trip-entry" style={{ textDecoration: "none" }} to={"/trip/" + trip.id + '/'}>
                     {/* Show the trip's featured image in case there is one */}
                     {trip.imageUrl &&
                         <img src={trip.imageUrl} style={{ width: "100%" }} alt="pic placeholder" />}
-                    <h4 className="text-center" style={{margin: "20px"}}>
+                    <h4 className="text-center" style={{ margin: "20px" }}>
                         {trip.travel_style} : {trip.title}
                     </h4>
                 </NavLink>
@@ -38,6 +39,9 @@ const TripPreview = ({ trip, i }) => {
                         <li className="list-group-item">
                             <strong>Transportations:</strong> <ul>{trip.transportations.map(t => <li key={t.id}>{t.name}</li>)}</ul>
                         </li>}
+                    <li className="list-group-item">
+                        <strong>Total Cost of the Trip:</strong> $ <TotalCostCalculator trip={trip}/>
+                    </li>
                 </ul>
             </div>
         </div>
